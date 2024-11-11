@@ -5,6 +5,7 @@ use yii\widgets\ActiveForm;
 use yii\grid\GridView;
 
 $this->title = 'Соревнования по спортивным сооружениям';
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <h1><?= Html::encode($this->title) ?></h1>
