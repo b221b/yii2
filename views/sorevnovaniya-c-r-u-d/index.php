@@ -34,30 +34,40 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
         [
             'label' => 'Призер',
-            'value' => function($model) {
+            'value' => function ($model) {
                 $sportsmen = $model->getSportsmenSorevnovaniyas()->one();
                 return $sportsmen ? $sportsmen->sportsmen->name : '-';
             },
         ],
         [
             'class' => 'yii\grid\ActionColumn',
+            'header' => 'Действия', // Заголовок столбца
             'template' => '{view} {update} {delete}',
             'buttons' => [
                 'view' => function ($url) {
-                    return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, [
+                    return Html::a('Просмотр', $url, [
+                        'class' => 'btn btn-success', // Стилизация как кнопка
                         'title' => 'Просмотр',
+                        'aria-label' => 'Просмотр',
+                        'data-pjax' => '0', // Если используете Pjax
                     ]);
                 },
                 'update' => function ($url) {
-                    return Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url, [
+                    return Html::a('Изменить', $url, [
+                        'class' => 'btn btn-warning', // Стилизация как кнопка
                         'title' => 'Изменить',
+                        'aria-label' => 'Изменить',
+                        'data-pjax' => '0', // Если используете Pjax
                     ]);
                 },
                 'delete' => function ($url) {
-                    return Html::a('<span class="glyphicon glyphicon-trash"></span>', $url, [
+                    return Html::a('Удалить', $url, [
+                        'class' => 'btn btn-danger', // Стилизация как кнопка
                         'title' => 'Удалить',
+                        'aria-label' => 'Удалить',
                         'data-confirm' => 'Вы уверены, что хотите удалить этот элемент?',
                         'data-method' => 'post',
+                        'data-pjax' => '0', // Если используете Pjax
                     ]);
                 },
             ],
