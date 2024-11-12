@@ -33,8 +33,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'label' => 'Вид спорта',
         ],
         [
-            'attribute' => 'prizer.nagrada',
             'label' => 'Призер',
+            'value' => function($model) {
+                $sportsmen = $model->getSportsmenSorevnovaniyas()->one();
+                return $sportsmen ? $sportsmen->sportsmen->name : '-';
+            },
         ],
         [
             'class' => 'yii\grid\ActionColumn',
