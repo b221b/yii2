@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 
-$this->title = 'Соревнования';
+$this->title = 'Соревнования CRUD';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
