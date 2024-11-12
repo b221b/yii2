@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Sorevnovaniya;
+use app\models\SportsmenPrizer;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\data\ActiveDataProvider;
@@ -15,7 +16,7 @@ class SorevnovaniyaCRUDController extends Controller
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Sorevnovaniya::find()->with(['structure', 'vidSporta', 'prizer']),
+            'query' => Sorevnovaniya::find()->with(['structure', 'vidSporta', 'sportsmenPrizers.sportsmen']),
         ]);
 
         return $this->render('index', [
@@ -28,8 +29,18 @@ class SorevnovaniyaCRUDController extends Controller
         $model = new Sorevnovaniya();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            // Успешное сохранение
-            return $this->redirect(['sorevnovaniya-c-r-u-d/index']);
+            // Сохранение связи спортсменов и призов
+            $prizers = Yii::$app->request->post('prizer', []);
+            foreach ($prizers as $prizerId => $sportsmanId) {
+                if ($sportsmanId) {
+                    $sportsmenPrizer = new SportsmenPrizer();
+                    $sportsmenPrizer->id_sorevnovaniya = $model->id;
+                    $sportsmenPrizer->id_prizer = $prizerId;
+                    $sportsmenPrizer->id_sportsmen = $sportsmanId;
+                    $sportsmenPrizer->save();
+                }
+            }
+            return $this->redirect(['index']);
         }
 
         return $this->render('create', [
@@ -45,12 +56,24 @@ class SorevnovaniyaCRUDController extends Controller
         ]);
     }
 
-
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            // Обновление связи спортсменов и призов
+            $prizers = Yii::$app->request->post('prizer', []);
+            // Очистка старых записей
+            SportsmenPrizer::deleteAll(['id_sorevnovaniya' => $model->id]);
+            foreach ($prizers as $prizerId => $sportsmanId) {
+                if ($sportsmanId) {
+                    $sportsmenPrizer = new SportsmenPrizer();
+                    $sportsmenPrizer->id_sorevnovaniya = $model->id;
+                    $sportsmenPrizer->id_prizer = $prizerId;
+                    $sportsmenPrizer->id_sportsmen = $sportsmanId;
+                    $sportsmenPrizer->save();
+                }
+            }
             return $this->redirect(['index']);
         }
 
@@ -61,7 +84,14 @@ class SorevnovaniyaCRUDController extends Controller
 
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        // Находим модель соревнования
+        $model = $this->findModel($id);
+
+        // Удаляем связанные записи из таблицы sportsmen_prizer
+        SportsmenPrizer::deleteAll(['id_sorevnovaniya' => $model->id]);
+
+        // Удаляем запись из sorevnovaniya
+        $model->delete();
 
         return $this->redirect(['index']);
     }

@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <th>Дата проведения</th>
         <th>Структура</th>
         <th>Вид спорта</th>
-        <th>Призер</th>
+        <th>Призеры</th>
     </tr>
     <?php foreach ($sorevnovaniya as $sorevnovanie): ?>
         <tr>
@@ -25,19 +25,18 @@ $this->params['breadcrumbs'][] = $this->title;
             <td><?= Html::encode($sorevnovanie->data_provedeniya) ?></td>
             <td><?= $sorevnovanie->structure->name ?></td>
             <td><?= $sorevnovanie->vidSporta->name ?></td>
-            <!-- <td><?= $sorevnovanie->prizer->nagrada ?></td> -->
-
             <td>
                 <?php
-                $sportsmen = $sorevnovanie->getSportsmenSorevnovaniyas()->one();
-                if ($sportsmen) {
-                    echo $sportsmen->sportsmen->name;
+                $prizers = $sorevnovanie->sportsmenPrizers; // Получаем всех призеров
+                if ($prizers) {
+                    foreach ($prizers as $prizer) {
+                        echo Html::encode($prizer->sportsmen->name) . '<br>'; // Выводим имя каждого призера
+                    }
                 } else {
                     echo '-';
                 }
                 ?>
             </td>
-
         </tr>
     <?php endforeach; ?>
 </table>

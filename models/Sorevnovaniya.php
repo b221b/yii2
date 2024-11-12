@@ -16,9 +16,14 @@ class Sorevnovaniya extends ActiveRecord
         return $this->hasMany(OrgSorevnovaniya::class, ['id_sorevnovaniya' => 'id']);
     }
 
-    public function getPrizer()
+    // public function getPrizer()
+    // {
+    //     return $this->hasOne(Prizer::class, ['id' => 'id_prizer']);
+    // }
+
+    public function getSportsmenPrizers()
     {
-        return $this->hasOne(Prizer::class, ['id' => 'id_prizer']);
+        return $this->hasMany(SportsmenPrizer::class, ['id_sorevnovaniya' => 'id']);
     }
 
     public function getStructure()

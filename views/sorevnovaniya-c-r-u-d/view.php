@@ -29,5 +29,15 @@ $this->params['breadcrumbs'][] = $this->title;
     <strong>Дата проведения:</strong> <?= Html::encode($model->data_provedeniya) ?><br>
     <strong>Структура:</strong> <?= Html::encode($model->structure->name) ?><br>
     <strong>Вид спорта:</strong> <?= Html::encode($model->vidSporta->name) ?><br>
-    <strong>Призер:</strong> <?= Html::encode($model->prizer->name ?? '-') ?><br>
+    <strong>Призеры:</strong>
+    <?php
+    $prizers = $model->sportsmenPrizers;
+    if ($prizers) {
+        foreach ($prizers as $prizer) {
+            echo Html::encode($prizer->sportsmen->name) . '<br>';
+        }
+    } else {
+        echo '-';
+    }
+    ?>
 </div>
