@@ -47,6 +47,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 
         $dropdownItems = [
             ['label' => 'Sorev', 'url' => ['/sorevnovaniya/index']],
+            ['label' => 'SorevCRUD', 'url' => ['/sorevnovaniya-c-r-u-d/index']],
             ['label' => 'Запрос спортивных сооружений', 'url' => ['/structure/index']],
             ['label' => 'Запрос спортсменов', 'url' => ['/sportsmens/index']],
             ['label' => 'Запрос тренеров для спортсменов', 'url' => ['/sportsmen-treners/index']],

@@ -42,6 +42,7 @@ class Sorevnovaniya extends ActiveRecord
         return [
             [['id_structure', 'id_vid_sporta'], 'safe'],
             [['id_structure', 'id_vid_sporta'], 'integer'],
+            [['name', 'data_provedeniya', 'id_structure', 'id_vid_sporta', 'id_prizer'], 'required'],
         ];
     }
 
