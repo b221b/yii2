@@ -24,6 +24,15 @@ class SorevnovaniyaCRUDController extends Controller
         ]);
     }
 
+    public function actionView($id)
+    {
+        $model = $this->findModel($id);
+
+        return $this->render('view', [
+            'model' => $model,
+        ]);
+    }
+
     public function actionCreate()
     {
         $model = new Sorevnovaniya();
@@ -70,32 +79,42 @@ class SorevnovaniyaCRUDController extends Controller
             $existingPrizersMap[$prizer->id_prizer] = $prizer;
         }
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            // Обновление связи спортсменов и призов
-            $prizers = Yii::$app->request->post('prizer', []);
+        // Загружаем данные из POST запроса
+        if ($model->load(Yii::$app->request->post())) {
+            // Сначала проверяем, проходят ли данные валидацию
+            if ($model->validate()) {
+                // Сохраняем модель
+                $model->save();
 
-            // Проверка на дублирование спортсменов
-            $sportsmanIds = array_filter($prizers); // Убираем пустые значения
-            if (count($sportsmanIds) !== count(array_unique($sportsmanIds))) {
-                $model->addError('prizer', 'Один и тот же спортсмен не может занимать несколько призовых мест.');
-                return $this->render('update', [
-                    'model' => $model,
-                    'existingPrizers' => $existingPrizersMap,
-                ]);
-            }
+                // Обновление связи спортсменов и призов
+                $prizers = Yii::$app->request->post('prizer', []);
 
-            // Очистка старых записей
-            SportsmenPrizer::deleteAll(['id_sorevnovaniya' => $model->id]);
-            foreach ($prizers as $prizerId => $sportsmanId) {
-                if ($sportsmanId) {
-                    $sportsmenPrizer = new SportsmenPrizer();
-                    $sportsmenPrizer->id_sorevnovaniya = $model->id;
-                    $sportsmenPrizer->id_prizer = $prizerId;
-                    $sportsmenPrizer->id_sportsmen = $sportsmanId;
-                    $sportsmenPrizer->save();
+                // Проверка на дублирование спортсменов
+                $sportsmanIds = array_filter($prizers); // Убираем пустые значения
+                if (count($sportsmanIds) !== count(array_unique($sportsmanIds))) {
+                    $model->addError('prizer', 'Один и тот же спортсмен не может занимать несколько призовых мест.');
+                    return $this->render('update', [
+                        'model' => $model,
+                        'existingPrizers' => $existingPrizersMap,
+                    ]);
                 }
+
+                // Очистка старых записей
+                SportsmenPrizer::deleteAll(['id_sorevnovaniya' => $model->id]);
+                foreach ($prizers as $prizerId => $sportsmanId) {
+                    if ($sportsmanId) {
+                        $sportsmenPrizer = new SportsmenPrizer();
+                        $sportsmenPrizer->id_sorevnovaniya = $model->id;
+                        $sportsmenPrizer->id_prizer = $prizerId;
+                        $sportsmenPrizer->id_sportsmen = $sportsmanId;
+                        $sportsmenPrizer->save();
+                    }
+                }
+                return $this->redirect(['index']);
+            } else {
+                // Если валидация не прошла, выводим ошибки
+                Yii::$app->session->setFlash('error', 'Пожалуйста, исправьте ошибки в форме.');
             }
-            return $this->redirect(['index']);
         }
 
         return $this->render('update', [
@@ -103,6 +122,7 @@ class SorevnovaniyaCRUDController extends Controller
             'existingPrizers' => $existingPrizersMap,
         ]);
     }
+
 
     public function actionDelete($id)
     {
