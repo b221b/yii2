@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Sorevnovaniya;
+use app\models\SorevnovaniyaSearch;
 use app\models\Structure;
 use app\models\VidSporta;
 use yii\web\Controller;
@@ -16,7 +17,7 @@ class SorevnovaniyaStructureController extends Controller
         $vidSportas = VidSporta::find()->select(['name', 'id'])->indexBy('id')->column();
 
         // Используем модель Sorevnovaniya для валидации
-        $model = new Sorevnovaniya();
+        $model = new SorevnovaniyaSearch();
 
         $query = Sorevnovaniya::find()
             ->joinWith(['structure', 'vidSporta']);
