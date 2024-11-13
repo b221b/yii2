@@ -18,18 +18,18 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="sorevnovaniya-form">
 
-    <?php if ($model->hasErrors()): ?>
-    <div class="alert alert-danger">
-        <strong>Ошибка!</strong> Пожалуйста, исправьте следующие ошибки:
-        <ul>
-            <?php foreach ($model->getErrors() as $errors): ?>
-                <?php foreach ($errors as $error): ?>
-                    <li><?= Html::encode($error) ?></li>
-                <?php endforeach; ?>
-            <?php endforeach; ?>
-        </ul>
-    </div>
-<?php endif; ?>
+        <?php if ($model->hasErrors()): ?>
+            <div class="alert alert-danger">
+                <strong>Ошибка!</strong> Пожалуйста, исправьте следующие ошибки:
+                <ul>
+                    <?php foreach ($model->getErrors() as $errors): ?>
+                        <?php foreach ($errors as $error): ?>
+                            <li><?= Html::encode($error) ?></li>
+                        <?php endforeach; ?>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        <?php endif; ?>
 
 
         <?php $form = ActiveForm::begin(); ?>
@@ -41,7 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
 
         <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
-<?= $form->field($model, 'data_provedeniya')->textInput(['type' => 'date']) ?>
+        <?= $form->field($model, 'data_provedeniya')->textInput(['type' => 'date']) ?>
 
 
         <?= $form->field($model, 'id_structure')->dropDownList(

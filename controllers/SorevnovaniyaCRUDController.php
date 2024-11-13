@@ -123,7 +123,6 @@ class SorevnovaniyaCRUDController extends Controller
         ]);
     }
 
-
     public function actionDelete($id)
     {
         // Находим модель соревнования
