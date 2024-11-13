@@ -60,6 +60,14 @@ class SorevnovaniyaCRUDController extends Controller
     {
         $model = $this->findModel($id);
 
+        // Получаем существующих призеров
+        $existingPrizers = SportsmenPrizer::find()->where(['id_sorevnovaniya' => $model->id])->all();
+        $existingPrizersMap = [];
+
+        foreach ($existingPrizers as $prizer) {
+            $existingPrizersMap[$prizer->id_prizer] = $prizer; 
+        }
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             // Обновление связи спортсменов и призов
             $prizers = Yii::$app->request->post('prizer', []);
@@ -79,6 +87,7 @@ class SorevnovaniyaCRUDController extends Controller
 
         return $this->render('update', [
             'model' => $model,
+            'existingPrizers' => $existingPrizersMap, 
         ]);
     }
 

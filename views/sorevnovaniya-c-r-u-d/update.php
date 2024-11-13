@@ -62,13 +62,15 @@ $this->params['breadcrumbs'][] = $this->title;
                     <label><?= Html::encode($prizer->nagrada) ?></label>
                     <?= Html::dropDownList(
                         "prizer[{$prizer->id}]",
-                        null,
+                        // Устанавливаем значение, если призер уже связан со спортсменом
+                        isset($existingPrizers[$prizer->id]) ? $existingPrizers[$prizer->id]->id_sportsmen : null,
                         Sportsmen::find()->select(['name', 'id'])->indexBy('id')->column(),
                         ['prompt' => 'Выберите спортсмена']
                     ); ?>
                 </div>
             <?php endforeach; ?>
         </div>
+
 
         <div class="form-group">
             <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>

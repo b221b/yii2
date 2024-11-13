@@ -46,8 +46,6 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
         ];
 
         $dropdownItems = [
-            ['label' => 'Sorev', 'url' => ['/sorevnovaniya/index']],
-            ['label' => 'SorevCRUD', 'url' => ['/sorevnovaniya-c-r-u-d/index']],
             ['label' => 'Запрос спортивных сооружений', 'url' => ['/structure/index']],
             ['label' => 'Запрос спортсменов', 'url' => ['/sportsmens/index']],
             ['label' => 'Запрос тренеров для спортсменов', 'url' => ['/sportsmen-treners/index']],
@@ -63,12 +61,22 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
             ['label' => 'Запрос cписка структур', 'url' => ['/sport/index']],
         ];
 
+        $dropdownItems2 = [
+            ['label' => '1 laba - Sorev', 'url' => ['/sorevnovaniya/index']],
+            ['label' => '3 laba - SorevCRUD', 'url' => ['/sorevnovaniya-c-r-u-d/index']],
+        ];
+
         echo Nav::widget([
             'options' => ['class' => 'navbar-nav'],
             'items' => array_merge($mainItems, [
                 [
                     'label' => 'Запросы',
                     'items' => $dropdownItems,
+                    'options' => ['class' => 'dropdown'],
+                ],
+                [
+                    'label' => '1,3 лабы',
+                    'items' => $dropdownItems2,
                     'options' => ['class' => 'dropdown'],
                 ],
                 Yii::$app->user->isGuest
