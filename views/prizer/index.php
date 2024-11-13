@@ -48,6 +48,10 @@ $this->params['breadcrumbs'][] = $this->title;
                     <td><?= Html::encode($prizer['nagrada']) ?></td>
                 </tr>
             <?php endforeach; ?>
+        <?php else: ?>
+            <tr>
+                <td colspan="4">Нет призеров для выбранного соревнования.</td>
+            </tr>
         <?php endif; ?>
     </tbody>
 </table>

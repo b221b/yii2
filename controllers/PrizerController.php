@@ -14,6 +14,7 @@ class PrizerController extends Controller
     {
         $model = new PrizerSearch(); // Используем новый класс для валидации
 
+        // Получаем список всех соревнований для выпадающего списка
         $sorevnovaniya = Sorevnovaniya::find()->all();
         $prizers = [];
 
@@ -23,9 +24,8 @@ class PrizerController extends Controller
             ->from('prizer p')
             ->innerJoin('sportsmen_prizer sp', 'sp.id_prizer = p.id')
             ->innerJoin('sportsmen s', 's.id = sp.id_sportsmen')
-            ->innerJoin('sportsmen_sorevnovaniya ssv', 'ssv.id_sportsmen = s.id')
-            ->innerJoin('sorevnovaniya ss', 'ss.id = ssv.id_sorevnovaniya')
-            ->andWhere(['<=', 'p.mesto', 3]) 
+            ->innerJoin('sorevnovaniya ss', 'ss.id = sp.id_sorevnovaniya') // Изменяем связь на правильную
+            ->andWhere(['<=', 'p.mesto', 3])
             ->all();
 
         // Обработка формы для фильтрации по соревнованию
@@ -37,10 +37,9 @@ class PrizerController extends Controller
                 ->from('prizer p')
                 ->innerJoin('sportsmen_prizer sp', 'sp.id_prizer = p.id')
                 ->innerJoin('sportsmen s', 's.id = sp.id_sportsmen')
-                ->innerJoin('sportsmen_sorevnovaniya ssv', 'ssv.id_sportsmen = s.id')
-                ->innerJoin('sorevnovaniya ss', 'ss.id = ssv.id_sorevnovaniya')
-                ->where(['ss.id' => $sorevnovanie_id])
-                ->andWhere(['<=', 'p.mesto', 3]) 
+                ->innerJoin('sorevnovaniya ss', 'ss.id = sp.id_sorevnovaniya') // Изменяем связь на правильную
+                ->where(['ss.id' => $sorevnovanie_id]) // Фильтрация по ID соревнования
+                ->andWhere(['<=', 'p.mesto', 3])
                 ->all();
         }
 
