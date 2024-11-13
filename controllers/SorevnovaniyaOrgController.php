@@ -7,26 +7,29 @@ use yii\web\Controller;
 use app\models\Sorevnovaniya;
 use yii\data\ActiveDataProvider;
 use app\models\Org;
-use app\models\SorevnovaniyaOrgSearch; 
+use app\models\SorevnovaniyaOrgSearch;
 
 class SorevnovaniyaOrgController extends Controller
 {
     public function actionIndex()
     {
-        $model = new SorevnovaniyaOrgSearch(); 
+        $model = new SorevnovaniyaOrgSearch();
 
         $query = Sorevnovaniya::find()->joinWith('orgSorevnovaniyas.org');
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             // Преобразуем даты в нужный формат для фильтрации
-            $startDate = $model->startDate; 
-            $endDate = $model->endDate; 
+            $startDate = $model->startDate;
+            $endDate = $model->endDate;
 
+            // Проверяем, указаны ли обе даты
             if ($startDate && $endDate) {
                 $query->andFilterWhere(['between', 'sorevnovaniya.data_provedeniya', $startDate, $endDate]);
             }
+
+            // Проверяем, указан ли организатор
             if ($model->fio) {
-                $query->orFilterWhere(['org.id' => $model->fio]);
+                $query->andFilterWhere(['org.id' => $model->fio]);
             }
         }
 

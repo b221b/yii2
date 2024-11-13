@@ -22,10 +22,11 @@ class TrenersSportsmensController extends Controller
 
         // Запрос на получение всех тренеров
         $allTrenersData = (new \yii\db\Query())
-            ->select(['t.name AS trener_name', 's.name AS sportsman_name'])
+            ->select(['s.name AS sportsman_name', 'GROUP_CONCAT(t.name SEPARATOR ", ") AS treners_names'])
             ->from('sportsmen AS s')
             ->innerJoin('sportsmen_treners AS st', 's.id = st.id_sportsmen')
             ->innerJoin('treners AS t', 't.id = st.id_treners')
+            ->groupBy('s.id')
             ->all();
 
         // Создаем DataProvider для отображения всех тренеров
@@ -40,11 +41,12 @@ class TrenersSportsmensController extends Controller
 
             // Запрос на получение тренеров для выбранного спортсмена
             $trenersData = (new \yii\db\Query())
-                ->select(['t.name AS trener_name', 's.name AS sportsman_name'])
+                ->select(['GROUP_CONCAT(t.name SEPARATOR ", ") AS treners_names', 's.name AS sportsman_name'])
                 ->from('sportsmen AS s')
                 ->innerJoin('sportsmen_treners AS st', 's.id = st.id_sportsmen')
                 ->innerJoin('treners AS t', 't.id = st.id_treners')
                 ->where(['s.id' => $selectedSportsmanId])
+                ->groupBy('s.id')
                 ->all();
 
             // Создаем DataProvider для отображения тренеров

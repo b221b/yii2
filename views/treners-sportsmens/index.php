@@ -34,16 +34,18 @@ $this->params['breadcrumbs'][] = $this->title;
         <thead>
             <tr>
                 <th>Имя спортсмена</th>
-                <th>Имя тренера</th>
+                <th>Имена тренеров</th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($trenersDataProvider->models as $trener): ?>
                 <tr>
                     <td><?= Html::encode($trener['sportsman_name']) ?></td>
-                    <td><?= Html::encode($trener['trener_name']) ?></td>
+                    <td><?= Html::encode($trener['treners_names']) ?></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
     </table>
+<?php else: ?>
+    <p>Тренеры не найдены для выбранного спортсмена.</p>
 <?php endif; ?>

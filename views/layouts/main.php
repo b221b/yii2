@@ -46,19 +46,19 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
         ];
 
         $dropdownItems = [
-            ['label' => 'Запрос спортивных сооружений', 'url' => ['/structure/index']],
-            ['label' => 'Запрос спортсменов', 'url' => ['/sportsmens/index']],
-            ['label' => 'Запрос тренеров для спортсменов', 'url' => ['/sportsmen-treners/index']],
-            ['label' => 'Запрос спортсменов и колво видов спорта', 'url' => ['/sportsmen-vid-sporta/index']],
-            ['label' => 'Запрос тренеров для спортсменов', 'url' => ['/treners-sportsmens/index']],
-            ['label' => 'Запрос перечня соревнований', 'url' => ['/sorevnovaniya-org/index']],
-            ['label' => 'Запрос перечня призеров', 'url' => ['/prizer/index']],
-            ['label' => 'Запрос перечня соревнований и сооружений', 'url' => ['/sorevnovaniya-structure/index']],
-            ['label' => 'Запрос спортивных клубов и спортсменов принимавших участие в соревнованиях', 'url' => ['/sport-club/index']],
-            ['label' => 'Запрос cписка тренеров по виду спорта', 'url' => ['/treners/index']],
-            ['label' => 'Запрос cписка спортсменов не участвовавших в соревах', 'url' => ['/sportsmen-sorevnovaniya/index']],
-            ['label' => 'Запрос cписка организаторов', 'url' => ['/org/index']],
-            ['label' => 'Запрос cписка структур', 'url' => ['/sport/index']],
+            ['label' => '1) Запрос спортивных сооружений', 'url' => ['/structure/index']],
+            ['label' => '2) Запрос спортсменов', 'url' => ['/sportsmens/index']],
+            ['label' => '3) Запрос спортсменов для тренеров', 'url' => ['/sportsmen-treners/index']],
+            ['label' => '4) Запрос спортсменов и колво видов спорта', 'url' => ['/sportsmen-vid-sporta/index']],
+            ['label' => '5) Запрос тренеров для спортсменов', 'url' => ['/treners-sportsmens/index']],
+            ['label' => '6) Запрос перечня соревнований', 'url' => ['/sorevnovaniya-org/index']],
+            ['label' => '7) Запрос перечня призеров', 'url' => ['/prizer/index']],
+            ['label' => '8) Запрос перечня соревнований и сооружений', 'url' => ['/sorevnovaniya-structure/index']],
+            ['label' => '9) Запрос спортивных клубов и спортсменов', 'url' => ['/sport-club/index']],
+            ['label' => '10) Запрос cписка тренеров по виду спорта', 'url' => ['/treners/index']],
+            ['label' => '11) Запрос cписка спортсменов не участвовавших в соревах', 'url' => ['/sportsmen-sorevnovaniya/index']],
+            ['label' => '12) Запрос cписка организаторов', 'url' => ['/org/index']],
+            ['label' => '13) Запрос cписка структур', 'url' => ['/sport/index']],
         ];
 
         $dropdownItems2 = [
