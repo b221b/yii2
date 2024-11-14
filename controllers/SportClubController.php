@@ -17,11 +17,9 @@ class SportClubController extends Controller
         // Проверка запроса GET для отображения всех записей
         if (Yii::$app->request->isGet) {
             $dataProvider = SportClub::find()
-                ->select(['sport_club.name AS club_name', 'COUNT(DISTINCT sportsmen.id) AS athlete_count'])
+                ->select(['sport_club.name AS club_name', 'COUNT(sportsmen.id) AS athlete_count'])
                 ->innerJoin('sportsmen', 'sportsmen.id_sport_club = sport_club.id')
-                ->innerJoin('sportsmen_sorevnovaniya', 'sportsmen_sorevnovaniya.id_sportsmen = sportsmen.id')
-                ->innerJoin('sorevnovaniya', 'sorevnovaniya.id = sportsmen_sorevnovaniya.id_sorevnovaniya')
-                ->groupBy('sport_club.name')
+                ->groupBy('sport_club.id') // Группируем по id клуба
                 ->asArray() // Используем asArray для возврата массивов
                 ->all();
         }
@@ -29,12 +27,12 @@ class SportClubController extends Controller
         // Обработка формы поиска
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             $dataProvider = SportClub::find()
-                ->select(['sport_club.name AS club_name', 'COUNT(DISTINCT sportsmen.id) AS athlete_count'])
+                ->select(['sport_club.name AS club_name', 'COUNT(sportsmen.id) AS athlete_count'])
                 ->innerJoin('sportsmen', 'sportsmen.id_sport_club = sport_club.id')
                 ->innerJoin('sportsmen_sorevnovaniya', 'sportsmen_sorevnovaniya.id_sportsmen = sportsmen.id')
                 ->innerJoin('sorevnovaniya', 'sorevnovaniya.id = sportsmen_sorevnovaniya.id_sorevnovaniya')
                 ->where(['between', 'sorevnovaniya.data_provedeniya', $model->start_date, $model->end_date])
-                ->groupBy('sport_club.name')
+                ->groupBy('sport_club.id') // Группируем по id клуба
                 ->asArray() // Используем asArray для возврата массивов
                 ->all();
         }
