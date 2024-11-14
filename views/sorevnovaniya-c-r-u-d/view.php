@@ -24,7 +24,6 @@ $this->params['breadcrumbs'][] = $this->title;
 </p>
 
 <div>
-    <strong>ID:</strong> <?= Html::encode($model->id) ?><br>
     <strong>Название:</strong> <?= Html::encode($model->name) ?><br>
     <strong>Дата проведения:</strong> <?= Html::encode($model->data_provedeniya) ?><br>
     <strong>Структура:</strong> <?= Html::encode($model->structure->name) ?><br>

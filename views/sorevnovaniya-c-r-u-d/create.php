@@ -7,12 +7,6 @@ use app\models\VidSporta;
 use app\models\Prizer;
 use app\models\Sportsmen;
 
-// Получаем последний ID из таблицы sorevnovaniya
-$lastId = (new \yii\db\Query())
-    ->select('MAX(id)')
-    ->from('sorevnovaniya')
-    ->scalar();
-
 $this->title = 'Создать Соревнование';
 $this->params['breadcrumbs'][] = ['label' => 'Соревнования', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
@@ -39,12 +33,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <?php $form = ActiveForm::begin(); ?>
 
-        <!-- Поле для отображения ID -->
-        <div class="form-group">
-            <label>ID:</label>
-            <p class="form-control-static"><?= Html::encode($lastId + 1) ?></p>
-        </div>
-
         <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
         <?= $form->field($model, 'data_provedeniya')->textInput(['type' => 'date']) ?>
 
@@ -57,9 +45,6 @@ $this->params['breadcrumbs'][] = $this->title;
             VidSporta::find()->select(['name', 'id'])->indexBy('id')->column(),
             ['prompt' => 'Выберите вид спорта']
         ) ?>
-
-        <!-- Изменяем поле id_prizer на числовое -->
-        <?= $form->field($model, 'id_prizer')->textInput(['type' => 'number']) ?>
 
         <div id="prizer-container">
             <h3>Призеры</h3>

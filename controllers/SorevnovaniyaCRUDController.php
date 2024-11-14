@@ -8,8 +8,6 @@ use app\models\SportsmenPrizer;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\data\ActiveDataProvider;
-use yii\web\Response;
-use yii\widgets\ActiveForm;
 
 class SorevnovaniyaCRUDController extends Controller
 {
@@ -54,7 +52,7 @@ class SorevnovaniyaCRUDController extends Controller
                 if ($sportsmanId) {
                     $sportsmenPrizer = new SportsmenPrizer();
                     $sportsmenPrizer->id_sorevnovaniya = $model->id;
-                    $sportsmenPrizer->id_prizer = $prizerId;
+                    $sportsmenPrizer->id_prizer = $prizerId; // Убедитесь, что это поле все еще присутствует в модели SportsmenPrizer
                     $sportsmenPrizer->id_sportsmen = $sportsmanId;
                     $sportsmenPrizer->save();
                 }
@@ -105,7 +103,7 @@ class SorevnovaniyaCRUDController extends Controller
                     if ($sportsmanId) {
                         $sportsmenPrizer = new SportsmenPrizer();
                         $sportsmenPrizer->id_sorevnovaniya = $model->id;
-                        $sportsmenPrizer->id_prizer = $prizerId;
+                        $sportsmenPrizer->id_prizer = $prizerId; // Убедитесь, что это поле все еще присутствует в модели SportsmenPrizer
                         $sportsmenPrizer->id_sportsmen = $sportsmanId;
                         $sportsmenPrizer->save();
                     }

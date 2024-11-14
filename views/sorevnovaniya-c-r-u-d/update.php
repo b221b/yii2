@@ -34,15 +34,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <?php $form = ActiveForm::begin(); ?>
 
-        <!-- Поле для отображения ID -->
-        <div class="form-group">
-            <label>ID:</label>
-            <p class="form-control-static"><?= Html::encode($model->id) ?></p>
-        </div>
-
         <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
         <?= $form->field($model, 'data_provedeniya')->textInput(['type' => 'date']) ?>
-
 
         <?= $form->field($model, 'id_structure')->dropDownList(
             Structure::find()->select(['name', 'id'])->indexBy('id')->column(),
@@ -54,9 +47,6 @@ $this->params['breadcrumbs'][] = $this->title;
             ['prompt' => 'Выберите вид спорта']
         ) ?>
 
-        <!-- Изменяем поле id_prizer на числовое -->
-        <?= $form->field($model, 'id_prizer')->textInput(['type' => 'number']) ?>
-
         <div id="prizer-container">
             <h3>Призеры</h3>
             <?php foreach (Prizer::find()->all() as $prizer): ?>
@@ -64,7 +54,6 @@ $this->params['breadcrumbs'][] = $this->title;
                     <label><?= Html::encode($prizer->nagrada) ?></label>
                     <?= Html::dropDownList(
                         "prizer[{$prizer->id}]",
-                        // Устанавливаем значение, если призер уже связан со спортсменом
                         isset($existingPrizers[$prizer->id]) ? $existingPrizers[$prizer->id]->id_sportsmen : null,
                         Sportsmen::find()->select(['name', 'id'])->indexBy('id')->column(),
                         ['prompt' => 'Выберите спортсмена']
@@ -72,7 +61,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
             <?php endforeach; ?>
         </div>
-
 
         <div class="form-group">
             <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>

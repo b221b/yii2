@@ -7,8 +7,6 @@ $this->title = 'Соревнования CRUD';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<link rel="stylesheet" href="../../web/css/sorev.css">
-
 <h1><?= Html::encode($this->title) ?></h1>
 
 <p>

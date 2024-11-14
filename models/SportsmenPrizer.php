@@ -21,11 +21,6 @@ class SportsmenPrizer extends ActiveRecord
         return $this->hasOne(Prizer::class, ['id' => 'id_prizer']);
     }
 
-    public function getPrizer2()
-    {
-        return $this->hasOne(Sorevnovaniya::class, ['id_prizer' => 'id_sorevnovaniya']);
-    }
-
     public function getSportsmenPrizers()
     {
         return $this->hasMany(SportsmenPrizer::class, ['id_sorevnovaniya' => 'id']);
