@@ -7,8 +7,6 @@ $this->title = 'Sorev';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<link rel="stylesheet" href="../../web/css/sorev.css">
-
 <h1>Соревнования</h1>
 
 <table>

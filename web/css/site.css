@@ -86,3 +86,7 @@ a.desc:after {
 .form-group {
     margin-bottom: 1rem;
 }
+
+.has-error .help-block {
+    color: red; /* Цвет текста ошибок */
+}
