@@ -5,7 +5,7 @@ use yii\db\Migration;
 /**
  * Handles adding columns to table `{{%users}}`.
  */
-class m241114_083041_add_auth_key_and_access_token_to_users_table extends Migration
+class m241114_083041_add_auth_key_and_access_token_to_user_table extends Migration
 {
     /**
      * {@inheritdoc}
