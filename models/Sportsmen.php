@@ -42,11 +42,15 @@ class Sportsmen extends ActiveRecord
     public function rules()
     {
         return [
-            [['id'], 'required', 'message' => 'Пожалуйста, выберите спортсмена.'],
+            // [['id'], 'required', 'message' => 'Пожалуйста, выберите спортсмена.'],
             [['razryad'], 'integer', 'message' => 'Разряд должен быть целым числом.'],
             [['razryad'], 'default', 'value' => null],
             [['razryad', 'id_vid_sporta'], 'integer'],
             [['id_vid_sporta'], 'default', 'value' => null],
+
+            [['name', 'razryad', 'id_sport_club'], 'required'],
+            [['razryad', 'id_sport_club'], 'integer'],
+            [['name'], 'string', 'max' => 255],
         ];
     }
 
@@ -57,6 +61,8 @@ class Sportsmen extends ActiveRecord
             'id_vid_sporta' => 'Вид спорта',
             'id' => 'Спортсмены',
             'sport_count' => 'Количество видов спорта',
+            'name' => 'Имя спортсмена',
+            'id_sport_club' => 'Спортивный клуб',
         ];
     }
 }

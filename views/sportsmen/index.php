@@ -3,6 +3,9 @@
 use yii\helpers\Html;
 use yii\widgets\LinkPager;
 
+$this->title = 'Список спортсменов';
+$this->params['breadcrumbs'][] = $this->title;
+
 ?>
 <h1>Sportsmen</h1>
 <ul>
