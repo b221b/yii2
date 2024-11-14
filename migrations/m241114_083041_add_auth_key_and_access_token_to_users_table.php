@@ -14,7 +14,7 @@ class m241114_083041_add_auth_key_and_access_token_to_users_table extends Migrat
     {
         // Добавляем столбцы authKey и accessToken
         $this->addColumn('{{%users}}', 'authKey', $this->string()->notNull()->defaultValue(''));
-        $this->addColumn('{{%users}}', 'accessToken', $this->string()->notNull()->defaultValue(''));
+        // $this->addColumn('{{%users}}', 'accessToken', $this->string()->notNull()->defaultValue(''));
     }
 
     /**
@@ -24,6 +24,6 @@ class m241114_083041_add_auth_key_and_access_token_to_users_table extends Migrat
     {
         // Удаляем столбцы authKey и accessToken
         $this->dropColumn('{{%users}}', 'authKey');
-        $this->dropColumn('{{%users}}', 'accessToken');
+        // $this->dropColumn('{{%users}}', 'accessToken');
     }
 }
