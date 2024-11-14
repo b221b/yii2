@@ -50,20 +50,20 @@ class SportsmenController extends Controller
     public function actionCreate()
     {
         $model = new Sportsmen();
-    
+
         if ($this->request->isPost) {
             if ($model->load($this->request->post())) {
                 // Проверьте, что поле 'name' действительно заполнено
                 if ($model->save()) {
-                    return $this->redirect(['view', 'id' => $model->id]);
+                    // return $this->redirect(['view', 'id' => $model->id]);
+                    return $this->redirect(['index']);
                 } else {
                     // Вывод ошибок валидации
                     Yii::debug($model->errors, 'model_errors');
                 }
             }
         }
-        
-    
+
         return $this->render('create', [
             'model' => $model,
         ]);
@@ -72,20 +72,20 @@ class SportsmenController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-    
+
         if ($this->request->isPost) {
             if ($model->load($this->request->post())) {
                 // Проверьте, что поле 'name' действительно заполнено
                 if ($model->save()) {
-                    return $this->redirect(['view', 'id' => $model->id]);
+                    // return $this->redirect(['view', 'id' => $model->id]);
+                    return $this->redirect(['index']);
                 } else {
                     // Вывод ошибок валидации
                     Yii::debug($model->errors, 'model_errors');
                 }
             }
         }
-        
-    
+
         return $this->render('update', [
             'model' => $model,
         ]);
