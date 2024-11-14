@@ -52,7 +52,7 @@ class SorevnovaniyaCRUDController extends Controller
                 if ($sportsmanId) {
                     $sportsmenPrizer = new SportsmenPrizer();
                     $sportsmenPrizer->id_sorevnovaniya = $model->id;
-                    $sportsmenPrizer->id_prizer = $prizerId; // Убедитесь, что это поле все еще присутствует в модели SportsmenPrizer
+                    $sportsmenPrizer->id_prizer = $prizerId;
                     $sportsmenPrizer->id_sportsmen = $sportsmanId;
                     $sportsmenPrizer->save();
                 }
@@ -103,14 +103,13 @@ class SorevnovaniyaCRUDController extends Controller
                     if ($sportsmanId) {
                         $sportsmenPrizer = new SportsmenPrizer();
                         $sportsmenPrizer->id_sorevnovaniya = $model->id;
-                        $sportsmenPrizer->id_prizer = $prizerId; // Убедитесь, что это поле все еще присутствует в модели SportsmenPrizer
+                        $sportsmenPrizer->id_prizer = $prizerId;
                         $sportsmenPrizer->id_sportsmen = $sportsmanId;
                         $sportsmenPrizer->save();
                     }
                 }
                 return $this->redirect(['index']);
             } else {
-                // Если валидация не прошла, выводим ошибки
                 Yii::$app->session->setFlash('error', 'Пожалуйста, исправьте ошибки в форме.');
             }
         }
