@@ -11,7 +11,7 @@ use yii\grid\GridView;
 /** @var app\modules\admin\models\TrenersSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Тренеры';
+$this->title = 'Таблица Тренеры';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="treners-index">

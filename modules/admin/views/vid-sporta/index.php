@@ -10,7 +10,7 @@ use yii\grid\GridView;
 /** @var app\modules\admin\models\VidSportaSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Vid Sportas';
+$this->title = 'Таблица Виды Спорта';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="vid-sporta-index">
@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Vid Sporta', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Создать вид спорта', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

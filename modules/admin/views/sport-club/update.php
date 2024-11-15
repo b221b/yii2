@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /** @var app\models\SportClub $model */
 
 $this->title = 'Обновить спортивный клуб: ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Sport Clubs', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Таблица Спортивные Клубы', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>

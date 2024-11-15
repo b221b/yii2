@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /** @var app\models\SportClub $model */
 
 $this->title = 'Создать спортивный клуб';
-$this->params['breadcrumbs'][] = ['label' => 'Sport Clubs', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Таблица Спортивные Клубы', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="sport-club-create">

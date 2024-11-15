@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /** @var yii\web\View $this */
 /** @var app\models\VidSporta $model */
 
-$this->title = 'Create Vid Sporta';
-$this->params['breadcrumbs'][] = ['label' => 'Vid Sportas', 'url' => ['index']];
+$this->title = 'Создать вид спорта';
+$this->params['breadcrumbs'][] = ['label' => 'Таблица Виды Спорта', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="vid-sporta-create">

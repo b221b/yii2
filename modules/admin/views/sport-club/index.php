@@ -10,7 +10,7 @@ use yii\grid\GridView;
 /** @var app\modules\admin\models\SportClubSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Спортивные клубы';
+$this->title = 'Таблица Спортивные Клубы';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="sport-club-index">
@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Sport Club', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Создать спортивный клуб', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); 
