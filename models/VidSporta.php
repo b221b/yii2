@@ -25,4 +25,19 @@ class VidSporta extends ActiveRecord
     {
         return $this->hasMany(Sorevnovaniya::class, ['id_vid_sporta' => 'id']);
     }
+
+    public function rules()
+    {
+        return [
+            [['name'], 'required'],
+            [['name'], 'string', 'max' => 255],
+        ];
+    }
+
+    public function attributeLabels()
+    {
+        return [
+            'name' => 'Название',
+        ];
+    }
 }
