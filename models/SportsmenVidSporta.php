@@ -20,4 +20,19 @@ class SportsmenVidSporta extends ActiveRecord
     {
         return $this->hasOne(VidSporta::class, ['id' => 'id_vid_sporta']);
     }
+
+    public function rules()
+    {
+        return [
+            [['id_sportsmen', 'id_vid_sporta'], 'required'],
+        ];
+    }
+
+    public function attributeLabels()
+    {
+        return [
+            'id_sportsmen' => 'Спортсмен',
+            'id_vid_sporta' => 'Вид спорта',
+        ];
+    }
 }
