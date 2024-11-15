@@ -18,7 +18,23 @@ class Treners extends ActiveRecord
 
     public function getVidSporta()
     {
-        return $this->hasOne(VidSporta::class, ['id_treners' => 'id']);
+        return $this->hasOne(VidSporta::class, ['id' => 'id_vid_sporta']); // Связываем по id_vid_sporta
     }
-    
+
+
+    public function rules()
+    {
+        return [
+            [['name', 'id_vid_sporta'], 'required'],
+            [['name'], 'string', 'max' => 255],
+        ];
+    }
+
+    public function attributeLabels()
+    {
+        return [
+            'name' => 'Имя',
+            'id_vid_sporta' => 'Вид спорта',
+        ];
+    }
 }
