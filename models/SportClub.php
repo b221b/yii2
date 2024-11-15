@@ -15,4 +15,19 @@ class SportClub extends ActiveRecord
     {
         return $this->hasMany(Sportsmen::class, ['id_sport_club' => 'id']);
     }
+
+    public function rules()
+    {
+        return [
+            [['name'], 'required'],
+            [['name'], 'string', 'max' => 255], 
+        ];
+    }
+
+    public function attributeLabels()
+    {
+        return [
+            'name' => 'Название',
+        ];
+    }
 }

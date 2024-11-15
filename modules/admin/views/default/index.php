@@ -9,7 +9,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="admin-default-index">
     <h1><?= $this->context->action->uniqueId ?></h1>
-    
+
     <!-- <p>
         This is the view content for action "<?= $this->context->action->id ?>".
         The action belongs to the controller "<?= get_class($this->context) ?>"
@@ -23,5 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= \yii\helpers\Html::a('Таблица Спортсмены', Url::to(['sportsmen/index']), ['class' => 'btn btn-primary']) ?>
+        <?= \yii\helpers\Html::a('Таблица Спорт Клубы', Url::to(['sport-club/index']), ['class' => 'btn btn-primary']) ?>
     </p>
+
 </div>
