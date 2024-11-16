@@ -26,4 +26,20 @@ class Structure extends ActiveRecord
     {
         return self::find()->select(['name', 'id'])->indexBy('id')->column();
     }
+
+    public function rules()
+    {
+        return [
+            [['name', 'type'], 'required'],
+            [['name'], 'string', 'max' => 255], 
+        ];
+    }
+
+    public function attributeLabels()
+    {
+        return [
+            'name' => 'Название',
+            'type' => 'Тип',
+        ];
+    }
 }
