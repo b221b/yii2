@@ -11,6 +11,7 @@ use yii\grid\GridView;
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
 $this->title = 'Таблица Спортивные Клубы';
+$this->params['breadcrumbs'][] = ['label' => 'Административная часть', 'url' => ['/admin']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="sport-club-index">

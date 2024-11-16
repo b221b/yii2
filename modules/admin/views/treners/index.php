@@ -12,6 +12,7 @@ use yii\grid\GridView;
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
 $this->title = 'Таблица Тренеры';
+$this->params['breadcrumbs'][] = ['label' => 'Административная часть', 'url' => ['/admin']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="treners-index">

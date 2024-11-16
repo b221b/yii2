@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /** @var yii\web\View $this */
 /** @var app\models\SportsmenTreners $model */
 
-$this->title = $model->sportsmen->name;
+$this->title = $model->sportsmen->name . ' & ' . $model->treners->name;
 $this->params['breadcrumbs'][] = ['label' => 'Таблица Спортсмены & Тренеры', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
