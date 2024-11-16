@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-$this->title = 'Список призеров';
+$this->title = 'Запрос: Перечен призеров';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 

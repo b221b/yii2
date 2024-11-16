@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-$this->title = 'Запрос спортивных сооружений';
+$this->title = 'Запрос: Спортивные сооружения указанного типа';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 

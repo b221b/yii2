@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\grid\GridView;
 
-$this->title = 'Список спортсменов';
+$this->title = 'Запрос: Список спортсменов не участвовавших в соревах по периоду';
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>

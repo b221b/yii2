@@ -47,19 +47,19 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
         ];
 
         $dropdownItems = [
-            ['label' => '1) Запрос спортивных сооружений', 'url' => ['/structure/index']],
-            ['label' => '2) Запрос спортсменов', 'url' => ['/sportsmens/index']],
-            ['label' => '3) Запрос спортсменов для тренеров', 'url' => ['/sportsmen-treners/index']],
-            ['label' => '4) Запрос спортсменов и колво видов спорта', 'url' => ['/sportsmen-vid-sporta/index']],
-            ['label' => '5) Запрос тренеров для спортсменов', 'url' => ['/treners-sportsmens/index']],
-            ['label' => '6) Запрос перечня соревнований', 'url' => ['/sorevnovaniya-org/index']],
-            ['label' => '7) Запрос перечня призеров', 'url' => ['/prizer/index']],
-            ['label' => '8) Запрос перечня соревнований и сооружений', 'url' => ['/sorevnovaniya-structure/index']],
-            ['label' => '9) Запрос спортивных клубов и спортсменов', 'url' => ['/sport-club/index']],
-            ['label' => '10) Запрос cписка тренеров по виду спорта', 'url' => ['/treners/index']],
-            ['label' => '11) Запрос cписка спортсменов не участвовавших в соревах', 'url' => ['/sportsmen-sorevnovaniya/index']],
-            ['label' => '12) Запрос cписка организаторов', 'url' => ['/org/index']],
-            ['label' => '13) Запрос cписка структур', 'url' => ['/sport/index']],
+            ['label' => '1) Спортивные сооружения указанного типа', 'url' => ['/structure/index']],
+            ['label' => '2) Спортсмены для вида спорта и разряда', 'url' => ['/sportsmens/index']],
+            ['label' => '3) Спортсмены для тренеров и разряд', 'url' => ['/sportsmen-treners/index']],
+            ['label' => '4) Спортсмены и виды спорта', 'url' => ['/sportsmen-vid-sporta/index']],
+            ['label' => '5) Тренеры для спортсмена', 'url' => ['/treners-sportsmens/index']],
+            ['label' => '6) Перечень соревнований по периоду и организатору', 'url' => ['/sorevnovaniya-org/index']],
+            ['label' => '7) Перечен призеров', 'url' => ['/prizer/index']],
+            ['label' => '8) Перечень соревнований в сооружениях и виду спорта', 'url' => ['/sorevnovaniya-structure/index']],
+            ['label' => '9) Перечень клубов и участников соревнований по периоду', 'url' => ['/sport-club/index']],
+            ['label' => '10) Список тренеров по виду спорта', 'url' => ['/treners/index']],
+            ['label' => '11) Список спортсменов не участвовавших в соревах по периоду', 'url' => ['/sportsmen-sorevnovaniya/index']],
+            ['label' => '12) Список организаторов по периоду', 'url' => ['/org/index']],
+            ['label' => '13) Список сооружений по периоду', 'url' => ['/sport/index']],
         ];
 
         $dropdownItems2 = [

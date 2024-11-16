@@ -6,7 +6,7 @@ use yii\data\ActiveDataProvider;
 use app\models\Sportsmen;
 use app\models\VidSporta;
 
-$this->title = 'Запрос спортсменов';
+$this->title = 'Запрос: Спортсмены для вида спорта и разряда';
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
