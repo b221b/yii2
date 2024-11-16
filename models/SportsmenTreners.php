@@ -20,4 +20,19 @@ class SportsmenTreners extends ActiveRecord
     {
         return $this->hasOne(Treners::class, ['id' => 'id_treners']);
     }
+
+    public function rules()
+    {
+        return [
+            [['id_sportsmen', 'id_treners'], 'required'],
+        ];
+    }
+
+    public function attributeLabels()
+    {
+        return [
+            'id_sportsmen' => 'Спортсмен',
+            'id_treners' => 'Тренер',
+        ];
+    }
 }
