@@ -11,6 +11,7 @@ use yii\grid\GridView;
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
 $this->title = 'Таблица Ораганизация & Соревнования';
+$this->params['breadcrumbs'][] = ['label' => 'Административная часть', 'url' => ['/admin']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="org-sorevnovaniya-index">
