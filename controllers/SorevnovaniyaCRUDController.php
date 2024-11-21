@@ -43,7 +43,7 @@ class SorevnovaniyaCRUDController extends Controller
             $sportsmanIds = array_filter($prizers); // Убираем пустые значения
             if (count($sportsmanIds) !== count(array_unique($sportsmanIds))) {
                 $model->addError('prizer', 'Один и тот же спортсмен не может занимать несколько призовых мест.');
-                
+
                 return $this->render('create', [
                     'model' => $model,
                 ]);
