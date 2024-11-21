@@ -20,4 +20,22 @@ class Prizer extends ActiveRecord
     {
         return $this->hasMany(SportsmenPrizer::class, ['id_prizer' => 'id']);
     }
+
+    public function rules()
+    {
+        return [
+            [['mesto', 'nagrada'], 'required'],
+            [['mesto'], 'integer'],
+            [['nagrada'], 'string', 'max' => 255], 
+            [['mesto'], 'unique', 'targetAttribute' => ['mesto'], 'message' => 'Запись с таким призовым уже существует.'],
+        ];
+    }
+
+    public function attributeLabels()
+    {
+        return [
+            'mesto' => 'Призовое место',
+            'nagrada' => 'Награда',
+        ];
+    }
 }
