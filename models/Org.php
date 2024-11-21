@@ -15,4 +15,19 @@ class Org extends ActiveRecord
     {
         return $this->hasMany(OrgSorevnovaniya::class, ['id_org' => 'id']);
     }
+
+    public function rules()
+    {
+        return [
+            [['fio'], 'required'],
+            [['fio'], 'string', 'max' => 255], 
+        ];
+    }
+
+    public function attributeLabels()
+    {
+        return [
+            'fio' => 'Название',
+        ];
+    }
 }
