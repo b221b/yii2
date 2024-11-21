@@ -8,7 +8,7 @@ use app\models\Prizer;
 use app\models\Sportsmen;
 
 $this->title = 'Создать Соревнование';
-$this->params['breadcrumbs'][] = ['label' => 'Соревнования', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Соревнования CRUD', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 

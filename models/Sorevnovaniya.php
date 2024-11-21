@@ -50,6 +50,8 @@ class Sorevnovaniya extends ActiveRecord
     public function attributeLabels()
     {
         return [
+            'name' => 'Название',
+            'data_provedeniya' => 'Дата проведения',
             'id_structure' => 'Структура',
             'id_vid_sporta' => 'Вид спорта',
         ];

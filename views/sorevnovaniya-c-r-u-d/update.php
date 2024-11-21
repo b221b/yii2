@@ -8,7 +8,7 @@ use app\models\Sportsmen;
 use app\models\Prizer;
 
 $this->title = 'Изменить Соревнование: ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Соревнования', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Соревнования CRUD', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
@@ -30,7 +30,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 </ul>
             </div>
         <?php endif; ?>
-
 
         <?php $form = ActiveForm::begin(); ?>
 

@@ -17,11 +17,13 @@ $this->params['breadcrumbs'][] = $this->title;
     'dataProvider' => $dataProvider,
     'columns' => [
         [
-            'attribute' => 'id',
-            'label' => 'ID',
+            'attribute' => 'name',
+            'label' => 'Название',
         ],
-        'name',
-        'data_provedeniya',
+        [
+            'attribute' => 'data_provedeniya',
+            'label' => 'Дата проведения',
+        ],
         [
             'attribute' => 'structure.name',
             'label' => 'Структура',

@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $model app\models\Sorevnovaniya */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Соревнования', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Соревнования CRUD', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
@@ -24,19 +24,45 @@ $this->params['breadcrumbs'][] = $this->title;
 </p>
 
 <div>
-    <strong>Название:</strong> <?= Html::encode($model->name) ?><br>
-    <strong>Дата проведения:</strong> <?= Html::encode($model->data_provedeniya) ?><br>
-    <strong>Структура:</strong> <?= Html::encode($model->structure->name) ?><br>
-    <strong>Вид спорта:</strong> <?= Html::encode($model->vidSporta->name) ?><br>
-    <strong>Призеры:</strong>
-    <?php
-    $prizers = $model->sportsmenPrizers;
-    if ($prizers) {
-        foreach ($prizers as $prizer) {
-            echo Html::encode($prizer->sportsmen->name) . '<br>';
-        }
-    } else {
-        echo '-';
-    }
-    ?>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Параметр</th>
+                <th>Значение</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Название</strong></td>
+                <td><?= Html::encode($model->name) ?></td>
+            </tr>
+            <tr>
+                <td><strong>Дата проведения</strong></td>
+                <td><?= Html::encode($model->data_provedeniya) ?></td>
+            </tr>
+            <tr>
+                <td><strong>Структура</strong></td>
+                <td><?= Html::encode($model->structure->name) ?></td>
+            </tr>
+            <tr>
+                <td><strong>Вид спорта</strong></td>
+                <td><?= Html::encode($model->vidSporta->name) ?></td>
+            </tr>
+            <tr>
+                <td><strong>Призеры</strong></td>
+                <td>
+                    <?php
+                    $prizers = $model->sportsmenPrizers;
+                    if ($prizers) {
+                        foreach ($prizers as $prizer) {
+                            echo Html::encode($prizer->sportsmen->name) . '<br>';
+                        }
+                    } else {
+                        echo '-';
+                    }
+                    ?>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>
