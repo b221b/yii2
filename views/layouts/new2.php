@@ -1,11 +1,38 @@
+<?php
+
+/** @var yii\web\View $this */
+/** @var string $content */
+
+use app\assets\AppAsset;
+use app\widgets\Alert;
+use yii\bootstrap5\Breadcrumbs;
+use yii\bootstrap5\Html;
+use yii\bootstrap5\Nav;
+use yii\bootstrap5\NavBar;
+
+AppAsset::register($this);
+
+$this->registerCsrfMetaTags();
+$this->registerMetaTag(['charset' => Yii::$app->charset], 'charset');
+$this->registerMetaTag(['name' => 'viewport', 'content' => 'width=device-width, initial-scale=1, shrink-to-fit=no']);
+$this->registerMetaTag(['name' => 'description', 'content' => $this->params['meta_description'] ?? '']);
+$this->registerMetaTag(['name' => 'keywords', 'content' => $this->params['meta_keywords'] ?? '']);
+$this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii::getAlias('@web/favicon.ico')]);
+?>
+
+<?php $this->beginPage() ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?= Yii::$app->language ?>" class="h-100">
 
 <head>
+    <title><?= Html::encode($this->title) ?></title>
+    <?php $this->head() ?>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home One || Nisoz || HTML Template For Creative Agency</title>
+    <title>My App</title>
     <!-- favicons Icons -->
+
     <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png" />
@@ -38,6 +65,7 @@
 </head>
 
 <body class="custom-cursor">
+    <?php $this->beginBody() ?>
 
     <div class="custom-cursor__cursor"></div>
     <div class="custom-cursor__cursor-two"></div>
@@ -74,343 +102,232 @@
                 </div>
             </div>
         </section><!-- /.topbar-header -->
+
         <header class="main-header">
-            <nav class="main-menu">
-                <div class="container-fluid">
-                    <div class="main-menu__logo">
-                        <a href="index.html">
-                            <img src="assets/images/logo-light.png" width="96" height="34" alt="Ogency">
-                        </a>
-                    </div><!-- /.main-menu__logo -->
-                    <div class="main-menu__nav">
-                        <ul class="main-menu__list">
-                            <li class="dropdown megamenu">
-                                <a href="index.html">Home</a>
-                                <ul>
-                                    <li>
-                                        <section class="home-showcase">
-                                            <div class="container">
-                                                <div class="home-showcase__inner">
-                                                    <div class="row">
-                                                        <div class="col-lg-3">
-                                                            <div class="home-showcase__item">
-                                                                <div class="home-showcase__image">
-                                                                    <img src="assets/images/home-showcase/home-showcase-1-1.jpg" alt="">
-                                                                    <div class="home-showcase__buttons">
-                                                                        <a href="index.html" class="nisoz-btn home-showcase__buttons__item">
-                                                                            <span class="nisoz-btn__shape"></span><span class="nisoz-btn__shape"></span><span class="nisoz-btn__shape"></span><span class="nisoz-btn__shape"></span>
-                                                                            <span class="nisoz-btn__text">Multi Page</span>
-                                                                        </a>
-                                                                        <a href="index-one-page.html" class="nisoz-btn home-showcase__buttons__item">
-                                                                            <span class="nisoz-btn__shape"></span><span class="nisoz-btn__shape"></span><span class="nisoz-btn__shape"></span><span class="nisoz-btn__shape"></span>
-                                                                            <span class="nisoz-btn__text">One Page</span>
-                                                                        </a>
-                                                                    </div>
-                                                                    <!-- /.home-showcase__buttons -->
-                                                                </div><!-- /.home-showcase__image -->
-                                                                <h3 class="home-showcase__title">Homepage 01</h3><!-- /.home-showcase__title -->
-                                                            </div><!-- /.home-showcase__item -->
-                                                        </div><!-- /.col-lg-3 -->
-                                                        <div class="col-lg-3">
-                                                            <div class="home-showcase__item">
-                                                                <div class="home-showcase__image">
-                                                                    <img src="assets/images/home-showcase/home-showcase-1-2.jpg" alt="">
-                                                                    <div class="home-showcase__buttons">
-                                                                        <a href="index-2.html" class="nisoz-btn home-showcase__buttons__item">
-                                                                            <span class="nisoz-btn__shape"></span><span class="nisoz-btn__shape"></span><span class="nisoz-btn__shape"></span><span class="nisoz-btn__shape"></span>
-                                                                            <span class="nisoz-btn__text">Multi Page</span>
-                                                                        </a>
-                                                                        <a href="index-2-one-page.html" class="nisoz-btn home-showcase__buttons__item">
-                                                                            <span class="nisoz-btn__shape"></span><span class="nisoz-btn__shape"></span><span class="nisoz-btn__shape"></span><span class="nisoz-btn__shape"></span>
-                                                                            <span class="nisoz-btn__text">One Page</span>
-                                                                        </a>
-                                                                    </div>
-                                                                    <!-- /.home-showcase__buttons -->
-                                                                </div><!-- /.home-showcase__image -->
-                                                                <h3 class="home-showcase__title">Homepage 02</h3><!-- /.home-showcase__title -->
-                                                            </div><!-- /.home-showcase__item -->
-                                                        </div><!-- /.col-lg-3 -->
-                                                        <div class="col-lg-3">
-                                                            <div class="home-showcase__item">
-                                                                <div class="home-showcase__image">
-                                                                    <img src="assets/images/home-showcase/home-showcase-1-3.jpg" alt="">
-                                                                    <div class="home-showcase__buttons">
-                                                                        <a href="index-3.html" class="nisoz-btn home-showcase__buttons__item">
-                                                                            <span class="nisoz-btn__shape"></span><span class="nisoz-btn__shape"></span><span class="nisoz-btn__shape"></span><span class="nisoz-btn__shape"></span>
-                                                                            <span class="nisoz-btn__text">Multi Page</span>
-                                                                        </a>
-                                                                        <a href="index-3-one-page.html" class="nisoz-btn home-showcase__buttons__item">
-                                                                            <span class="nisoz-btn__shape"></span><span class="nisoz-btn__shape"></span><span class="nisoz-btn__shape"></span><span class="nisoz-btn__shape"></span>
-                                                                            <span class="nisoz-btn__text">One Page</span>
-                                                                        </a>
-                                                                    </div>
-                                                                    <!-- /.home-showcase__buttons -->
-                                                                </div><!-- /.home-showcase__image -->
-                                                                <h3 class="home-showcase__title">Homepage 03</h3><!-- /.home-showcase__title -->
-                                                            </div><!-- /.home-showcase__item -->
-                                                        </div><!-- /.col-lg-3 -->
-                                                        <div class="col-lg-3">
-                                                            <div class="home-showcase__item">
-                                                                <div class="home-showcase__image">
-                                                                    <img src="assets/images/home-showcase/home-showcase-1-4.jpg" alt="">
-                                                                    <div class="home-showcase__buttons">
-                                                                        <a href="index-dark.html" class="nisoz-btn home-showcase__buttons__item">
-                                                                            <span class="nisoz-btn__shape"></span><span class="nisoz-btn__shape"></span><span class="nisoz-btn__shape"></span><span class="nisoz-btn__shape"></span>
-                                                                            <span class="nisoz-btn__text">View Page</span>
-                                                                        </a>
-                                                                    </div>
-                                                                    <!-- /.home-showcase__buttons -->
-                                                                </div><!-- /.home-showcase__image -->
-                                                                <h3 class="home-showcase__title">Homepage Dark</h3><!-- /.home-showcase__title -->
-                                                            </div><!-- /.home-showcase__item -->
-                                                        </div><!-- /.col-lg-3 -->
-                                                    </div><!-- /.row -->
-                                                </div><!-- /.home-showcase__inner -->
-                                            </div><!-- /.container -->
-                                        </section>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#">Pages</a>
-                                <ul>
-                                    <li><a href="about.html">About</a></li>
-                                    <li><a href="team.html">Our Team</a></li>
-                                    <li><a href="team-carousel.html">Team carousel</a></li>
-                                    <li><a href="team-details.html">Team detail</a></li>
-                                    <li><a href="gallery.html">Gallery</a></li>
-                                    <li><a href="gallery-carousel.html">Gallery carousel</a></li>
-                                    <li><a href="pricing.html">Pricing</a></li>
-                                    <li><a href="faq.html">FAQs</a></li>
-                                    <li><a href="login.html">Login</a></li>
-                                    <li><a href="404.html">404 error</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#">Services</a>
-                                <ul>
-                                    <li><a href="services.html">Services</a></li>
-                                    <li><a href="services-carousel.html">Services carousel 01</a></li>
-                                    <li><a href="services-carousel-2.html">Services carousel 02</a></li>
-                                    <li><a href="website-designing.html">Website Designing</a></li>
-                                    <li><a href="website-development.html">Website Development</a></li>
-                                    <li><a href="mobile-application.html">Mobile Application</a></li>
-                                    <li><a href="digital-marketing.html">Digital Marketing</a></li>
-                                    <li><a href="social-marketing.html">Social Marketing</a></li>
-                                    <li><a href="seo-content.html">SEO & Content Writing</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#">Portfolio</a>
-                                <ul>
-                                    <li class="dropdown">
-                                        <a href="#">Portfolio Grid</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="portfolio-two-col.html">2 Columns</a></li>
-                                            <li><a href="portfolio.html">3 Columns</a></li>
-                                            <li><a href="portfolio-four-col.html">4 Columns</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="portfolio-carousel.html">Portfolio carousel</a></li>
-                                    <li><a href="portfolio-masonry.html">Portfolio masonry</a></li>
-                                    <li><a href="portfolio-details.html">Portfolio details</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#">Shop</a>
-                                <ul class="sub-menu">
-                                    <li class="dropdown">
-                                        <a href="#">Products</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="products.html">No sidebar</a></li>
-                                            <li><a href="products-left.html">Left sidebar</a></li>
-                                            <li><a href="products-right.html">Right sidebar</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="products-carousel.html">Products carousel</a></li>
-                                    <li><a href="product-details.html">Product details</a></li>
-                                    <li><a href="cart.html">Cart</a></li>
-                                    <li><a href="checkout.html">Checkout</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#">Blog</a>
-                                <ul class="sub-menu">
-                                    <li class="dropdown">
-                                        <a href="#">Blog grid</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="blog-grid.html">No sidebar</a></li>
-                                            <li><a href="blog-grid-left.html">Left sidebar</a></li>
-                                            <li><a href="blog-grid-right.html">Right sidebar</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown">
-                                        <a href="#">Blog list</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="blog-list.html">No sidebar</a></li>
-                                            <li><a href="blog-list-left.html">Left sidebar</a></li>
-                                            <li><a href="blog-list-right.html">Right sidebar</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="blog-carousel.html">Blog carousel</a></li>
-                                    <li class="dropdown">
-                                        <a href="#">Blog details</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="blog-details.html">No sidebar</a></li>
-                                            <li><a href="blog-details-left.html">Left sidebar</a></li>
-                                            <li><a href="blog-details-right.html">Right sidebar</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><a href="contact.html">Contact</a></li>
-                        </ul>
-                    </div><!-- /.main-menu__nav -->
-                    <div class="main-menu__right">
-                        <a href="#" class="main-menu__toggler mobile-nav__toggler">
-                            <i class="fa fa-bars"></i>
-                        </a><!-- /.mobile menu btn -->
-                        <a href="tel:+9236809850" class="main-menu__phone">
-                            <i class="icon-telephone"></i>
-                            +92 (3680) - 9850
-                        </a><!-- /.phone-number -->
-                        <a href="#" class="main-menu__search search-toggler">
-                            <i class="icon-magnifying-glass"></i>
-                        </a><!-- /.search btn -->
-                        <a href="cart.html" class="main-menu__cart cart-toggler">
-                            <i class="icon-shopping-cart"></i>
-                            <span class="main-menu__cart__count">0</span>
-                        </a><!-- /.cart btn -->
-                    </div><!-- /.main-menu__right -->
-                </div><!-- /.container -->
-            </nav>
-            <!-- /.main-menu -->
+            <?php
+            NavBar::begin([
+                'options' => [
+                    'class' => 'main-menu navbar-expand-md fixed-top',
+                ],
+            ]);
+
+            ?>
+
+            <div class="container-fluid">
+                <div class="main-menu__logo">
+                    <a href="index.html">
+                        <img src="assets/images/logo-light.png" width="96" height="34" alt="Ogency">
+                    </a>
+                </div><!-- /.main-menu__logo -->
+
+                <div class="main-menu__nav">
+                    <?= Nav::widget([
+                        'options' => ['class' => 'main-menu__list navbar-nav'],
+                        'items' => [
+                            ['label' => 'Home', 'url' => ['/site/index']],
+                            ['label' => 'About', 'url' => ['/site/about']],
+                            ['label' => 'Contact', 'url' => ['/site/contact']],
+                            ['label' => 'Admin', 'url' => ['/admin']],
+                            [
+                                'label' => 'Запросы',
+                                'items' => [
+                                    ['label' => '1) Спортивные сооружения указанного типа', 'url' => ['/structure/index']],
+                                    ['label' => '2) Спортсмены для вида спорта и разряда', 'url' => ['/sportsmens/index']],
+                                    ['label' => '3) Спортсмены для тренеров и разряд', 'url' => ['/sportsmen-treners/index']],
+                                    ['label' => '4) Спортсмены и виды спорта', 'url' => ['/sportsmen-vid-sporta/index']],
+                                    ['label' => '5) Тренеры для спортсмена', 'url' => ['/treners-sportsmens/index']],
+                                    ['label' => '6) Перечень соревнований по периоду и организатору', 'url' => ['/sorevnovaniya-org/index']],
+                                    ['label' => '7) Перечен призеров', 'url' => ['/prizer/index']],
+                                    ['label' => '8) Перечень соревнований в сооружениях и виду спорта', 'url' => ['/sorevnovaniya-structure/index']],
+                                    ['label' => '9) Перечень клубов и участников соревнований по периоду', 'url' => ['/sport-club/index']],
+                                    ['label' => '10) Список тренеров по виду спорта', 'url' => ['/treners/index']],
+                                    ['label' => '11) Список спортсменов не участвовавших в соревах по периоду', 'url' => ['/sportsmen-sorevnovaniya/index']],
+                                    ['label' => '12) Список организаторов по периоду', 'url' => ['/org/index']],
+                                    ['label' => '13) Список сооружений по периоду', 'url' => ['/sport/index']],
+                                ],
+                            ],
+                            [
+                                'label' => '1,3 лабы',
+                                'items' => [
+                                    ['label' => '1 laba - Sorev', 'url' => ['/sorevnovaniya/index']],
+                                    ['label' => '3 laba - SorevCRUD', 'url' => ['/sorevnovaniya-c-r-u-d/index']],
+                                ],
+                            ],
+                            Yii::$app->user->isGuest
+                                ? ['label' => 'Login', 'url' => ['/site/login']]
+                                : [
+                                    'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
+                                    'url' => ['/site/logout'],
+                                    'linkOptions' => ['data-method' => 'post']
+                                ],
+                        ],
+                    ]); ?>
+                </div><!-- /.main-menu__nav -->
+
+                <div class="main-menu__right">
+                    <a href="#" class="main-menu__toggler mobile-nav__toggler">
+                        <i class="fa fa-bars"></i>
+                    </a><!-- /.mobile menu btn -->
+                </div><!-- /.main-menu__right -->
+            </div><!-- /.container -->
+
+            <?php NavBar::end(); ?>
         </header><!-- /.main-header -->
 
-        <div class="stricky-header stricked-menu main-menu">
-            <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
-        </div><!-- /.stricky-header -->
-        <!--Main Slider Start-->
-        <section class="main-slider">
-            <div class="main-slider__one nisoz-owl__carousel owl-carousel" data-owl-options='{
-		"loop": true,
-		"animateOut": "slideOutDown",
-		"animateIn": "fadeIn",
-		"items": 1,
-		"smartSpeed": 1000, 
-        "autoplay": true, 
-        "autoplayTimeout": 6000, 
-		"autoplayHoverPause": true,
-		"nav": false,
-		"dots": true,
-		"margin": 0
-	    }'>
-                <div class="item"><!-- slider item start -->
-                    <div class="main-slider__item">
-                        <div class="main-slider__shape-1">
-                            <img src="assets/images/shapes/slider-1-bg-1.png" alt="nisoz">
-                        </div><!-- shape-one -->
-                        <div class="main-slider__shape-2">
-                            <img src="assets/images/shapes/slider-1-shape-1.png" alt="nisoz">
-                        </div><!-- shape-two -->
-                        <div class="main-slider__shape-3">
-                            <img src="assets/images/backgrounds/slier-1-bg-1.jpg" alt="nisoz">
-                        </div><!-- shape-three -->
-                        <div class="main-slider__shape-4">
-                            <img src="assets/images/shapes/slider-1-shape-2.png" alt="nisoz">
-                        </div><!-- shape-four -->
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-xl-8">
-                                    <div class="main-slider__content">
-                                        <h2 class="main-slider__title">Creative <br>Services For <br>Your Business</h2><!-- slider-title -->
-                                        <p class="main-slider__text">We are delivering the best services to our customers.</p><!-- slider-text -->
-                                        <div class="main-slider__btn">
-                                            <a href="about.html" class="nisoz-btn">
-                                                <span class="nisoz-btn__shape"></span><span class="nisoz-btn__shape"></span><span class="nisoz-btn__shape"></span><span class="nisoz-btn__shape"></span>
-                                                <span class="nisoz-btn__text">Discover More</span>
-                                            </a><!-- /.btn -->
+        <div slider>
+
+            <div class="stricky-header stricked-menu main-menu">
+                <div class="sticky-header__content"></div>
+            </div><!-- /.stricky-header -->
+
+            <!--Main Slider Start-->
+            <section class="main-slider">
+                <div class="main-slider__one nisoz-owl__carousel owl-carousel" data-owl-options='{
+                    "loop": true,
+                    "animateOut": "slideOutDown",
+                    "animateIn": "fadeIn",
+                    "items": 1,
+                    "smartSpeed": 1000, 
+                    "autoplay": false, 
+                    "autoplayTimeout": 6000, 
+                    "autoplayHoverPause": true,
+                    "nav": false,
+                    "dots": true,
+                    "margin": 0
+                    }'>
+
+                    <div class="item"><!-- 1 slider item start -->
+                        <div class="main-slider__item">
+                            <div class="main-slider__shape-1">
+                                <img src="assets/images/shapes/slider-1-bg-1.png" alt="nisoz">
+                            </div><!-- shape-one -->
+                            <div class="main-slider__shape-2">
+                                <img src="assets/images/shapes/slider-1-shape-1.png" alt="nisoz">
+                            </div><!-- shape-two -->
+                            <div class="main-slider__shape-3">
+                                <img src="assets/images/backgrounds/slier-1-bg-1.jpg" alt="nisoz">
+                            </div><!-- shape-three -->
+
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-xl-8">
+                                        <div class="main-slider__content">
+                                            <h2 class="main-slider__title">Creative <br>Services For <br>Your Business</h2>
+                                            <!-- slider-title -->
+                                            <p class="main-slider__text">We are delivering the best services to our customers.
+                                            </p><!-- slider-text -->
+                                            <div class="main-slider__btn">
+                                                <a href="about.html" class="nisoz-btn">
+                                                    <span class="nisoz-btn__shape"></span><span
+                                                        class="nisoz-btn__shape"></span><span
+                                                        class="nisoz-btn__shape"></span><span class="nisoz-btn__shape"></span>
+                                                    <span class="nisoz-btn__text">Discover More</span>
+                                                </a><!-- /.btn -->
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div><!-- slider item end -->
-                <div class="item"><!-- slider item start -->
-                    <div class="main-slider__item">
-                        <div class="main-slider__shape-1">
-                            <img src="assets/images/shapes/slider-1-bg-1.png" alt="nisoz">
-                        </div><!-- shape-one -->
-                        <div class="main-slider__shape-2">
-                            <img src="assets/images/shapes/slider-1-shape-1.png" alt="nisoz">
-                        </div><!-- shape-two -->
-                        <div class="main-slider__shape-3">
-                            <img src="assets/images/backgrounds/slier-1-bg-2.jpg" alt="nisoz">
-                        </div><!-- shape-three -->
-                        <div class="main-slider__shape-4">
-                            <img src="assets/images/shapes/slider-1-shape-2.png" alt="nisoz">
-                        </div><!-- shape-four -->
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-xl-8">
-                                    <div class="main-slider__content">
-                                        <h2 class="main-slider__title">Creative <br>Services For <br>Your Business</h2><!-- slider-title -->
-                                        <p class="main-slider__text">We are delivering the best services to our customers.</p><!-- slider-text -->
-                                        <div class="main-slider__btn">
-                                            <a href="about.html" class="nisoz-btn">
-                                                <span class="nisoz-btn__shape"></span><span class="nisoz-btn__shape"></span><span class="nisoz-btn__shape"></span><span class="nisoz-btn__shape"></span>
-                                                <span class="nisoz-btn__text">Discover More</span>
-                                            </a><!-- /.btn -->
+                    </div><!-- 1 slider item end -->
+
+                    <div class="item"><!-- 2 slider item start -->
+                        <div class="main-slider__item">
+                            <div class="main-slider__shape-1">
+                                <img src="assets/images/shapes/slider-1-bg-1.png" alt="nisoz">
+                            </div><!-- shape-one -->
+                            <div class="main-slider__shape-2">
+                                <img src="assets/images/shapes/slider-1-shape-1.png" alt="nisoz">
+                            </div><!-- shape-two -->
+                            <div class="main-slider__shape-3">
+                                <img src="assets/images/backgrounds/slier-1-bg-2.jpg" alt="nisoz">
+                            </div><!-- shape-three -->
+                            <div class="main-slider__shape-4">
+                                <img src="assets/images/shapes/slider-1-shape-2.png" alt="nisoz">
+                            </div><!-- shape-four -->
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-xl-8">
+                                        <div class="main-slider__content">
+                                            <h2 class="main-slider__title">Creative <br>Services For <br>Your Business</h2>
+                                            <!-- slider-title -->
+                                            <p class="main-slider__text">We are delivering the best services to our customers.
+                                            </p><!-- slider-text -->
+                                            <div class="main-slider__btn">
+                                                <a href="about.html" class="nisoz-btn">
+                                                    <span class="nisoz-btn__shape"></span><span
+                                                        class="nisoz-btn__shape"></span><span
+                                                        class="nisoz-btn__shape"></span><span class="nisoz-btn__shape"></span>
+                                                    <span class="nisoz-btn__text">Discover More</span>
+                                                </a><!-- /.btn -->
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div><!-- slider item end -->
-                <div class="item"><!-- slider item start -->
-                    <div class="main-slider__item">
-                        <div class="main-slider__shape-1">
-                            <img src="assets/images/shapes/slider-1-bg-1.png" alt="nisoz">
-                        </div><!-- shape-one -->
-                        <div class="main-slider__shape-2">
-                            <img src="assets/images/shapes/slider-1-shape-1.png" alt="nisoz">
-                        </div><!-- shape-two -->
-                        <div class="main-slider__shape-3">
-                            <img src="assets/images/backgrounds/slier-1-bg-3.jpg" alt="nisoz">
-                        </div><!-- shape-three -->
-                        <div class="main-slider__shape-4">
-                            <img src="assets/images/shapes/slider-1-shape-2.png" alt="nisoz">
-                        </div><!-- shape-four -->
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-xl-8">
-                                    <div class="main-slider__content">
-                                        <h2 class="main-slider__title">Creative <br>Services For <br>Your Business</h2><!-- slider-title -->
-                                        <p class="main-slider__text">We are delivering the best services to our customers.</p><!-- slider-text -->
-                                        <div class="main-slider__btn">
-                                            <a href="about.html" class="nisoz-btn">
-                                                <span class="nisoz-btn__shape"></span><span class="nisoz-btn__shape"></span><span class="nisoz-btn__shape"></span><span class="nisoz-btn__shape"></span>
-                                                <span class="nisoz-btn__text">Discover More</span>
-                                            </a><!-- /.btn -->
+                    </div><!-- 2 slider item end -->
+
+                    <div class="item"><!-- 3 slider item start -->
+                        <div class="main-slider__item">
+                            <div class="main-slider__shape-1">
+                                <img src="assets/images/shapes/slider-1-bg-1.png" alt="nisoz">
+                            </div><!-- shape-one -->
+                            <div class="main-slider__shape-2">
+                                <img src="assets/images/shapes/slider-1-shape-1.png" alt="nisoz">
+                            </div><!-- shape-two -->
+                            <div class="main-slider__shape-3">
+                                <img src="assets/images/backgrounds/slier-1-bg-3.jpg" alt="nisoz">
+                            </div><!-- shape-three -->
+                            <div class="main-slider__shape-4">
+                                <img src="assets/images/shapes/slider-1-shape-2.png" alt="nisoz">
+                            </div><!-- shape-four -->
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-xl-8">
+                                        <div class="main-slider__content">
+                                            <h2 class="main-slider__title">Creative <br>Services For <br>Your Business</h2>
+                                            <!-- slider-title -->
+                                            <p class="main-slider__text">We are delivering the best services to our customers.
+                                            </p><!-- slider-text -->
+                                            <div class="main-slider__btn">
+                                                <a href="about.html" class="nisoz-btn">
+                                                    <span class="nisoz-btn__shape"></span><span
+                                                        class="nisoz-btn__shape"></span><span
+                                                        class="nisoz-btn__shape"></span><span class="nisoz-btn__shape"></span>
+                                                    <span class="nisoz-btn__text">Discover More</span>
+                                                </a><!-- /.btn -->
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div><!-- slider item end -->
+                    </div><!-- 3 slider item end -->
+
+                </div>
+            </section>
+            <!--Main Slider End-->
+        </div>
+
+        <!-- Контент Start -->
+        <main id="main" class="flex-shrink-0" role="main">
+            <div class="container">
+                <?php if (!empty($this->params['breadcrumbs'])): ?>
+                    <?= Breadcrumbs::widget(['links' => $this->params['breadcrumbs']]) ?>
+                <?php endif ?>
+                <?= Alert::widget() ?>
+                <?= $content ?>
             </div>
-        </section>
-        <!--Main Slider End-->
+        </main>
+        <!-- Контент End -->
 
         <!-- About Start -->
-        <section class="about-one" style="background-image: url(assets/images/shapes/about-1-bg-1.png);">
+        <!-- <section class="about-one" style="background-image: url(assets/images/shapes/about-1-bg-1.png);">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-6">
-                        <div class="about-one__thumb"><!-- about thumb start -->
+                        <div class="about-one__thumb">
                             <div class="about-one__thumb__one wow fadeInLeft" data-wow-delay="100ms">
                                 <img src="assets/images/resources/about-1-1.jpg" alt="nisoz">
                             </div>
@@ -419,28 +336,28 @@
                             </div>
                             <div class="about-one__fact-wrapper wow fadeInUp" data-wow-delay="200ms">
                                 <div class="about-one__fact">
-                                    <div class="about-one__fact__icon"><span class="icon-expertise"></span></div><!-- /.fact-one__icon -->
+                                    <div class="about-one__fact__icon"><span class="icon-expertise"></span></div>
                                     <div class="about-one__fact__count">
                                         <span class="count-box">
                                             <span class="count-text" data-stop="30" data-speed="1500"></span>
                                         </span>+
-                                    </div><!-- /.fact-one__count -->
-                                    <h3 class="about-one__fact__title">Years Experience</h3><!-- /.fact-one__title -->
-                                </div><!-- /.fact-item -->
+                                    </div>
+                                    <h3 class="about-one__fact__title">Years Experience</h3>
+                                </div>
                                 <div class="about-one__fact">
-                                    <div class="about-one__fact__icon"><span class="icon-development"></span></div><!-- /.fact-one__icon -->
+                                    <div class="about-one__fact__icon"><span class="icon-development"></span></div>
                                     <div class="about-one__fact__count">
                                         <span class="count-box">
                                             <span class="count-text" data-stop="28" data-speed="1500"></span>
                                         </span>+
-                                    </div><!-- /.fact-one__count -->
-                                    <h3 class="about-one__fact__title">experienced team</h3><!-- /.fact-one__title -->
-                                </div><!-- /.fact-item -->
+                                    </div>
+                                    <h3 class="about-one__fact__title">experienced team</h3>
+                                </div>
                             </div>
-                        </div><!-- about thumb end -->
+                        </div>
                     </div>
                     <div class="col-xl-6">
-                        <div class="about-one__content"><!-- about content start-->
+                        <div class="about-one__content">
                             <div class="section-title">
                                 <div class="section-title__triangle">
                                     <span class="section-title__triangle-left"></span>
@@ -448,7 +365,7 @@
                                 </div>
                                 <h5 class="section-title__tagline">about agency</h5>
                                 <h2 class="section-title__title">we’re solutions to your creative business</h2>
-                            </div><!-- section-title -->
+                            </div>
                             <p class="about-one__content__text">
                                 There are many variations of simply free text passages of available but the majority have suffered alteration in some form,
                                 by injected hum randomised words which don't slightly.
@@ -480,21 +397,21 @@
                                         <div class="about-one__progress--number count-text">77%</div>
                                     </div>
                                 </div>
-                            </div><!-- /.skills-item -->
+                            </div>
                             <a href="about.html" class="nisoz-btn">
                                 <span class="nisoz-btn__shape"></span><span class="nisoz-btn__shape"></span><span class="nisoz-btn__shape"></span><span class="nisoz-btn__shape"></span>
                                 <span class="nisoz-btn__text">Discover More</span>
-                            </a><!-- /.btn -->
-                        </div><!-- about content end-->
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
         <!-- About End -->
 
         <!--Google Map Start-->
         <section class="google-map">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4562.753041141002!2d-118.80123790098536!3d34.152323469614075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80e82469c2162619%3A0xba03efb7998eef6d!2sCostco+Wholesale!5e0!3m2!1sbn!2sbd!4v1562518641290!5m2!1sbn!2sbd" class="google-map__one" allowfullscreen></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3831.10021723342!2d39.712859661850594!3d47.23620567845806!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40e3bbd25efc8dab%3A0xe71795934da757ba!2z0JTQvtC90YHQutC-0Lkg0LPQvtGB0YPQtNCw0YDRgdGC0LLQtdC90L3Ri9C5INGC0LXRhdC90LjRh9C10YHQutC40Lkg0YPQvdC40LLQtdGA0YHQuNGC0LXRgg!5e0!3m2!1sru!2sru!4v1717487879917!5m2!1sru!2sru" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </section>
         <!--Google Map End-->
 
@@ -628,7 +545,6 @@
 
 
     <script src="assets/vendors/jquery/jquery-3.5.1.min.js"></script>
-    <script src="assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="assets/vendors/bootstrap-select/bootstrap-select.min.js"></script>
     <script src="assets/vendors/jquery-ui/jquery-ui.js"></script>
     <script src="assets/vendors/jarallax/jarallax.min.js"></script>
@@ -650,6 +566,9 @@
     <script src="assets/vendors/countdown/countdown.min.js"></script>
     <!-- template js -->
     <script src="assets/js/nisoz.js"></script>
+
+    <?php $this->endBody() ?>
 </body>
 
 </html>
+<?php $this->endPage() ?>
