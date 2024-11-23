@@ -1,0 +1,155 @@
+:root {
+  --nisoz-color: #646466;
+  --nisoz-color-rgb: 100, 100, 102;
+  --nisoz-color3: #161617;
+  --nisoz-color3-rgb: 22, 22, 23;
+  --nisoz-black: #ffffff;
+  --nisoz-black-rgb: 255, 255, 255;
+  --nisoz-black2: #ffffff;
+  --nisoz-black2-rgb: 255, 255, 255;
+  --nisoz-white: #0c0c0d;
+  --nisoz-white-rgb: 12, 12, 13;
+}
+
+.service-one__text,
+.testimonial-one__carousel.owl-carousel .owl-nav button,
+.blog-one .nisoz-btn .nisoz-btn__text span {
+  color: var(--nisoz-color);
+}
+
+.service-one__item:hover .service-one__item__title,
+.main-menu__search,
+.main-menu__cart,
+.main-menu__phone,
+.main-menu .main-menu__list > li > a,
+.stricky-header .main-menu__list > li > a,
+.topbar__social a,
+.cta-one__text,
+.cta-one .section-title__title,
+.blog-one__date,
+.cta-two__info-bottom a,
+.nisoz-btn:hover {
+  color: var(--nisoz-black);
+}
+
+.main-menu__right .main-menu__search {
+  border-color: rgba(var(--nisoz-black2-rgb), 0.2);
+}
+
+.cta-one__text {
+  border-color: var(--nisoz-black);
+}
+
+.cta-one .section-title__triangle-left {
+  border-left-color: var(--nisoz-black);
+}
+
+.choose-one__content__list li {
+  border-color: var(--nisoz-color3);
+}
+
+.blog-one__image a {
+  background-color: rgba(var(--nisoz-color3-rgb), 0.4);
+}
+
+.choose-one__bg__two,
+.choose-one__bg__one {
+  background-color: rgba(var(--nisoz-color3-rgb), 0.1);
+}
+
+.blog-one .nisoz-btn .nisoz-btn__shape {
+  background-color: var(--nisoz-base);
+}
+
+.blog-one .nisoz-btn {
+  background-color: var(--nisoz-white);
+}
+
+.section-title__triangle-right {
+  border-right-color: #303031;
+}
+
+.service-one .section-title__triangle-right {
+  border-right-color: #373738;
+}
+
+.blog-one__meta__author::after {
+  background-color: #212123;
+}
+
+.client-carousel__tilte {
+  border-color: #212123;
+}
+
+.about-one__progress--bar {
+  background-color: #252526;
+}
+
+.about-one__fact__title,
+.about-one__fact__count,
+.feature-one__item__icon,
+.portfolio-one__read-more,
+.testimonial-one__carousel.owl-carousel .owl-nav button:hover,
+.testimonial-one__icon,
+.choose-one__content__text,
+.choose-one__content__list li,
+.choose-one__content .section-title__tagline,
+.choose-one__content .section-title__title,
+.fact-one__item:hover .fact-one__item__icon,
+.fact-one__item:hover .fact-one__item__count,
+.fact-one__item:hover .fact-one__item__title,
+.blog-one .nisoz-btn:hover,
+.blog-one__date span,
+.main-footer__social a:hover,
+.nisoz-btn {
+  color: var(--nisoz-color3);
+}
+
+.main-slider__one,
+.stricky-header,
+.topbar,
+.about-one__box__icon,
+.cta-one,
+.portfolio-one__hover-bottom,
+.nisoz-btn .nisoz-btn__shape,
+.blog-one__date,
+.blog-one__item,
+.fact-one,
+.fact-one__item,
+.main-menu__phone i,
+.main-footer {
+  background-color: var(--nisoz-color3);
+}
+
+.main-footer__top {
+  border-color: RGBA(var(--nisoz-black2-rgb), 0.1);
+}
+
+.main-footer__email-input-box input[type="email"] {
+  background-color: var(--nisoz-black2);
+}
+
+.main-slider__title,
+.portfolio-one__cats a:hover,
+.portfolio-one__title,
+.testimonial-one__title,
+.fact-one__item__count,
+.choose-one__fact__count,
+.cta-two__icon:hover,
+.main-footer__social a,
+.main-footer__newsletter__text,
+.main-footer__about__info li {
+  color: var(--nisoz-black2);
+}
+
+.cta-two__icon::after {
+  border-bottom-color: var(--nisoz-black4);
+}
+
+.search-popup__overlay,
+.service-one__item::after,
+.feature-one__wrapper,
+.portfolio-one__thumb,
+.cta-two__info-bottom {
+  background-color: var(--nisoz-black4);
+}
