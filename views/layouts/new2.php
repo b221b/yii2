@@ -176,7 +176,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
         <!-- тут был слайдер -->
 
         <!-- Контент Start -->
-        <main id="main" class="flex-shrink-0" role="main" style="margin-top: 7%;">
+        <main id="main" class="flex-shrink-0" role="main" style="margin-top: 9%;">
             <div class="container">
                 <?php if (!empty($this->params['breadcrumbs'])): ?>
                     <?= Breadcrumbs::widget(['links' => $this->params['breadcrumbs']]) ?>
