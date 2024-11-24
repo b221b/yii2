@@ -15,52 +15,30 @@ AppAsset::register($this);
 $this->registerCsrfMetaTags();
 $this->registerMetaTag(['charset' => Yii::$app->charset], 'charset');
 $this->registerMetaTag(['name' => 'viewport', 'content' => 'width=device-width, initial-scale=1, shrink-to-fit=no']);
-$this->registerMetaTag(['name' => 'description', 'content' => $this->params['meta_description'] ?? '']);
+$this->registerMetaTag(['name' => 'description', 'content' => 'Nisoz HTML Template For Creative Agency']);
 $this->registerMetaTag(['name' => 'keywords', 'content' => $this->params['meta_keywords'] ?? '']);
 $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii::getAlias('@web/favicon.ico')]);
+
+// Фавиконы
+$this->registerLinkTag(['rel' => 'apple-touch-icon', 'sizes' => '180x180', 'href' => 'assets/images/favicons/apple-touch-icon.png']);
+$this->registerLinkTag(['rel' => 'icon', 'type' => 'image/png', 'sizes' => '32x32', 'href' => 'assets/images/favicons/favicon-32x32.png']);
+$this->registerLinkTag(['rel' => 'icon', 'type' => 'image/png', 'sizes' => '16x16', 'href' => 'assets/images/favicons/favicon-16x16.png']);
+$this->registerLinkTag(['rel' => 'manifest', 'href' => 'assets/images/favicons/site.webmanifest']);
+
+// Шрифты
+$this->registerLinkTag(['rel' => 'preconnect', 'href' => 'https://fonts.googleapis.com']);
+$this->registerLinkTag(['rel' => 'preconnect', 'href' => 'https://fonts.gstatic.com', 'crossorigin' => 'true']);
+$this->registerLinkTag(['rel' => 'stylesheet', 'href' => 'https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Manrope:wght@300;400;500;600;700;800&display=swap']);
 ?>
 
 <?php $this->beginPage() ?>
+
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>" class="h-100">
 
 <head>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
-
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My App</title>
-    <!-- favicons Icons -->
-
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png" />
-    <link rel="manifest" href="assets/images/favicons/site.webmanifest" />
-    <meta name="description" content="Nisoz HTML Template For Creative Agency" />
-
-    <!-- fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="assets/vendors/bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="assets/vendors/bootstrap-select/bootstrap-select.min.css" />
-    <link rel="stylesheet" href="assets/vendors/jquery-ui/jquery-ui.css" />
-    <link rel="stylesheet" href="assets/vendors/animate/animate.min.css" />
-    <link rel="stylesheet" href="assets/vendors/fontawesome/css/all.min.css" />
-    <link rel="stylesheet" href="assets/vendors/nisoz-icons/style.css" />
-    <link rel="stylesheet" href="assets/vendors/jarallax/jarallax.css" />
-    <link rel="stylesheet" href="assets/vendors/jquery-magnific-popup/jquery.magnific-popup.css" />
-    <link rel="stylesheet" href="assets/vendors/nouislider/nouislider.min.css" />
-    <link rel="stylesheet" href="assets/vendors/nouislider/nouislider.pips.css" />
-    <link rel="stylesheet" href="assets/vendors/odometer/odometer.min.css" />
-    <link rel="stylesheet" href="assets/vendors/tiny-slider/tiny-slider.min.css" />
-    <link rel="stylesheet" href="assets/vendors/owl-carousel/assets/owl.carousel.min.css" />
-    <link rel="stylesheet" href="assets/vendors/owl-carousel/assets/owl.theme.default.min.css" />
-
-    <!-- template styles -->
-    <link rel="stylesheet" href="assets/css/nisoz.css" />
 </head>
 
 <body class="custom-cursor">
@@ -73,7 +51,9 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
         <div class="preloader__image" style="background-image: url(assets/images/loader.png);"></div>
     </div>
     <!-- /.preloader -->
+
     <div class="page-wrapper">
+
         <section class="topbar">
             <div class="container-fluid">
                 <div class="topbar__wrapper">
@@ -88,9 +68,9 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                         </li>
                     </ul><!-- /.icon-box -->
                     <ul class="list-unstyled topbar__menu">
-                        <li><a href="faq.html">Help</a></li>
-                        <li><a href="about.html">Support</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="index.php?r=site/index">Home</a></li>
+                        <li><a href="index.php?r=site/about">About</a></li>
+                        <li><a href="index.php?r=site/contact">Contact</a></li>
                     </ul><!-- /.list-menu -->
                     <div class="topbar__social">
                         <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
@@ -105,26 +85,30 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
         <header class="main-header">
             <?php
             NavBar::begin([
+                'brandLabel' => Yii::$app->name,
+                'brandUrl' => Yii::$app->homeUrl,
                 'options' => [
-                    'class' => 'main-menu navbar-expand bg-secondary fixed-top',
+                    'class' => 'main-menu navbar-expand bg-secondary fixed-top', // bg-success
                 ],
             ]);
             ?>
 
             <div class="container-fluid">
-                <div class="main-menu__logo">
+
+                <!-- <div class="main-menu__logo">
                     <a href="index.html">
-                        <img src="assets/images/logo-light.png" width="96" height="34" alt="Ogency">
+                        <img src="assets/images/logo-light.png" width="80" alt="Ogency">
                     </a>
-                </div><!-- /.main-menu__logo -->
+                </div> -->
+                <!-- /.main-menu__logo -->
 
                 <div class="main-menu__nav">
                     <?= Nav::widget([
                         'options' => ['class' => 'main-menu__list navbar-nav'],
                         'items' => [
-                            ['label' => 'Домой', 'url' => ['/site/index']],
-                            ['label' => 'О нас', 'url' => ['/site/about']],
-                            ['label' => 'Контакты', 'url' => ['/site/contact']],
+                            // ['label' => 'Домой', 'url' => ['/site/index']],
+                            // ['label' => 'О нас', 'url' => ['/site/about']],
+                            // ['label' => 'Контакты', 'url' => ['/site/contact']],
                             ['label' => 'Админка', 'url' => ['/admin']],
                             [
                                 'label' => 'Запросы',
@@ -170,12 +154,13 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
             </div><!-- /.container -->
 
             <?php NavBar::end(); ?>
+
         </header><!-- /.main-header -->
 
         <!-- тут был слайдер -->
 
         <!-- Контент Start -->
-        <main id="main" class="flex-shrink-0" role="main" style="margin-top: 9%;">
+        <main id="main" class="flex-shrink-0" role="main" style="margin-top: 4%;">
             <div class="container">
                 <?php if (!empty($this->params['breadcrumbs'])): ?>
                     <?= Breadcrumbs::widget(['links' => $this->params['breadcrumbs']]) ?>
@@ -288,38 +273,6 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
         <!-- /.mobile-nav__content -->
     </div>
     <!-- /.mobile-nav__wrapper -->
-
-
-    <!-- back-to-top-start -->
-    <a href="#" class="scroll-top">
-        <svg class="scroll-top__circle" width="100%" height="100%" viewBox="-1 -1 102 102">
-            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
-        </svg>
-    </a>
-    <!-- back-to-top-end -->
-
-    <script src="assets/vendors/jquery/jquery-3.5.1.min.js"></script>
-    <script src="assets/vendors/bootstrap-select/bootstrap-select.min.js"></script>
-    <script src="assets/vendors/jquery-ui/jquery-ui.js"></script>
-    <script src="assets/vendors/jarallax/jarallax.min.js"></script>
-    <script src="assets/vendors/jquery-ajaxchimp/jquery.ajaxchimp.min.js"></script>
-    <script src="assets/vendors/jquery-appear/jquery.appear.min.js"></script>
-    <script src="assets/vendors/jquery-circle-progress/jquery.circle-progress.min.js"></script>
-    <script src="assets/vendors/jquery-magnific-popup/jquery.magnific-popup.min.js"></script>
-    <script src="assets/vendors/jquery-validate/jquery.validate.min.js"></script>
-    <script src="assets/vendors/nouislider/nouislider.min.js"></script>
-    <script src="assets/vendors/odometer/odometer.min.js"></script>
-    <script src="assets/vendors/tiny-slider/tiny-slider.min.js"></script>
-    <script src="assets/vendors/owl-carousel/owl.carousel.min.js"></script>
-    <script src="assets/vendors/wnumb/wNumb.min.js"></script>
-    <script src="assets/vendors/jquery-circleType/jquery.circleType.js"></script>
-    <script src="assets/vendors/jquery-lettering/jquery.lettering.min.js"></script>
-    <script src="assets/vendors/tilt/tilt.jquery.js"></script>
-    <script src="assets/vendors/wow/wow.js"></script>
-    <script src="assets/vendors/isotope/isotope.js"></script>
-    <script src="assets/vendors/countdown/countdown.min.js"></script>
-    <!-- template js -->
-    <script src="assets/js/nisoz.js"></script>
 
     <?php $this->endBody() ?>
 </body>
