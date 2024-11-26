@@ -10,7 +10,7 @@ use yii\grid\GridView;
 /** @var app\modules\admin\models\OrgSorevnovaniyaSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Таблица Ораганизация & Соревнования';
+$this->title = 'Таблица Организация & Соревнования';
 $this->params['breadcrumbs'][] = ['label' => 'Административная часть', 'url' => ['/admin']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

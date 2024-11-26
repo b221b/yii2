@@ -160,7 +160,7 @@ $this->registerLinkTag(['rel' => 'stylesheet', 'href' => 'https://fonts.googleap
         <!-- тут был слайдер -->
 
         <!-- Контент Start -->
-        <main id="main" class="flex-shrink-0" role="main" style="margin-top: 4%;">
+        <main id="main" class="flex-shrink-0" role="main" style="margin-top: 10%; margin-bottom: 4%;">
             <div class="container">
                 <?php if (!empty($this->params['breadcrumbs'])): ?>
                     <?= Breadcrumbs::widget(['links' => $this->params['breadcrumbs']]) ?>
