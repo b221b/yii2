@@ -15,6 +15,9 @@ class SorevnovaniyaCRUDController extends Controller
     {
         $dataProvider = new ActiveDataProvider([
             'query' => Sorevnovaniya::find()->with(['structure', 'vidSporta', 'sportsmenPrizers.sportsmen']),
+            'pagination' => [
+                'pageSize' => 7, 
+            ],
         ]);
 
         return $this->render('index', [

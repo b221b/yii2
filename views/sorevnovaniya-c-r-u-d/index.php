@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\widgets\LinkPager;
 
 $this->title = 'Соревнования CRUD';
 $this->params['breadcrumbs'][] = $this->title;
@@ -45,4 +46,22 @@ $this->params['breadcrumbs'][] = $this->title;
             'template' => '{view} {update} {delete}',
         ],
     ],
-]); ?>
+]);
+
+echo LinkPager::widget([
+    'pagination' => $dataProvider->pagination,
+    'options' => [
+        'class' => 'pagination justify-content-center', // Центрируем пагинацию
+    ],
+    'linkOptions' => [
+        'class' => 'page-link', // Класс для ссылок
+    ],
+    'activePageCssClass' => 'active', // Класс для активной страницы
+    'disabledPageCssClass' => 'disabled', // Класс для неактивной страницы
+    'prevPageLabel' => '&laquo;', // Текст для кнопки "Предыдущая"
+    'nextPageLabel' => '&raquo;', // Текст для кнопки "Следующая"
+    'firstPageLabel' => 'Первая', // Текст для кнопки "Первая"
+    'lastPageLabel' => 'Последняя', // Текст для кнопки "Последняя"
+]);
+
+?>
