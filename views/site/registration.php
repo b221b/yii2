@@ -6,13 +6,15 @@ use yii\bootstrap5\Html;
 /** @var yii\web\View $this */
 /** @var app\models\RegistrationForm $model */
 
-$this->title = 'Registration';
+$this->title = 'Регистрация';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-registration">
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>Please fill out the following fields to register:</p>
+    <p>Уже зарегистрированы? <?= Html::a('Войдите здесь', ['site/login']) ?></p>
+
+    <p>Пожалуйста, заполните следующий поля для регистрации:</p>
 
     <div class="row">
         <div class="col-lg-5">
@@ -32,9 +34,22 @@ $this->params['breadcrumbs'][] = $this->title;
             <?= $form->field($model, 'password')->passwordInput() ?>
 
             <div class="form-group">
-                <div>
+
+                <!-- <div>
                     <?= Html::submitButton('Register', ['class' => 'btn btn-primary', 'name' => 'registration-button']) ?>
+                </div> -->
+
+                <div>
+                    <?= Html::button(
+                        '<span class="nisoz-btn__shape"></span>
+         <span class="nisoz-btn__shape"></span>
+         <span class="nisoz-btn__shape"></span>
+         <span class="nisoz-btn__shape"></span>
+         <span class="nisoz-btn__text">Зарегистрироваться</span>',
+                        ['type' => 'submit', 'class' => 'nisoz-btn']
+                    ) ?>
                 </div>
+
             </div>
 
             <?php ActiveForm::end(); ?>

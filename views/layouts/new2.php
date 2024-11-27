@@ -71,6 +71,7 @@ $this->registerLinkTag(['rel' => 'stylesheet', 'href' => 'https://fonts.googleap
                         <li><a href="index.php?r=site/index">Home</a></li>
                         <li><a href="index.php?r=site/about">About</a></li>
                         <li><a href="index.php?r=site/contact">Contact</a></li>
+                        <li><a href="index.php?r=site/contact1">404</a></li>
                     </ul><!-- /.list-menu -->
                     <div class="topbar__social">
                         <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
@@ -85,21 +86,21 @@ $this->registerLinkTag(['rel' => 'stylesheet', 'href' => 'https://fonts.googleap
         <header class="main-header">
             <?php
             NavBar::begin([
-                'brandLabel' => Yii::$app->name,
-                'brandUrl' => Yii::$app->homeUrl,
+                // 'brandLabel' => Yii::$app->name,
+                // 'brandUrl' => Yii::$app->homeUrl,
                 'options' => [
-                    'class' => 'main-menu navbar-expand bg-secondary fixed-top', // bg-success
+                    'class' => 'main-menu navbar-expand fixed-top', // bg-success
                 ],
             ]);
             ?>
 
             <div class="container-fluid">
 
-                <!-- <div class="main-menu__logo">
+                <div class="main-menu__logo">
                     <a href="index.html">
                         <img src="assets/images/logo-light.png" width="80" alt="Ogency">
                     </a>
-                </div> -->
+                </div>
                 <!-- /.main-menu__logo -->
 
                 <div class="main-menu__nav">
@@ -157,15 +158,27 @@ $this->registerLinkTag(['rel' => 'stylesheet', 'href' => 'https://fonts.googleap
 
         </header><!-- /.main-header -->
 
-        <!-- тут был слайдер -->
-
-        <!-- Контент Start -->
-        <main id="main" class="flex-shrink-0" role="main" style="margin-top: 5%;">
+        <section class="page-header">
+            <div class="page-header__bg"></div>
+            <div class="page-header__shape1"></div>
+            <!-- <div class="page-header__shape2"></div> -->
+            <!-- <div class="page-header__shape3 wow slideInRight animated" data-wow-delay="300ms"></div> -->
             <div class="container">
                 <?php if (!empty($this->params['breadcrumbs'])): ?>
                     <?= Breadcrumbs::widget(['links' => $this->params['breadcrumbs']]) ?>
                 <?php endif ?>
                 <?= Alert::widget() ?>
+
+                <h2 class="page-header__title">
+                    <?= Html::encode($this->title) ?>
+                </h2><!-- /.page-title -->
+
+            </div><!-- /.container -->
+        </section><!-- /.page-header -->
+
+        <!-- Контент Start -->
+        <main id="main" class="flex-shrink-0" role="main">
+            <div class="container">
                 <?= $content ?>
             </div>
         </main>

@@ -78,4 +78,12 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
             [['username'], 'unique'],
         ];
     }
+
+    // public function attributeLabels()
+    // {
+    //     return [
+    //         'username' => '321',
+    //         'password' => '123',
+    //     ];
+    // }
 }
