@@ -9,6 +9,7 @@ use yii\bootstrap5\Breadcrumbs;
 use yii\bootstrap5\Html;
 use yii\bootstrap5\Nav;
 use yii\bootstrap5\NavBar;
+use yii\helpers\Url;
 
 AppAsset::register($this);
 
@@ -21,9 +22,14 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 
 // Фавиконы
 $this->registerLinkTag(['rel' => 'apple-touch-icon', 'sizes' => '180x180', 'href' => 'assets/images/favicons/apple-touch-icon.png']);
-$this->registerLinkTag(['rel' => 'icon', 'type' => 'image/png', 'sizes' => '32x32', 'href' => 'assets/images/favicons/favicon-32x32.png']);
 $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/png', 'sizes' => '16x16', 'href' => 'assets/images/favicons/favicon-16x16.png']);
 $this->registerLinkTag(['rel' => 'manifest', 'href' => 'assets/images/favicons/site.webmanifest']);
+$this->registerLinkTag([
+    'rel' => 'icon',
+    'type' => 'image/png',
+    'sizes' => '32x32',
+    'href' => Url::to('@web/assets/images/favicons/favicon-32x32.png')
+]);
 
 // Шрифты
 $this->registerLinkTag(['rel' => 'preconnect', 'href' => 'https://fonts.googleapis.com']);
@@ -68,10 +74,10 @@ $this->registerLinkTag(['rel' => 'stylesheet', 'href' => 'https://fonts.googleap
                         </li>
                     </ul><!-- /.icon-box -->
                     <ul class="list-unstyled topbar__menu">
-                        <li><a href="index.php?r=site/index">Home</a></li>
-                        <li><a href="index.php?r=site/about">About</a></li>
-                        <li><a href="index.php?r=site/contact">Contact</a></li>
-                        <li><a href="index.php?r=site/contact1">404</a></li>
+                        <li><a href="<?= Url::to(['site/index']) ?>">Home</a></li>
+                        <li><a href="<?= Url::to(['site/about']) ?>">About</a></li>
+                        <li><a href="<?= Url::to(['site/contact']) ?>">Contact</a></li>
+                        <li><a href="<?= Url::to(['site/contact1']) ?>">404</a></li>
                     </ul><!-- /.list-menu -->
                     <div class="topbar__social">
                         <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
@@ -86,8 +92,8 @@ $this->registerLinkTag(['rel' => 'stylesheet', 'href' => 'https://fonts.googleap
         <header class="main-header">
             <?php
             NavBar::begin([
-                // 'brandLabel' => Yii::$app->name,
-                // 'brandUrl' => Yii::$app->homeUrl,
+                'brandLabel' => Yii::$app->name,
+                'brandUrl' => Yii::$app->homeUrl,
                 'options' => [
                     'class' => 'main-menu navbar-expand fixed-top', // bg-success
                 ],
@@ -96,12 +102,11 @@ $this->registerLinkTag(['rel' => 'stylesheet', 'href' => 'https://fonts.googleap
 
             <div class="container-fluid">
 
-                <div class="main-menu__logo">
-                    <a href="index.html">
-                        <img src="assets/images/logo-light.png" width="80" alt="Ogency">
+                <!-- <div class="main-menu__logo">
+                    <a href="<?= Url::to(['site/index']) ?>" class="main-menu__logo">
+                        <img src="<?= Url::to('@web/assets/images/logo-light.png') ?>" alt="nisoz" width="96" height="34">
                     </a>
-                </div>
-                <!-- /.main-menu__logo -->
+                </div> -->
 
                 <div class="main-menu__nav">
                     <?= Nav::widget([
@@ -188,8 +193,8 @@ $this->registerLinkTag(['rel' => 'stylesheet', 'href' => 'https://fonts.googleap
             <div class="main-footer__bg" style="background-image: url(assets/images/shapes/footer-bg-1.png);"></div>
             <div class="container">
                 <div class="main-footer__top wow fadeInUp" data-wow-delay="100ms">
-                    <a href="index.html" class="main-footer__logo">
-                        <img src="assets/images/footer-logo.png" alt="nisoz" width="96" height="34">
+                    <a href="<?= Url::to(['site/index']) ?>" class="main-footer__logo">
+                        <img src="<?= Url::to('@web/assets/images/footer-logo.png') ?>" alt="nisoz" width="96" height="34">
                     </a><!-- /.footer-logo -->
                     <div class="main-footer__social">
                         <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
