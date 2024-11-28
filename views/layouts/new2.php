@@ -92,8 +92,8 @@ $this->registerLinkTag(['rel' => 'stylesheet', 'href' => 'https://fonts.googleap
         <header class="main-header">
             <?php
             NavBar::begin([
-                'brandLabel' => Yii::$app->name,
-                'brandUrl' => Yii::$app->homeUrl,
+                // 'brandLabel' => Yii::$app->name,
+                // 'brandUrl' => Yii::$app->homeUrl,
                 'options' => [
                     'class' => 'main-menu navbar-expand fixed-top', // bg-success
                 ],
@@ -102,11 +102,11 @@ $this->registerLinkTag(['rel' => 'stylesheet', 'href' => 'https://fonts.googleap
 
             <div class="container-fluid">
 
-                <!-- <div class="main-menu__logo">
-                    <a href="<?= Url::to(['site/index']) ?>" class="main-menu__logo">
-                        <img src="<?= Url::to('@web/assets/images/logo-light.png') ?>" alt="nisoz" width="96" height="34">
+                <div class="main-menu__logo">
+                    <a href="<?= Yii::$app->homeUrl ?>" class="main-menu__logo">
+                        <img src="<?= Url::to('@web/assets/images/logo-light3.png') ?>" alt="nisoz" width="70">
                     </a>
-                </div> -->
+                </div>
 
                 <div class="main-menu__nav">
                     <?= Nav::widget([
@@ -193,9 +193,9 @@ $this->registerLinkTag(['rel' => 'stylesheet', 'href' => 'https://fonts.googleap
             <div class="main-footer__bg" style="background-image: url(assets/images/shapes/footer-bg-1.png);"></div>
             <div class="container">
                 <div class="main-footer__top wow fadeInUp" data-wow-delay="100ms">
-                    <a href="<?= Url::to(['site/index']) ?>" class="main-footer__logo">
-                        <img src="<?= Url::to('@web/assets/images/footer-logo.png') ?>" alt="nisoz" width="96" height="34">
-                    </a><!-- /.footer-logo -->
+                    <a href="<?= Yii::$app->homeUrl ?>" class="main-menu__logo">
+                        <img src="<?= Url::to('@web/assets/images/logo-light3.png') ?>" alt="nisoz" width="70">
+                    </a>
                     <div class="main-footer__social">
                         <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
                         <a href="https://www.facebook.com/"><i class="fab fa-facebook"></i></a>
@@ -266,7 +266,9 @@ $this->registerLinkTag(['rel' => 'stylesheet', 'href' => 'https://fonts.googleap
         <div class="mobile-nav__content">
             <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
             <div class="logo-box">
-                <a href="index.html" aria-label="logo image"><img src="assets/images/logo-light.png" width="96" height="34" alt="nisoz" /></a>
+                <a href="<?= Yii::$app->homeUrl ?>" class="main-menu__logo">
+                    <img src="<?= Url::to('@web/assets/images/logo-light3.png') ?>" alt="nisoz" width="70">
+                </a>
             </div>
             <!-- /.logo-box -->
             <div class="mobile-nav__container"></div>
