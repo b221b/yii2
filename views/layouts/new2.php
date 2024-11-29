@@ -106,7 +106,7 @@ $this->registerLinkTag(['rel' => 'stylesheet', 'href' => 'https://fonts.googleap
                     <a href="<?= Yii::$app->homeUrl ?>" class="main-menu__logo">
                         <img src="<?= Url::to('@web/assets/images/logo-light3.png') ?>" alt="nisoz" width="70">
                     </a>
-                </div>
+                </div><!-- /.main-menu__logo -->
 
                 <div class="main-menu__nav">
                     <?= Nav::widget([
@@ -261,18 +261,24 @@ $this->registerLinkTag(['rel' => 'stylesheet', 'href' => 'https://fonts.googleap
     </div><!-- /.page-wrapper -->
 
     <div class="mobile-nav__wrapper">
+
         <div class="mobile-nav__overlay mobile-nav__toggler"></div>
         <!-- /.mobile-nav__overlay -->
+
         <div class="mobile-nav__content">
+
             <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
+
             <div class="logo-box">
                 <a href="<?= Yii::$app->homeUrl ?>" class="main-menu__logo">
                     <img src="<?= Url::to('@web/assets/images/logo-light3.png') ?>" alt="nisoz" width="70">
                 </a>
             </div>
             <!-- /.logo-box -->
+
             <div class="mobile-nav__container"></div>
             <!-- /.mobile-nav__container -->
+
             <ul class="mobile-nav__contact list-unstyled">
                 <li>
                     <i class="fas fa-envelope"></i>
@@ -283,14 +289,17 @@ $this->registerLinkTag(['rel' => 'stylesheet', 'href' => 'https://fonts.googleap
                     <a href="tel:+9236809850">+92 (3680) - 9850</a>
                 </li>
             </ul><!-- /.mobile-nav__contact -->
+
             <div class="mobile-nav__social">
                 <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
                 <a href="https://www.facebook.com/"><i class="fab fa-facebook"></i></a>
                 <a href="https://www.pinterest.com/"><i class="fab fa-pinterest-p"></i></a>
                 <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
             </div><!-- /.mobile-nav__social -->
+
         </div>
         <!-- /.mobile-nav__content -->
+
     </div>
     <!-- /.mobile-nav__wrapper -->
 

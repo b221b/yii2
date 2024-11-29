@@ -5,6 +5,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
+use yii\widgets\LinkPager;
 
 /** @var yii\web\View $this */
 /** @var app\modules\admin\models\SportsmenSorevnovaniyaSearch $searchModel */
@@ -50,7 +51,24 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
             ],
         ],
-    ]); ?>
+    ]); 
+    
+    echo LinkPager::widget([
+        'pagination' => $dataProvider->pagination,
+        'options' => [
+            'class' => 'pagination justify-content-center',
+        ],
+        'linkOptions' => [
+            'class' => 'page-link',
+        ],
+        'activePageCssClass' => 'active', 
+        'disabledPageCssClass' => 'disabled', 
+        'prevPageLabel' => '&laquo;', 
+        'nextPageLabel' => '&raquo;', 
+        'firstPageLabel' => 'Первая', 
+        'lastPageLabel' => 'Последняя', 
+    ]);
 
+    ?>
 
 </div>

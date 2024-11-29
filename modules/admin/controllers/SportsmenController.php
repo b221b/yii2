@@ -33,6 +33,7 @@ class SportsmenController extends Controller
     {
         $searchModel = new SportsmenSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
+        $dataProvider->pagination->pageSize = 7;
 
         return $this->render('index', [
             'searchModel' => $searchModel,

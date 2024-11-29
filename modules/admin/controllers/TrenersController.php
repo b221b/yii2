@@ -40,6 +40,7 @@ class TrenersController extends Controller
     {
         $searchModel = new TrenersSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
+        $dataProvider->pagination->pageSize = 7;
 
         return $this->render('index', [
             'searchModel' => $searchModel,

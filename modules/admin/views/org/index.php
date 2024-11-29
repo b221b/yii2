@@ -5,6 +5,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
+use yii\widgets\LinkPager;
 
 /** @var yii\web\View $this */
 /** @var app\modules\admin\models\OrgSearch $searchModel */
@@ -22,7 +23,8 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Создать организацию', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php // echo $this->render('_search', ['model' => $searchModel]); 
+    ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -35,10 +37,28 @@ $this->params['breadcrumbs'][] = $this->title;
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Org $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
-                 }
+                }
             ],
         ],
-    ]); ?>
+    ]);
+
+    echo LinkPager::widget([
+        'pagination' => $dataProvider->pagination,
+        'options' => [
+            'class' => 'pagination justify-content-center',
+        ],
+        'linkOptions' => [
+            'class' => 'page-link',
+        ],
+        'activePageCssClass' => 'active', 
+        'disabledPageCssClass' => 'disabled', 
+        'prevPageLabel' => '&laquo;', 
+        'nextPageLabel' => '&raquo;', 
+        'firstPageLabel' => 'Первая', 
+        'lastPageLabel' => 'Последняя', 
+    ]);
+
+    ?>
 
 
 </div>

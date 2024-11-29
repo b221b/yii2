@@ -40,6 +40,7 @@ class PrizerController extends Controller
     {
         $searchModel = new PrizerSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
+        $dataProvider->pagination->pageSize = 7;
 
         return $this->render('index', [
             'searchModel' => $searchModel,
