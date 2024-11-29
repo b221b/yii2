@@ -108,6 +108,8 @@ $this->registerLinkTag(['rel' => 'stylesheet', 'href' => 'https://fonts.googleap
                     </a>
                 </div><!-- /.main-menu__logo -->
 
+                <!-- первый вариант бараStart -->
+
                 <div class="main-menu__nav">
                     <?= Nav::widget([
                         'options' => ['class' => 'main-menu__list navbar-nav'],
@@ -150,7 +152,53 @@ $this->registerLinkTag(['rel' => 'stylesheet', 'href' => 'https://fonts.googleap
                                 ],
                         ],
                     ]); ?>
-                </div><!-- /.main-menu__nav -->
+                </div>
+
+                <!-- первый вариант бараEND -->
+
+                <!-- второй вариант бараStart -->
+
+                <!-- <div class="main-menu__nav">
+                    <ul class="main-menu__list">
+                        <li class="dropdown">
+                            <a href="<?= \yii\helpers\Url::to(['/admin']) ?>">Админка</a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#">Запросы</a>
+                            <ul>
+                                <li><a href="<?= \yii\helpers\Url::to(['structure/index']) ?>">1 запрос</a></li>
+                                <li><a href="<?= \yii\helpers\Url::to(['sportsmens/index']) ?>">2 запрос</a></li>
+                                <li><a href="<?= \yii\helpers\Url::to(['sportsmen-treners/index']) ?>">3 запрос</a></li>
+                                <li><a href="<?= \yii\helpers\Url::to(['sportsmen-vid-sporta/index']) ?>">4 запрос</a></li>
+                                <li><a href="<?= \yii\helpers\Url::to(['treners-sportsmens/index']) ?>">5 запрос</a></li>
+                                <li><a href="<?= \yii\helpers\Url::to(['sorevnovaniya-org/index']) ?>">6 запрос</a></li>
+                                <li><a href="<?= \yii\helpers\Url::to(['prizer/index']) ?>">7 запрос</a></li>
+                                <li><a href="<?= \yii\helpers\Url::to(['sorevnovaniya-structure/index']) ?>">8 запрос</a></li>
+                                <li><a href="<?= \yii\helpers\Url::to(['sport-club/index']) ?>">9 запрос</a></li>
+                                <li><a href="<?= \yii\helpers\Url::to(['treners/index']) ?>">10 запрос</a></li>
+                                <li><a href="<?= \yii\helpers\Url::to(['sportsmen-sorevnovaniya/index']) ?>">11 запрос</a></li>
+                                <li><a href="<?= \yii\helpers\Url::to(['org/index']) ?>">12 запрос</a></li>
+                                <li><a href="<?= \yii\helpers\Url::to(['sport/index']) ?>">13 запрос</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#">1,3 лабы</a>
+                            <ul>
+                                <li><a href="<?= \yii\helpers\Url::to(['sorevnovaniya/index']) ?>">1 laba - Sorev</a></li>
+                                <li><a href="<?= \yii\helpers\Url::to(['sorevnovaniya-c-r-u-d/index']) ?>">3 laba - SorevCRUD</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <?php if (Yii::$app->user->isGuest): ?>
+                                <a href="<?= \yii\helpers\Url::to(['site/login']) ?>">Войти</a>
+                            <?php else: ?>
+                                <a href="<?= \yii\helpers\Url::to(['site/logout']) ?>" data-method="post">Выйти (<?= Yii::$app->user->identity->username ?>)</a>
+                            <?php endif; ?>
+                        </li>
+                    </ul>
+                </div> -->
+
+                <!-- второй вариант бараEND -->
 
                 <div class="main-menu__right">
                     <a href="#" class="main-menu__toggler mobile-nav__toggler">
