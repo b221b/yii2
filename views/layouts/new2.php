@@ -77,6 +77,11 @@ $this->registerLinkTag(['rel' => 'stylesheet', 'href' => 'https://fonts.googleap
                         <li><a href="<?= Url::to(['site/index']) ?>">Home</a></li>
                         <li><a href="<?= Url::to(['site/about']) ?>">About</a></li>
                         <li><a href="<?= Url::to(['site/contact']) ?>">Contact</a></li>
+
+                        <?php if (!Yii::$app->user->isGuest && Yii::$app->user->identity->isAdmin == 1): ?>
+                            <li><a href="<?= Url::to(['/admin']) ?>">Admin</a></li>
+                        <?php endif; ?>
+
                         <li><a href="<?= Url::to(['site/contact1']) ?>">404</a></li>
                     </ul><!-- /.list-menu -->
                     <div class="topbar__social">
@@ -117,7 +122,7 @@ $this->registerLinkTag(['rel' => 'stylesheet', 'href' => 'https://fonts.googleap
                             // ['label' => 'Домой', 'url' => ['/site/index']],
                             // ['label' => 'О нас', 'url' => ['/site/about']],
                             // ['label' => 'Контакты', 'url' => ['/site/contact']],
-                            ['label' => 'Админка', 'url' => ['/admin']],
+                            // ['label' => 'Админка', 'url' => ['/admin']],
                             [
                                 'label' => 'Запросы',
                                 'items' => [
