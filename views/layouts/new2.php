@@ -82,7 +82,7 @@ $this->registerLinkTag(['rel' => 'stylesheet', 'href' => 'https://fonts.googleap
                             <li><a href="<?= Url::to(['/admin']) ?>">Admin</a></li>
                         <?php endif; ?>
 
-                        <li><a href="<?= Url::to(['site/contact1']) ?>">404</a></li>
+                        <!-- <li><a href="<?= Url::to(['site/contact1']) ?>">404</a></li> -->
                     </ul><!-- /.list-menu -->
                     <div class="topbar__social">
                         <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
