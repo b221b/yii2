@@ -50,8 +50,8 @@ $this->registerLinkTag(['rel' => 'stylesheet', 'href' => 'https://fonts.googleap
 <body class="custom-cursor">
     <?php $this->beginBody() ?>
 
-    <div class="custom-cursor__cursor"></div>
-    <div class="custom-cursor__cursor-two"></div>
+    <!-- <div class="custom-cursor__cursor"></div> -->
+    <!-- <div class="custom-cursor__cursor-two"></div> -->
 
     <div class="preloader">
         <div class="preloader__image" style="background-image: url(assets/images/loader.png);"></div>
@@ -130,7 +130,7 @@ $this->registerLinkTag(['rel' => 'stylesheet', 'href' => 'https://fonts.googleap
                                     ['label' => '2) Спортсмены для вида спорта и разряда', 'url' => ['/sportsmens/index']],
                                     ['label' => '3) Спортсмены для тренеров и разряд', 'url' => ['/sportsmen-treners/index']],
                                     ['label' => '4) Спортсмены и виды спорта', 'url' => ['/sportsmen-vid-sporta/index']],
-                                    ['label' => '5) Тренеры для спортсмена', 'url' => ['/treners-sportsmens/index']],
+                                    // ['label' => '5) Тренеры для спортсмена (донт ворк)', 'url' => ['/treners-sportsmens/index']],
                                     ['label' => '6) Перечень соревнований по периоду и организатору', 'url' => ['/sorevnovaniya-org/index']],
                                     ['label' => '7) Перечен призеров', 'url' => ['/prizer/index']],
                                     ['label' => '8) Перечень соревнований в сооружениях и виду спорта', 'url' => ['/sorevnovaniya-structure/index']],

@@ -7,50 +7,67 @@ $this->title = 'My Yii Application';
 
 <div class="site-index">
 
-    <?= \app\widgets\UpcomingEventsWidget::widget(['limit' => 5]); ?>
 
     <div class="jumbotron text-center bg-transparent mt-5 mb-5">
-        <h1 class="display-4">Congratulations!</h1>
+        <h1 class="display-4">Добро пожаловать!</h1>
 
-        <p class="lead">You have successfully created your Yii-powered application.</p>
+        <p class="lead">Вы успешно попали в веб-приложение Титаренко Мирослава</p>
 
-        <p><a class="btn btn-lg btn-success" href="https://www.yiiframework.com">Get started with Yii</a></p>
+        <!-- <p><a class="btn btn-lg btn-success" href="https://www.yiiframework.com">Get started with Yii</a></p> -->
     </div>
+
+    <?= \app\widgets\UpcomingEventsWidget::widget(['limit' => 5]); ?>
 
     <div class="body-content">
 
         <div class="row">
 
-            <!-- <div class="col-lg-4 mb-3">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-outline-secondary" href="https://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-            </div>
+            <!-- Блоки с изображением и текстом -->
             <div class="col-lg-4 mb-3">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-outline-secondary" href="https://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
+                <a href="<?= Yii::$app->urlManager->createUrl(['/structure/index']) ?>" class="card-link">
+                    <div class="card">
+                        <img src="img/cards/1660195230_1-sportishka-com-p-otkritie-ploskostnie-sportivnie-sooruzheni-1.jpg" class="card-img-top" alt="Image 1">
+                        <div class="card-body">
+                            <p class="card-text">Спортивные сооружения</p>
+                        </div>
+                    </div>
+                </a>
             </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+            <div class="col-lg-4 mb-3">
+                <a href="<?= Yii::$app->urlManager->createUrl(['/sportsmens/index']) ?>" class="card-link">
+                    <div class="card">
+                        <img src="img/cards/vV_OdrHqMKw.jpg" class="card-img-top" alt="Image 2">
+                        <div class="card-body">
+                            <p class="card-text">Спортсмены по видам спорта</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
 
-                <p><a class="btn btn-outline-secondary" href="https://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-            </div> -->
+            <div class="col-lg-4 mb-3">
+                <a href="<?= Yii::$app->urlManager->createUrl(['/sportsmen-treners/index']) ?>" class="card-link">
+                    <div class="card">
+                        <img src="img/cards/scale_1200.png" class="card-img-top" alt="Image 3">
+                        <div class="card-body">
+                            <p class="card-text">Тренеры и их подопечные</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-lg-4 mb-3">
+                <a href="<?= Yii::$app->urlManager->createUrl(['/sportsmen-vid-sporta/index']) ?>" class="card-link">
+                    <div class="card">
+                        <img src="img/cards/123.webp" class="card-img-top" alt="Image 4">
+                        <div class="card-body">
+                            <p class="card-text">Спортсмены по количеству видов спорта</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            
 
             <!--Google Map Start-->
             <section class="google-map">
