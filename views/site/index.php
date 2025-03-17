@@ -67,7 +67,93 @@ $this->title = 'My Yii Application';
                 </a>
             </div>
 
-            
+            <div class="col-lg-4 mb-3">
+                <a href="<?= Yii::$app->urlManager->createUrl(['/sorevnovaniya-org/index']) ?>" class="card-link">
+                    <div class="card">
+                        <img src="img/cards/sorev6.jpg" class="card-img-top" alt="Image 6">
+                        <div class="card-body">
+                            <p class="card-text">Перечень соревнований по периоду и организатору</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-lg-4 mb-3">
+                <a href="<?= Yii::$app->urlManager->createUrl(['/prizer/index']) ?>" class="card-link">
+                    <div class="card">
+                        <img src="img/cards/prizer7.jpeg" class="card-img-top" alt="Image 7">
+                        <div class="card-body">
+                            <p class="card-text">Перечень призеров</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-lg-4 mb-3">
+                <a href="<?= Yii::$app->urlManager->createUrl(['/sorevnovaniya-structure/index']) ?>" class="card-link">
+                    <div class="card">
+                        <img src="img/cards/sorevVidsporta8.jpg" class="card-img-top" alt="Image 8">
+                        <div class="card-body">
+                            <p class="card-text">Перечень соревнований в сооружениях и виду спорта</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-lg-4 mb-3">
+                <a href="<?= Yii::$app->urlManager->createUrl(['/sport-club/index']) ?>" class="card-link">
+                    <div class="card">
+                        <img src="img/cards/clubs9.webp" class="card-img-top" alt="Image 9">
+                        <div class="card-body">
+                            <p class="card-text">Перечень клубов и участников соревнований по периоду</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-lg-4 mb-3">
+                <a href="<?= Yii::$app->urlManager->createUrl(['/treners/index']) ?>" class="card-link">
+                    <div class="card">
+                        <img src="img/cards/treners10.jpg" class="card-img-top" alt="Image 10">
+                        <div class="card-body">
+                            <p class="card-text">Список тренеров по виду спорта</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-lg-4 mb-3">
+                <a href="<?= Yii::$app->urlManager->createUrl(['/sportsmen-sorevnovaniya/index']) ?>" class="card-link">
+                    <div class="card">
+                        <img src="img/cards/otst11.jpg" class="card-img-top" alt="Image 11">
+                        <div class="card-body">
+                            <p class="card-text">Список спортсменов не участвовавших в соревах по периоду</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-lg-4 mb-3">
+                <a href="<?= Yii::$app->urlManager->createUrl(['/org/index']) ?>" class="card-link">
+                    <div class="card">
+                        <img src="img/cards/orgs12.webp" class="card-img-top" alt="Image 12">
+                        <div class="card-body">
+                            <p class="card-text">Список организаторов по периоду</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-lg-4 mb-3">
+                <a href="<?= Yii::$app->urlManager->createUrl(['/sport/index']) ?>" class="card-link">
+                    <div class="card">
+                        <img src="img/cards/sooryzheniya13.webp" class="card-img-top" alt="Image 13">
+                        <div class="card-body">
+                            <p class="card-text">Список сооружений по периоду</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
 
             <!--Google Map Start-->
             <section class="google-map">

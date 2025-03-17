@@ -30,6 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= \yii\helpers\Html::a('Таблица Виды Спорта', Url::to(['vid-sporta/index']), ['class' => 'btn btn-primary btn-block mb-3']) ?>
                 <?= \yii\helpers\Html::a('Таблица Спорт Клубы', Url::to(['sport-club/index']), ['class' => 'btn btn-primary btn-block mb-3']) ?>
                 <?= \yii\helpers\Html::a('Таблица Организации', Url::to(['org/index']), ['class' => 'btn btn-primary btn-block mb-3']) ?>
+                <?= \yii\helpers\Html::a('Таблица Соревнования', Url::to(['../sorevnovaniya-c-r-u-d/index']), ['class' => 'btn btn-primary btn-block mb-3']) ?>
             </div>
 
             <div class="col-md-4">
