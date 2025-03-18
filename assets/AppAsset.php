@@ -24,6 +24,7 @@ class AppAsset extends AssetBundle
         'css/sorev.css',
         'css/about.css',
         'css/cards.css',
+        'css/logo.css',
         
         'assets/vendors/bootstrap/css/bootstrap.min.css',
         'assets/vendors/bootstrap-select/bootstrap-select.min.css',

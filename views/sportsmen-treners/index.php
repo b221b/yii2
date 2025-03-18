@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-$this->title = 'Запрос: Спортсмены для тренеров и разряд';
+$this->title = 'Тренеры и их подопечные';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 

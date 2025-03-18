@@ -2,7 +2,7 @@
 
 /** @var yii\web\View $this */
 
-$this->title = 'My Yii Application';
+$this->title = 'Городская спортивная лига';
 ?>
 
 <div class="site-index">
@@ -61,7 +61,7 @@ $this->title = 'My Yii Application';
                     <div class="card">
                         <img src="img/cards/123.webp" class="card-img-top" alt="Image 4">
                         <div class="card-body">
-                            <p class="card-text">Спортсмены по количеству видов спорта</p>
+                            <p class="card-text">Список спортсменов и видов спорта</p>
                         </div>
                     </div>
                 </a>

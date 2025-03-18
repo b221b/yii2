@@ -3,7 +3,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\grid\GridView;
 
-$this->title = 'Запрос: Список организаторов по периоду';
+$this->title = 'Список организаторов';
 ?>
 
 <h1><?= Html::encode($this->title) ?></h1>

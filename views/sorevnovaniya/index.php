@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\LinkPager;
 
-$this->title = 'Sorev';
+$this->title = 'Список соревнований';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 

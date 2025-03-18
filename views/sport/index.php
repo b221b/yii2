@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\grid\GridView;
 
-$this->title = 'Запрос: Список сооружений по периоду';
+$this->title = 'Список сооружений по периоду';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 

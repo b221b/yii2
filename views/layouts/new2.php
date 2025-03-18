@@ -50,8 +50,9 @@ $this->registerLinkTag(['rel' => 'stylesheet', 'href' => 'https://fonts.googleap
 <body class="custom-cursor">
     <?php $this->beginBody() ?>
 
-    <!-- <div class="custom-cursor__cursor"></div> -->
-    <!-- <div class="custom-cursor__cursor-two"></div> -->
+    <!-- что бы включить курсоры, надо перейти в файл web\assets\js\nisoz.js на 426 строку и раскомментировать блок custom cursor -->
+    <!-- <div class="custom-cursor__cursor"></div>
+    <div class="custom-cursor__cursor-two"></div> -->
 
     <div class="preloader">
         <div class="preloader__image" style="background-image: url(assets/images/loader.png);"></div>
@@ -108,9 +109,15 @@ $this->registerLinkTag(['rel' => 'stylesheet', 'href' => 'https://fonts.googleap
             <div class="container-fluid">
 
                 <div class="main-menu__logo">
-                    <a href="<?= Yii::$app->homeUrl ?>" class="main-menu__logo">
+
+                    <!-- <a href="<?= Yii::$app->homeUrl ?>" class="main-menu__logo">
                         <img src="<?= Url::to('@web/assets/images/logo-light3.png') ?>" alt="nisoz" width="70">
+                    </a> -->
+
+                    <a href="<?= Yii::$app->homeUrl ?>" class="logo">
+                        SportOrg
                     </a>
+
                 </div><!-- /.main-menu__logo -->
 
                 <!-- первый вариант бараStart -->
@@ -149,7 +156,7 @@ $this->registerLinkTag(['rel' => 'stylesheet', 'href' => 'https://fonts.googleap
                             //         ['label' => '3 laba - SorevCRUD', 'url' => ['/sorevnovaniya-c-r-u-d/index']],
                             //     ],
                             // ],
-                            
+
                             ['label' => 'Список соревнований', 'url' => ['/sorevnovaniya/index']],
                             Yii::$app->user->isGuest
                                 ? ['label' => 'Войти', 'url' => ['/site/login']]
@@ -163,50 +170,6 @@ $this->registerLinkTag(['rel' => 'stylesheet', 'href' => 'https://fonts.googleap
                 </div>
 
                 <!-- первый вариант бараEND -->
-
-                <!-- второй вариант бараStart -->
-
-                <!-- <div class="main-menu__nav">
-                    <ul class="main-menu__list">
-                        <li class="dropdown">
-                            <a href="<?= \yii\helpers\Url::to(['/admin']) ?>">Админка</a>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#">Запросы</a>
-                            <ul>
-                                <li><a href="<?= \yii\helpers\Url::to(['structure/index']) ?>">1 запрос</a></li>
-                                <li><a href="<?= \yii\helpers\Url::to(['sportsmens/index']) ?>">2 запрос</a></li>
-                                <li><a href="<?= \yii\helpers\Url::to(['sportsmen-treners/index']) ?>">3 запрос</a></li>
-                                <li><a href="<?= \yii\helpers\Url::to(['sportsmen-vid-sporta/index']) ?>">4 запрос</a></li>
-                                <li><a href="<?= \yii\helpers\Url::to(['treners-sportsmens/index']) ?>">5 запрос</a></li>
-                                <li><a href="<?= \yii\helpers\Url::to(['sorevnovaniya-org/index']) ?>">6 запрос</a></li>
-                                <li><a href="<?= \yii\helpers\Url::to(['prizer/index']) ?>">7 запрос</a></li>
-                                <li><a href="<?= \yii\helpers\Url::to(['sorevnovaniya-structure/index']) ?>">8 запрос</a></li>
-                                <li><a href="<?= \yii\helpers\Url::to(['sport-club/index']) ?>">9 запрос</a></li>
-                                <li><a href="<?= \yii\helpers\Url::to(['treners/index']) ?>">10 запрос</a></li>
-                                <li><a href="<?= \yii\helpers\Url::to(['sportsmen-sorevnovaniya/index']) ?>">11 запрос</a></li>
-                                <li><a href="<?= \yii\helpers\Url::to(['org/index']) ?>">12 запрос</a></li>
-                                <li><a href="<?= \yii\helpers\Url::to(['sport/index']) ?>">13 запрос</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#">1,3 лабы</a>
-                            <ul>
-                                <li><a href="<?= \yii\helpers\Url::to(['sorevnovaniya/index']) ?>">1 laba - Sorev</a></li>
-                                <li><a href="<?= \yii\helpers\Url::to(['sorevnovaniya-c-r-u-d/index']) ?>">3 laba - SorevCRUD</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <?php if (Yii::$app->user->isGuest): ?>
-                                <a href="<?= \yii\helpers\Url::to(['site/login']) ?>">Войти</a>
-                            <?php else: ?>
-                                <a href="<?= \yii\helpers\Url::to(['site/logout']) ?>" data-method="post">Выйти (<?= Yii::$app->user->identity->username ?>)</a>
-                            <?php endif; ?>
-                        </li>
-                    </ul>
-                </div> -->
-
-                <!-- второй вариант бараEND -->
 
                 <div class="main-menu__right">
                     <a href="#" class="main-menu__toggler mobile-nav__toggler">
@@ -249,8 +212,8 @@ $this->registerLinkTag(['rel' => 'stylesheet', 'href' => 'https://fonts.googleap
             <div class="main-footer__bg" style="background-image: url(assets/images/shapes/footer-bg-1.png);"></div>
             <div class="container">
                 <div class="main-footer__top wow fadeInUp" data-wow-delay="100ms">
-                    <a href="<?= Yii::$app->homeUrl ?>" class="main-menu__logo">
-                        <img src="<?= Url::to('@web/assets/images/logo-light3.png') ?>" alt="nisoz" width="70">
+                    <a href="<?= Yii::$app->homeUrl ?>" class="logo">
+                        SportOrg
                     </a>
                     <div class="main-footer__social">
                         <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
