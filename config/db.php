@@ -1,8 +1,14 @@
 <?php
 
 return [
+    // 'class' => 'yii\db\Connection',
+    // 'dsn' => 'mysql:host=localhost;dbname=sportOrg',
+    // 'username' => 'root',
+    // 'password' => '',
+    // 'charset' => 'utf8',
+
     'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=localhost;dbname=sportOrg',
+    'dsn' => 'mysql:host=localhost;dbname=sports_organisations',
     'username' => 'root',
     'password' => '',
     'charset' => 'utf8',
