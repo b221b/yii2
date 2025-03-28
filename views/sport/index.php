@@ -33,11 +33,11 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
         [
             'label' => 'Название соревнования',
-            'attribute' => 'sorevnovanie_name',
+            'attribute' => 'competitions_name',
         ],
         [
             'label' => 'Дата проведения',
-            'attribute' => 'data_provedeniya',
+            'attribute' => 'event_date',
         ],
     ],
 ]); ?>

@@ -35,7 +35,7 @@ $this->title = 'Городская спортивная лига';
             </div>
 
             <div class="col-lg-4 mb-3">
-                <a href="<?= Yii::$app->urlManager->createUrl(['/sportsmens/index']) ?>" class="card-link">
+                <a href="<?= Yii::$app->urlManager->createUrl(['/sportsmans/index']) ?>" class="card-link">
                     <div class="card">
                         <img src="img/cards/vV_OdrHqMKw.jpg" class="card-img-top" alt="Image 2">
                         <div class="card-body">
@@ -46,7 +46,7 @@ $this->title = 'Городская спортивная лига';
             </div>
 
             <div class="col-lg-4 mb-3">
-                <a href="<?= Yii::$app->urlManager->createUrl(['/sportsmen-treners/index']) ?>" class="card-link">
+                <a href="<?= Yii::$app->urlManager->createUrl(['/sportsman-trainers/index']) ?>" class="card-link">
                     <div class="card">
                         <img src="img/cards/scale_1200.png" class="card-img-top" alt="Image 3">
                         <div class="card-body">
@@ -57,7 +57,7 @@ $this->title = 'Городская спортивная лига';
             </div>
 
             <div class="col-lg-4 mb-3">
-                <a href="<?= Yii::$app->urlManager->createUrl(['/sportsmen-vid-sporta/index']) ?>" class="card-link">
+                <a href="<?= Yii::$app->urlManager->createUrl(['/sportsman-kind-of-sport/index']) ?>" class="card-link">
                     <div class="card">
                         <img src="img/cards/123.webp" class="card-img-top" alt="Image 4">
                         <div class="card-body">
@@ -68,7 +68,7 @@ $this->title = 'Городская спортивная лига';
             </div>
 
             <div class="col-lg-4 mb-3">
-                <a href="<?= Yii::$app->urlManager->createUrl(['/sorevnovaniya-org/index']) ?>" class="card-link">
+                <a href="<?= Yii::$app->urlManager->createUrl(['/competition-organisation/index']) ?>" class="card-link">
                     <div class="card">
                         <img src="img/cards/sorev6.jpg" class="card-img-top" alt="Image 6">
                         <div class="card-body">
@@ -79,7 +79,7 @@ $this->title = 'Городская спортивная лига';
             </div>
 
             <div class="col-lg-4 mb-3">
-                <a href="<?= Yii::$app->urlManager->createUrl(['/prizer/index']) ?>" class="card-link">
+                <a href="<?= Yii::$app->urlManager->createUrl(['/prizewinner/index']) ?>" class="card-link">
                     <div class="card">
                         <img src="img/cards/prizer7.jpeg" class="card-img-top" alt="Image 7">
                         <div class="card-body">
@@ -90,7 +90,7 @@ $this->title = 'Городская спортивная лига';
             </div>
 
             <div class="col-lg-4 mb-3">
-                <a href="<?= Yii::$app->urlManager->createUrl(['/sorevnovaniya-structure/index']) ?>" class="card-link">
+                <a href="<?= Yii::$app->urlManager->createUrl(['/competitions-structure/index']) ?>" class="card-link">
                     <div class="card">
                         <img src="img/cards/sorevVidsporta8.jpg" class="card-img-top" alt="Image 8">
                         <div class="card-body">
@@ -101,7 +101,7 @@ $this->title = 'Городская спортивная лига';
             </div>
 
             <div class="col-lg-4 mb-3">
-                <a href="<?= Yii::$app->urlManager->createUrl(['/sport-club/index']) ?>" class="card-link">
+                <a href="<?= Yii::$app->urlManager->createUrl(['/sports-club/index']) ?>" class="card-link">
                     <div class="card">
                         <img src="img/cards/clubs9.webp" class="card-img-top" alt="Image 9">
                         <div class="card-body">
@@ -112,7 +112,7 @@ $this->title = 'Городская спортивная лига';
             </div>
 
             <div class="col-lg-4 mb-3">
-                <a href="<?= Yii::$app->urlManager->createUrl(['/treners/index']) ?>" class="card-link">
+                <a href="<?= Yii::$app->urlManager->createUrl(['/trainers/index']) ?>" class="card-link">
                     <div class="card">
                         <img src="img/cards/treners10.jpg" class="card-img-top" alt="Image 10">
                         <div class="card-body">
@@ -123,7 +123,7 @@ $this->title = 'Городская спортивная лига';
             </div>
 
             <div class="col-lg-4 mb-3">
-                <a href="<?= Yii::$app->urlManager->createUrl(['/sportsmen-sorevnovaniya/index']) ?>" class="card-link">
+                <a href="<?= Yii::$app->urlManager->createUrl(['/sportsman-competitions/index']) ?>" class="card-link">
                     <div class="card">
                         <img src="img/cards/otst11.jpg" class="card-img-top" alt="Image 11">
                         <div class="card-body">
@@ -134,7 +134,7 @@ $this->title = 'Городская спортивная лига';
             </div>
 
             <div class="col-lg-4 mb-3">
-                <a href="<?= Yii::$app->urlManager->createUrl(['/org/index']) ?>" class="card-link">
+                <a href="<?= Yii::$app->urlManager->createUrl(['/organisations/index']) ?>" class="card-link">
                     <div class="card">
                         <img src="img/cards/orgs12.webp" class="card-img-top" alt="Image 12">
                         <div class="card-body">

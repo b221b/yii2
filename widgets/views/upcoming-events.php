@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $events app\models\Sorevnovaniya[] */
+/* @var $events app\models\Competitions[] */
 
 ?>
 
@@ -16,17 +16,17 @@ use yii\grid\GridView;
         'dataProvider' => new \yii\data\ArrayDataProvider([
             'allModels' => $events,
             'pagination' => [
-                'pageSize' => 5, // Установите размер страницы, если это необходимо
+                'pageSize' => 5,
             ],
         ]),
-        'filterModel' => null, // Если вам не нужно фильтровать, оставьте null
+        'filterModel' => null,
         'columns' => [
             [
-                'attribute' => 'name', // Имя соревнования
+                'attribute' => 'name',
                 'label' => 'Название',
             ],
             [
-                'attribute' => 'data_provedeniya',
+                'attribute' => 'event_date',
                 'label' => 'Дата',
                 'format' => ['date', 'php:Y-m-d'],
             ],
@@ -38,9 +38,10 @@ use yii\grid\GridView;
                 },
             ],
             [
-                'attribute' => 'id_vid_sporta',
+                'attribute' => 'id_kind_of_sport',
+                'label' => 'Вид спорта',
                 'value' => function ($model) {
-                    return $model->vidSporta ? $model->vidSporta->name : 'Не указано';
+                    return $model->kindOfSport ? $model->kindOfSport->name : 'Не указано';
                 },
             ],
             // [

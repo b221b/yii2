@@ -11,17 +11,17 @@ class Structure extends ActiveRecord
         return 'structure';
     }
 
-    public function getSorevnovaniyas()
+    public function getCompetitions()
     {
-        return $this->hasMany(Sorevnovaniya::class, ['id_structure' => 'id']);
+        return $this->hasMany(Competitions::class, ['id_structure' => 'id']);
     }
 
-    public function getStructureChars()
-    {
-        return $this->hasMany(StructureChars::class, ['id_structure' => 'id']);
-    }
+    // не созданная таблица StructureChars
+    // public function getStructureChars()
+    // {
+    //     return $this->hasMany(StructureChars::class, ['id_structure' => 'id']);
+    // }
 
-    // Новый метод для получения списка структур
     public static function getList()
     {
         return self::find()->select(['name', 'id'])->indexBy('id')->column();

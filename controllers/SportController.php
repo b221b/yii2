@@ -4,16 +4,16 @@ namespace app\controllers;
 
 use Yii;
 use yii\web\Controller;
-use app\models\SportsmenSearch;
+use app\models\SportsmanSearch;
 use app\models\Structure;
-use app\models\Sorevnovaniya;
+use app\models\Competitions;
 use yii\data\ArrayDataProvider;
 
 class SportController extends Controller
 {
     public function actionIndex()
     {
-        $model = new SportsmenSearch(); // Обратите внимание на использование правильной модели
+        $model = new SportsmanSearch();
         $dataProvider = new ArrayDataProvider([
             'allModels' => [],
             'pagination' => [
@@ -26,18 +26,18 @@ class SportController extends Controller
             $endDate = $model->end_date;
 
             $query = (new \yii\db\Query())
-                ->select(['s.name AS structure_name', 'ss.name AS sorevnovanie_name', 'ss.data_provedeniya']) // Добавлено поле name из sorevnovaniya
+                ->select(['s.name AS structure_name', 'ss.name AS competitions_name', 'ss.event_date'])
                 ->from('structure s')
-                ->innerJoin('sorevnovaniya ss', 'ss.id_structure = s.id')
-                ->where(['between', 'ss.data_provedeniya', $startDate, $endDate]);
+                ->innerJoin('competitions ss', 'ss.id_structure = s.id')
+                ->where(['between', 'ss.event_date', $startDate, $endDate]);
 
             $dataProvider->allModels = $query->all();
         } else {
             // Получаем все записи при первом запуске
             $query = (new \yii\db\Query())
-                ->select(['s.name AS structure_name', 'ss.name AS sorevnovanie_name', 'ss.data_provedeniya']) // Добавлено поле name из sorevnovaniya
+                ->select(['s.name AS structure_name', 'ss.name AS competitions_name', 'ss.event_date']) 
                 ->from('structure s')
-                ->innerJoin('sorevnovaniya ss', 'ss.id_structure = s.id');
+                ->innerJoin('competitions ss', 'ss.id_structure = s.id');
 
             $dataProvider->allModels = $query->all();
         }

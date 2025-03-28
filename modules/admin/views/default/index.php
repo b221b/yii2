@@ -25,25 +25,25 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="row">
 
             <div class="col-md-4">
-                <?= \yii\helpers\Html::a('Таблица Спортсмены', Url::to(['sportsmen/index']), ['class' => 'btn btn-primary btn-block mb-3']) ?>
-                <?= \yii\helpers\Html::a('Таблица Тренеров', Url::to(['treners/index']), ['class' => 'btn btn-primary btn-block mb-3']) ?>
-                <?= \yii\helpers\Html::a('Таблица Виды Спорта', Url::to(['vid-sporta/index']), ['class' => 'btn btn-primary btn-block mb-3']) ?>
-                <?= \yii\helpers\Html::a('Таблица Спорт Клубы', Url::to(['sport-club/index']), ['class' => 'btn btn-primary btn-block mb-3']) ?>
-                <?= \yii\helpers\Html::a('Таблица Организации', Url::to(['org/index']), ['class' => 'btn btn-primary btn-block mb-3']) ?>
-                <?= \yii\helpers\Html::a('Таблица Соревнования', Url::to(['../sorevnovaniya-c-r-u-d/index']), ['class' => 'btn btn-primary btn-block mb-3']) ?>
+                <?= \yii\helpers\Html::a('Таблица Спортсмены', Url::to(['sportsman/index']), ['class' => 'btn btn-primary btn-block mb-3']) ?>
+                <?= \yii\helpers\Html::a('Таблица Тренеров', Url::to(['trainers/index']), ['class' => 'btn btn-primary btn-block mb-3']) ?>
+                <?= \yii\helpers\Html::a('Таблица Виды Спорта', Url::to(['kind-of-sport/index']), ['class' => 'btn btn-primary btn-block mb-3']) ?>
+                <?= \yii\helpers\Html::a('Таблица Спорт Клубы', Url::to(['sports-club/index']), ['class' => 'btn btn-primary btn-block mb-3']) ?>
+                <?= \yii\helpers\Html::a('Таблица Организации', Url::to(['organisations/index']), ['class' => 'btn btn-primary btn-block mb-3']) ?>
+                <?= \yii\helpers\Html::a('Таблица Соревнования', Url::to(['../competition-c-r-u-d/index']), ['class' => 'btn btn-primary btn-block mb-3']) ?>
             </div>
 
             <div class="col-md-4">
-                <?= \yii\helpers\Html::a('Таблица Призовые', Url::to(['prizer/index']), ['class' => 'btn btn-primary btn-block mb-3']) ?>
+                <?= \yii\helpers\Html::a('Таблица Призовые', Url::to(['prizewinner/index']), ['class' => 'btn btn-primary btn-block mb-3']) ?>
                 <?= \yii\helpers\Html::a('Таблица Структуры', Url::to(['structure/index']), ['class' => 'btn btn-primary btn-block mb-3']) ?>
-                <?= \yii\helpers\Html::a('Таблица Характеристики структур', Url::to(['structure-chars/index']), ['class' => 'btn btn-primary btn-block mb-3']) ?>
+                <!-- <?= \yii\helpers\Html::a('Таблица Характеристики структур', Url::to(['structure-chars/index']), ['class' => 'btn btn-primary btn-block mb-3']) ?> -->
             </div>
 
             <div class="col-md-4">
-                <?= \yii\helpers\Html::a('Таблица Организации и Соревнования', Url::to(['org-sorevnovaniya/index']), ['class' => 'btn btn-primary btn-block mb-3']) ?>
-                <?= \yii\helpers\Html::a('Таблица Спортсмены и Соревнования', Url::to(['sportsmen-sorevnovaniya/index']), ['class' => 'btn btn-primary btn-block mb-3']) ?>
-                <?= \yii\helpers\Html::a('Таблица Спортсмены и Виды Спорта', Url::to(['sportsmen-vid-sporta/index']), ['class' => 'btn btn-primary btn-block mb-3']) ?>
-                <?= \yii\helpers\Html::a('Таблица Спортсмены и Тренеры', Url::to(['sportsmen-treners/index']), ['class' => 'btn btn-primary btn-block mb-3']) ?>
+                <?= \yii\helpers\Html::a('Таблица Организации и Соревнования', Url::to(['organisations-competitions/index']), ['class' => 'btn btn-primary btn-block mb-3']) ?>
+                <?= \yii\helpers\Html::a('Таблица Спортсмены и Соревнования', Url::to(['sportsman-competitions/index']), ['class' => 'btn btn-primary btn-block mb-3']) ?>
+                <?= \yii\helpers\Html::a('Таблица Спортсмены и Виды Спорта', Url::to(['sportsman-kind-of-sport/index']), ['class' => 'btn btn-primary btn-block mb-3']) ?>
+                <?= \yii\helpers\Html::a('Таблица Спортсмены и Тренеры', Url::to(['sportsman-trainers/index']), ['class' => 'btn btn-primary btn-block mb-3']) ?>
             </div>
 
         </div>

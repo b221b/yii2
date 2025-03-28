@@ -3,7 +3,7 @@
 namespace app\widgets;
 
 use yii\base\Widget;
-use app\models\Sorevnovaniya;
+use app\models\Competitions;
 use yii\helpers\Html;
 
 class UpcomingEventsWidget extends Widget
@@ -22,9 +22,9 @@ class UpcomingEventsWidget extends Widget
 
     public function run()
     {
-        $upcomingEvents = Sorevnovaniya::find()
-            ->where(['>', 'data_provedeniya', date('Y-m-d')])
-            ->orderBy(['data_provedeniya' => SORT_ASC])
+        $upcomingEvents = Competitions::find()
+            ->where(['>', 'event_date', date('Y-m-d')])
+            ->orderBy(['event_date' => SORT_ASC])
             ->limit($this->limit)
             ->all();
 
