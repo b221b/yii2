@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use yii\data\ActiveDataProvider;
 use yii\db\ActiveRecord;
 
 class Sportsman extends ActiveRecord
@@ -64,5 +65,47 @@ class Sportsman extends ActiveRecord
             'name' => 'Имя спортсмена',
             'id_sports_club' => 'Спортивный клуб',
         ];
+    }
+
+    public function search($params)
+    {
+        $query = self::find();
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+
+        // Загружаем данные формы в модель
+        if (!empty($params['Sportsman'])) {
+            $this->attributes = $params['Sportsman'];
+        }
+
+        // Не валидируем, чтобы фильтры работали даже если какие-то поля не заполнены
+        // if (!$this->validate()) {
+        //     return $dataProvider;
+        // }
+
+        // Фильтр по разряду
+        if (!empty($this->discharge)) {
+            $query->andWhere(['discharge' => $this->discharge]);
+        }
+
+        // Фильтр по виду спорта
+        if (!empty($this->id_kind_of_sport)) {
+            $query->joinWith(['sportsmanKindOfSport' => function($q) {
+                $q->where(['sportsman_kind_of_sport.id_kind_of_sport' => $this->id_kind_of_sport]);
+            }]);
+        }
+
+        return $dataProvider;
+    }
+
+
+    /**
+     * Получает список всех видов спорта
+     */
+    public static function getKindOfSportsList()
+    {
+        return KindOfSport::find()->all();
     }
 }
