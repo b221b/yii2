@@ -157,7 +157,15 @@ $this->registerLinkTag(['rel' => 'stylesheet', 'href' => 'https://fonts.googleap
                             //     ],
                             // ],
 
-                            ['label' => 'Список соревнований', 'url' => ['/competitions/index']],
+                            ['label' => 'Соревнования', 'url' => ['/competitions/index']],
+                            // ['label' => 'Личный кабинет', 'url' => ['/user/index']],
+
+                            Yii::$app->user->isGuest
+                                ? ['label' => 'Личный кабинет', 'url' => ['/site/login']]
+                                : [
+                                    'label' => 'Личный кабинет', 'url' => ['/user/index'],
+                                ],
+
                             Yii::$app->user->isGuest
                                 ? ['label' => 'Войти', 'url' => ['/site/login']]
                                 : [

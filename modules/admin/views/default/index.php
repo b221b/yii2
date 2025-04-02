@@ -36,6 +36,8 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="col-md-4">
                 <?= \yii\helpers\Html::a('Таблица Призовые', Url::to(['prizewinner/index']), ['class' => 'btn btn-primary btn-block mb-3']) ?>
                 <?= \yii\helpers\Html::a('Таблица Структуры', Url::to(['structure/index']), ['class' => 'btn btn-primary btn-block mb-3']) ?>
+                <?= \yii\helpers\Html::a('Таблица Пользователи', Url::to(['user/index']), ['class' => 'btn btn-primary btn-block mb-3']) ?>
+                <?= \yii\helpers\Html::a('Таблица Информация о Пользователях', Url::to(['user-info/index']), ['class' => 'btn btn-primary btn-block mb-3']) ?>
                 <!-- <?= \yii\helpers\Html::a('Таблица Характеристики структур', Url::to(['structure-chars/index']), ['class' => 'btn btn-primary btn-block mb-3']) ?> -->
             </div>
 
