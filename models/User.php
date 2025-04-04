@@ -73,17 +73,18 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
     {
         return [
             [['username', 'password'], 'required'],
+            [['isAdmin'], 'required'],
             [['username'], 'string', 'max' => 255],
             [['password'], 'string', 'max' => 255],
             [['username'], 'unique'],
         ];
     }
 
-    // public function attributeLabels()
-    // {
-    //     return [
-    //         'username' => '321',
-    //         'password' => '123',
-    //     ];
-    // }
+    public function attributeLabels()
+    {
+        return [
+            'username' => 'Имя пользователя',
+            'isAdmin' => 'Статус',
+        ];
+    }
 }

@@ -94,6 +94,11 @@ class UserController extends Controller
     {
         $model = $this->findModel($id);
 
+        if ($model && isset($_POST['User']['isAdmin'])) {
+            $model->isAdmin = $_POST['User']['isAdmin'];
+            $model->save(false); // false чтобы пропустить валидацию
+        }
+
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }

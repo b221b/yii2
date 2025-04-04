@@ -2,6 +2,7 @@
 
 namespace app\modules\admin\controllers;
 
+use app\models\User;
 use app\models\UserInfo;
 use app\modules\admin\models\UserInfoSearch;
 use Yii;
@@ -70,21 +71,17 @@ class UserInfoController extends Controller
     public function actionCreate()
     {
         $model = new UserInfo();
-
-        if ($this->request->isPost) {
-            if ($model->load($this->request->post())) {
-                if ($model->validate()) {
-                    if ($model->save()) {
-                        return $this->redirect(['view', 'id' => $model->id]);
-                    }
+        
+        if ($model->load(Yii::$app->request->post())) {
+            // Загружаем данные пользователя отдельно
+            $user = User::findOne($model->id_user);
+            if ($user && $user->load(Yii::$app->request->post())) {
+                if ($model->save() && $user->save()) {
+                    return $this->redirect(['view', 'id' => $model->id]);
                 }
-                // Если валидация не прошла, покажем ошибки
-                Yii::$app->session->setFlash('error', 'Пожалуйста, исправьте ошибки в форме.');
             }
-        } else {
-            $model->loadDefaultValues();
         }
-
+        
         return $this->render('create', [
             'model' => $model,
         ]);
@@ -100,6 +97,11 @@ class UserInfoController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+
+        if ($model->user && isset($_POST['User']['isAdmin'])) {
+            $model->user->isAdmin = $_POST['User']['isAdmin'];
+            $model->user->save(false); // false чтобы пропустить валидацию
+        }
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);

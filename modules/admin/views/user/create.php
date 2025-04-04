@@ -3,13 +3,13 @@
 use yii\helpers\Html;
 
 /** @var yii\web\View $this */
+/** @var app\models\user $model */
 
-$this->title = 'Обновить запись: ' . $model->user->username;
+$this->title = 'Создать запись';
 $this->params['breadcrumbs'][] = ['label' => 'Таблица Информация о пользователях', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->user->username, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="users-update">
+<div class="users-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

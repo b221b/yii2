@@ -33,19 +33,15 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'isAdmin',
                 'value' => function ($model) {
-                    return $model->isAdmin ? 'Да' : 'Нет';
+                    return $model->isAdmin ? 'Администратор' : 'Пользователь';
                 },
-                'filter' => [
-                    0 => 'Нет',
-                    1 => 'Да',
-                ],
             ],
-            // [
-            //     'class' => ActionColumn::className(),
-            //     'urlCreator' => function ($action, User $model, $key, $index, $column) {
-            //         return Url::toRoute([$action, 'id' => $model->id]);
-            //     }
-            // ],
+            [
+                'class' => ActionColumn::className(),
+                'urlCreator' => function ($action, User $model, $key, $index, $column) {
+                    return Url::toRoute([$action, 'id' => $model->id]);
+                }
+            ],
         ],
     ]);
 
