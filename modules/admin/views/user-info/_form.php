@@ -12,6 +12,7 @@ use app\models\User;
 <div class="users-form">
     <?php $form = ActiveForm::begin(); ?>
 
+    <!-- Поля UserInfo -->
     <?= $form->field($model, 'phone_number')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 

@@ -71,17 +71,23 @@ class UserInfoController extends Controller
     public function actionCreate()
     {
         $model = new UserInfo();
-        
+
         if ($model->load(Yii::$app->request->post())) {
-            // Загружаем данные пользователя отдельно
+            // Проверяем, что выбран существующий пользователь
             $user = User::findOne($model->id_user);
-            if ($user && $user->load(Yii::$app->request->post())) {
-                if ($model->save() && $user->save()) {
-                    return $this->redirect(['view', 'id' => $model->id]);
-                }
+            if (!$user) {
+                Yii::$app->session->setFlash('error', 'Выберите существующего пользователя.');
+                return $this->refresh();
+            }
+
+            if ($model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            } else {
+                // Показываем ошибки валидации
+                Yii::$app->session->setFlash('error', 'Ошибка при сохранении данных: ' . implode(' ', $model->getFirstErrors()));
             }
         }
-        
+
         return $this->render('create', [
             'model' => $model,
         ]);
