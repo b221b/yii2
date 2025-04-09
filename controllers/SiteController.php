@@ -10,6 +10,7 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\RegistrationForm;
+use yii\web\NotFoundHttpException;
 
 class SiteController extends Controller
 {
@@ -69,7 +70,7 @@ class SiteController extends Controller
         //         ->setSubject('Тема сообщения')
         //         ->setTextBody('Текст сообщения')
         //         ->send();
-    
+
         //     var_dump($result); // выведет true/false
 
         return $this->render('index');
@@ -149,6 +150,37 @@ class SiteController extends Controller
 
         return $this->render('registration', [
             'model' => $model,
+        ]);
+    }
+
+    public function actionTableData()
+    {
+        $tableName = Yii::$app->request->get('table');
+        $forbiddenTables = ['user', 'competitions', 'user_info', 'migration', 'organisations_competitions', 'sportsman_competitions', 'sportsman_kind_of_sport', 'sportsman_prizewinner', 'sportsman_trainers'];
+
+        // Проверяем доступ
+        if (Yii::$app->user->isGuest || !Yii::$app->user->identity->isAdmin) {
+            if (in_array($tableName, $forbiddenTables)) {
+                throw new \yii\web\ForbiddenHttpException('Доступ к этой таблице запрещён.');
+            }
+        }
+
+        if (!$tableName || !in_array($tableName, Yii::$app->db->schema->getTableNames())) {
+            throw new NotFoundHttpException('Таблица не найдена.');
+        }
+
+        $query = (new \yii\db\Query())->from($tableName);
+
+        $dataProvider = new \yii\data\ActiveDataProvider([
+            'query' => $query,
+            'pagination' => [
+                'pageSize' => 10,
+            ],
+        ]);
+
+        return $this->render('tableData', [
+            'dataProvider' => $dataProvider,
+            'tableName' => $tableName,
         ]);
     }
 }

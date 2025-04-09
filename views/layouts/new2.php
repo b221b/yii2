@@ -96,6 +96,7 @@ $this->registerLinkTag(['rel' => 'stylesheet', 'href' => 'https://fonts.googleap
         </section><!-- /.topbar-header -->
 
         <header class="main-header">
+
             <?php
             NavBar::begin([
                 // 'brandLabel' => Yii::$app->name,
@@ -163,7 +164,8 @@ $this->registerLinkTag(['rel' => 'stylesheet', 'href' => 'https://fonts.googleap
                             Yii::$app->user->isGuest
                                 ? ['label' => 'Личный кабинет', 'url' => ['/site/login']]
                                 : [
-                                    'label' => 'Личный кабинет', 'url' => ['/user/index'],
+                                    'label' => 'Личный кабинет',
+                                    'url' => ['/user/index'],
                                 ],
 
                             Yii::$app->user->isGuest

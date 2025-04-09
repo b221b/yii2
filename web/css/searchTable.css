@@ -1,0 +1,23 @@
+    .table-search-widget {
+        position: relative;
+        width: 300px;
+    }
+
+    .search-results {
+        position: absolute;
+        width: 100%;
+        max-height: 300px;
+        overflow-y: auto;
+        z-index: 1000;
+        background: white;
+        border: 1px solid #ddd;
+        border-top: none;
+    }
+
+    .table-item {
+        cursor: pointer;
+    }
+
+    .table-item:hover {
+        background-color: #f5f5f5;
+    }

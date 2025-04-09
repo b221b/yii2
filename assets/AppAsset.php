@@ -25,6 +25,7 @@ class AppAsset extends AssetBundle
         'css/about.css',
         'css/cards.css',
         'css/logo.css',
+        'css/searchTable.css',
         
         'assets/vendors/bootstrap/css/bootstrap.min.css',
         'assets/vendors/bootstrap-select/bootstrap-select.min.css',
@@ -44,6 +45,7 @@ class AppAsset extends AssetBundle
     ];
     public $js = [
         'js/site.js',
+        'js/searchTable.js',
 
         'assets/vendors/jquery/jquery-3.5.1.min.js',
         'assets/vendors/bootstrap-select/bootstrap-select.min.js',
