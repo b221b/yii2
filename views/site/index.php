@@ -26,7 +26,9 @@ $this->title = 'Городская спортивная лига';
         <div class="row">
 
             <!-- Блоки с изображением и текстом -->
-            <div class="col-lg-4 mb-3">
+
+            <!-- не реализован -->
+            <!-- <div class="col-lg-4 mb-3">
                 <a href="<?= Yii::$app->urlManager->createUrl(['/structure/index']) ?>" class="card-link">
                     <div class="card">
                         <img src="img/cards/1660195230_1-sportishka-com-p-otkritie-ploskostnie-sportivnie-sooruzheni-1.jpg" class="card-img-top" alt="Image 1">
@@ -35,7 +37,7 @@ $this->title = 'Городская спортивная лига';
                         </div>
                     </div>
                 </a>
-            </div>
+            </div> -->
 
             <div class="col-lg-4 mb-3">
                 <a href="<?= Yii::$app->urlManager->createUrl(['/sportsmans/index']) ?>" class="card-link">
