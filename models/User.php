@@ -73,7 +73,7 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
     {
         return [
             [['username', 'password'], 'required'],
-            [['isAdmin'], 'required'],
+            ['isAdmin', 'default', 'value' => 0],
             [['username'], 'string', 'max' => 255],
             [['password'], 'string', 'max' => 255],
             [['username'], 'unique'],
