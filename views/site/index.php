@@ -5,9 +5,6 @@
 $this->title = 'Городская спортивная лига';
 ?>
 
-<div class="jumbotron text-center bg-transparent mt-5 mb-5">
-    </div>
-
 <div class="site-index">
 
     <div class="jumbotron text-center bg-transparent mt-5 mb-5">
