@@ -5,6 +5,9 @@
 $this->title = 'Городская спортивная лига';
 ?>
 
+<div class="jumbotron text-center bg-transparent mt-5 mb-5">
+    </div>
+
 <div class="site-index">
 
     <div class="jumbotron text-center bg-transparent mt-5 mb-5">
@@ -44,7 +47,7 @@ $this->title = 'Городская спортивная лига';
                     <div class="card">
                         <img src="img/cards/vV_OdrHqMKw.jpg" class="card-img-top" alt="Image 2">
                         <div class="card-body">
-                            <p class="card-text">Спортсмены по видам спорта</p>
+                            <p class="card-text">Спортсмены (вид спорта)</p>
                         </div>
                     </div>
                 </a>
@@ -55,7 +58,7 @@ $this->title = 'Городская спортивная лига';
                     <div class="card">
                         <img src="img/cards/scale_1200.png" class="card-img-top" alt="Image 3">
                         <div class="card-body">
-                            <p class="card-text">Тренеры и их подопечные</p>
+                            <p class="card-text">Команды тренеров</p>
                         </div>
                     </div>
                 </a>
@@ -66,7 +69,7 @@ $this->title = 'Городская спортивная лига';
                     <div class="card">
                         <img src="img/cards/123.webp" class="card-img-top" alt="Image 4">
                         <div class="card-body">
-                            <p class="card-text">Список спортсменов и видов спорта</p>
+                            <p class="card-text">Многопрофильные атлеты</p>
                         </div>
                     </div>
                 </a>
@@ -77,7 +80,7 @@ $this->title = 'Городская спортивная лига';
                     <div class="card">
                         <img src="img/cards/sorev6.jpg" class="card-img-top" alt="Image 6">
                         <div class="card-body">
-                            <p class="card-text">Перечень соревнований по периоду и организатору</p>
+                            <p class="card-text">События за период</p>
                         </div>
                     </div>
                 </a>
@@ -88,7 +91,7 @@ $this->title = 'Городская спортивная лига';
                     <div class="card">
                         <img src="img/cards/prizer7.jpeg" class="card-img-top" alt="Image 7">
                         <div class="card-body">
-                            <p class="card-text">Перечень призеров</p>
+                            <p class="card-text">Медалисты</p>
                         </div>
                     </div>
                 </a>
@@ -99,7 +102,7 @@ $this->title = 'Городская спортивная лига';
                     <div class="card">
                         <img src="img/cards/sorevVidsporta8.jpg" class="card-img-top" alt="Image 8">
                         <div class="card-body">
-                            <p class="card-text">Перечень соревнований в сооружениях и виду спорта</p>
+                            <p class="card-text">Перечень мероприятий по сооружениям</p>
                         </div>
                     </div>
                 </a>
@@ -110,7 +113,7 @@ $this->title = 'Городская спортивная лига';
                     <div class="card">
                         <img src="img/cards/clubs9.webp" class="card-img-top" alt="Image 9">
                         <div class="card-body">
-                            <p class="card-text">Перечень клубов и участников соревнований по периоду</p>
+                            <p class="card-text">Активность клубов</p>
                         </div>
                     </div>
                 </a>
@@ -121,7 +124,7 @@ $this->title = 'Городская спортивная лига';
                     <div class="card">
                         <img src="img/cards/treners10.jpg" class="card-img-top" alt="Image 10">
                         <div class="card-body">
-                            <p class="card-text">Список тренеров по виду спорта</p>
+                            <p class="card-text">Тренеры (вид спорта)</p>
                         </div>
                     </div>
                 </a>
@@ -132,7 +135,7 @@ $this->title = 'Городская спортивная лига';
                     <div class="card">
                         <img src="img/cards/otst11.jpg" class="card-img-top" alt="Image 11">
                         <div class="card-body">
-                            <p class="card-text">Список спортсменов не участвовавших в соревах по периоду</p>
+                            <p class="card-text">Неучаствующие атлеты</p>
                         </div>
                     </div>
                 </a>
@@ -143,7 +146,7 @@ $this->title = 'Городская спортивная лига';
                     <div class="card">
                         <img src="img/cards/orgs12.webp" class="card-img-top" alt="Image 12">
                         <div class="card-body">
-                            <p class="card-text">Список организаторов по периоду</p>
+                            <p class="card-text">Активность организаторов</p>
                         </div>
                     </div>
                 </a>
@@ -154,7 +157,7 @@ $this->title = 'Городская спортивная лига';
                     <div class="card">
                         <img src="img/cards/sooryzheniya13.webp" class="card-img-top" alt="Image 13">
                         <div class="card-body">
-                            <p class="card-text">Список сооружений по периоду</p>
+                            <p class="card-text">Арены и события</p>
                         </div>
                     </div>
                 </a>
