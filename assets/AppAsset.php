@@ -25,7 +25,6 @@ class AppAsset extends AssetBundle
         'css/about.css',
         'css/cards.css',
         'css/logo.css',
-        'css/searchTable.css',
         
         'assets/vendors/bootstrap/css/bootstrap.min.css',
         'assets/vendors/bootstrap-select/bootstrap-select.min.css',
@@ -42,6 +41,9 @@ class AppAsset extends AssetBundle
         'assets/vendors/owl-carousel/assets/owl.carousel.min.css',
         'assets/vendors/owl-carousel/assets/owl.theme.default.min.css',
         'assets/css/nisoz.css',
+
+        'css/searchTable.css',
+
     ];
     public $js = [
         'js/site.js',
