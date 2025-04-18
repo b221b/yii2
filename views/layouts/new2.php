@@ -96,101 +96,84 @@ $this->registerLinkTag(['rel' => 'stylesheet', 'href' => 'https://fonts.googleap
         </section><!-- /.topbar-header -->
 
         <header class="main-header">
-
             <?php
             NavBar::begin([
-                // 'brandLabel' => Yii::$app->name,
-                // 'brandUrl' => Yii::$app->homeUrl,
                 'options' => [
-                    'class' => 'main-menu navbar-expand fixed-top', // bg-success
+                    'class' => 'main-menu navbar-expand fixed-top',
                 ],
             ]);
             ?>
 
-            <div class="container-fluid">
-
-                <div class="main-menu__logo">
-
-                    <!-- <a href="<?= Yii::$app->homeUrl ?>" class="main-menu__logo">
-                        <img src="<?= Url::to('@web/assets/images/logo-light3.png') ?>" alt="nisoz" width="70">
-                    </a> -->
-
+            <div class="container-fluid d-flex align-items-center">
+                <!-- Логотип слева с отступом -->
+                <div class="main-menu__logo me-4">
                     <a href="<?= Yii::$app->homeUrl ?>" class="logo">
                         SportOrg
                     </a>
+                </div>
 
-                </div><!-- /.main-menu__logo -->
+                <!-- Поиск по центру с flex-grow -->
+                <div class="flex-grow-1 mx-4" style="max-width: 600px;">
+                    <div class="jumbotron text-center bg-transparent mt-5 mb-5">
+                        <?= \app\widgets\TableSearchWidget::widget() ?>
+                    </div>
+                </div>
 
-                <!-- первый вариант бараStart -->
-
+                <!-- Навигация справа с запретом переноса -->
                 <div class="main-menu__nav">
                     <?= Nav::widget([
-                        'options' => ['class' => 'main-menu__list'], //navbar-nav
+                        'options' => [
+                            'class' => 'main-menu__list navbar-nav flex-row',
+                            'style' => 'flex-wrap: nowrap;'
+                        ],
+                        'dropdownClass' => \yii\bootstrap5\Dropdown::class,
                         'items' => [
-
-                            // ['label' => 'Домой', 'url' => ['/site/index']],
-                            // ['label' => 'О нас', 'url' => ['/site/about']],
-                            // ['label' => 'Контакты', 'url' => ['/site/contact']],
-                            // ['label' => 'Админка', 'url' => ['/admin']],
-                            // [
-                            //     'label' => 'Запросы',
-                            //     'items' => [
-                            //         ['label' => '1) Спортивные сооружения указанного типа', 'url' => ['/structure/index']],
-                            //         ['label' => '2) Спортсмены для вида спорта и разряда', 'url' => ['/sportsmens/index']],
-                            //         ['label' => '3) Спортсмены для тренеров и разряд', 'url' => ['/sportsmen-treners/index']],
-                            //         ['label' => '4) Спортсмены и виды спорта', 'url' => ['/sportsmen-vid-sporta/index']],
-                            //         // ['label' => '5) Тренеры для спортсмена (донт ворк)', 'url' => ['/treners-sportsmens/index']],
-                            //         ['label' => '6) Перечень соревнований по периоду и организатору', 'url' => ['/sorevnovaniya-org/index']],
-                            //         ['label' => '7) Перечен призеров', 'url' => ['/prizer/index']],
-                            //         ['label' => '8) Перечень соревнований в сооружениях и виду спорта', 'url' => ['/sorevnovaniya-structure/index']],
-                            //         ['label' => '9) Перечень клубов и участников соревнований по периоду', 'url' => ['/sport-club/index']],
-                            //         ['label' => '10) Список тренеров по виду спорта', 'url' => ['/treners/index']],
-                            //         ['label' => '11) Список спортсменов не участвовавших в соревах по периоду', 'url' => ['/sportsmen-sorevnovaniya/index']],
-                            //         ['label' => '12) Список организаторов по периоду', 'url' => ['/org/index']],
-                            //         ['label' => '13) Список сооружений по периоду', 'url' => ['/sport/index']],
-                            //     ],
-                            // ],
-                            // [
-                            //     'label' => '1,3 лабы',
-                            //     'items' => [
-                            //         ['label' => '1 laba - Sorev', 'url' => ['/sorevnovaniya/index']],
-                            //         ['label' => '3 laba - SorevCRUD', 'url' => ['/sorevnovaniya-c-r-u-d/index']],
-                            //     ],
-                            // ],
-
-                            ['label' => 'Соревнования', 'url' => ['/competitions/index']],
-                            // ['label' => 'Личный кабинет', 'url' => ['/user/index']],
+                            [
+                                'label' => 'Соревнования',
+                                'url' => ['/competitions/index'],
+                                'linkOptions' => ['class' => 'nav-link mx-1']
+                            ],
 
                             Yii::$app->user->isGuest
-                                ? ['label' => 'Личный кабинет', 'url' => ['/site/login']]
+                                ? [
+                                    'label' => 'Личный кабинет',
+                                    'url' => ['/site/login'],
+                                    'linkOptions' => ['class' => 'nav-link mx-1']
+                                ]
                                 : [
                                     'label' => 'Личный кабинет',
                                     'url' => ['/user/index'],
+                                    'linkOptions' => ['class' => 'nav-link mx-1']
                                 ],
 
                             Yii::$app->user->isGuest
-                                ? ['label' => 'Войти', 'url' => ['/site/login']]
+                                ? [
+                                    'label' => 'Войти',
+                                    'url' => ['/site/login'],
+                                    'linkOptions' => ['class' => 'nav-link mx-1']
+                                ]
                                 : [
                                     'label' => 'Выйти (' . Yii::$app->user->identity->username . ')',
                                     'url' => ['/site/logout'],
-                                    'linkOptions' => ['data-method' => 'post']
+                                    'linkOptions' => [
+                                        'class' => 'nav-link mx-1',
+                                        'data-method' => 'post'
+                                    ]
                                 ],
                         ],
                     ]); ?>
                 </div>
 
-                <!-- первый вариант бараEND -->
-
-                <div class="main-menu__right">
+                <!-- Мобильное меню -->
+                <div class="main-menu__right ms-2">
                     <a href="#" class="main-menu__toggler mobile-nav__toggler">
                         <i class="fa fa-bars"></i>
-                    </a><!-- /.mobile menu btn -->
-                </div><!-- /.main-menu__right -->
-            </div><!-- /.container -->
+                    </a>
+                </div>
+            </div>
 
             <?php NavBar::end(); ?>
-
-        </header><!-- /.main-header -->
+        </header>
 
         <section class="page-header">
             <div class="page-header__bg"></div>
