@@ -125,7 +125,7 @@ $this->registerLinkTag(['rel' => 'stylesheet', 'href' => 'https://fonts.googleap
 
                 <div class="main-menu__nav">
                     <?= Nav::widget([
-                        'options' => ['class' => 'main-menu__list navbar-nav'],
+                        'options' => ['class' => 'main-menu__list'], //navbar-nav
                         'items' => [
 
                             // ['label' => 'Домой', 'url' => ['/site/index']],
