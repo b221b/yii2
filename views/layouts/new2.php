@@ -35,6 +35,8 @@ $this->registerLinkTag([
 $this->registerLinkTag(['rel' => 'preconnect', 'href' => 'https://fonts.googleapis.com']);
 $this->registerLinkTag(['rel' => 'preconnect', 'href' => 'https://fonts.gstatic.com', 'crossorigin' => 'true']);
 $this->registerLinkTag(['rel' => 'stylesheet', 'href' => 'https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Manrope:wght@300;400;500;600;700;800&display=swap']);
+
+$this->registerJsFile('@web/js/searchTable.js', ['depends' => [\yii\web\JqueryAsset::class]]);
 ?>
 
 <?php $this->beginPage() ?>
@@ -123,7 +125,7 @@ $this->registerLinkTag(['rel' => 'stylesheet', 'href' => 'https://fonts.googleap
                 <div class="main-menu__nav">
                     <?= Nav::widget([
                         'options' => [
-                            'class' => 'main-menu__list navbar-nav flex-row',
+                            'class' => 'main-menu__list flex-row', //navbar-nav
                             'style' => 'flex-wrap: nowrap;'
                         ],
                         'dropdownClass' => \yii\bootstrap5\Dropdown::class,
@@ -136,12 +138,12 @@ $this->registerLinkTag(['rel' => 'stylesheet', 'href' => 'https://fonts.googleap
 
                             Yii::$app->user->isGuest
                                 ? [
-                                    'label' => 'Личный кабинет',
+                                    'label' => 'Профиль',
                                     'url' => ['/site/login'],
                                     'linkOptions' => ['class' => 'nav-link mx-1']
                                 ]
                                 : [
-                                    'label' => 'Личный кабинет',
+                                    'label' => 'Профиль',
                                     'url' => ['/user/index'],
                                     'linkOptions' => ['class' => 'nav-link mx-1']
                                 ],

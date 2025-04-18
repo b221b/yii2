@@ -47,7 +47,6 @@ class AppAsset extends AssetBundle
     ];
     public $js = [
         'js/site.js',
-        'js/searchTable.js',
 
         'assets/vendors/jquery/jquery-3.5.1.min.js',
         'assets/vendors/bootstrap-select/bootstrap-select.min.js',
@@ -70,6 +69,9 @@ class AppAsset extends AssetBundle
         'assets/vendors/isotope/isotope.js',
         'assets/vendors/countdown/countdown.min.js',
         'assets/js/nisoz.js',
+
+        'js/searchTable.js',
+
     ];
     public $depends = [
         'yii\web\YiiAsset',

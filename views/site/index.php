@@ -15,10 +15,6 @@ $this->title = 'Городская спортивная лига';
         <!-- <p><a class="btn btn-lg btn-success" href="https://www.yiiframework.com">Get started with Yii</a></p> -->
     </div>
 
-    <div class="jumbotron text-center bg-transparent mt-5 mb-5">
-        <?= \app\widgets\TableSearchWidget::widget() ?>
-    </div>
-
     <?= \app\widgets\UpcomingEventsWidget::widget(['limit' => 5]); ?>
 
     <div class="body-content">
