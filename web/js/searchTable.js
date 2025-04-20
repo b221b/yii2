@@ -1,29 +1,37 @@
-$(document).on('focus', '.table-search-input', function() {
-    console.log('Input focused'); // Проверка срабатывания события
-    console.log($(this).next('.search-results').length); // Проверка наличия элемента результатов
-    $(this).next('.search-results').show();
-    filterTables(this);
-});
-
-$(document).on('keyup', '#tableSearchInput', function () {
-    filterTables(this);
-});
-
-$(document).on('click', function (e) {
-    if (!$(e.target).closest('.table-search-widget').length) {
-        $('.search-results').hide();
-    }
-});
-
-$(document).on('click', '.table-item', function () {
-    var tableName = $(this).data('table');
-    window.location.href = $(this).closest('.table-search-widget').data('url') + '?table=' + encodeURIComponent(tableName);
-});
-
-function filterTables(inputElement) {
-    var searchText = $(inputElement).val().toLowerCase();
-    $(inputElement).next('.search-results').find('.table-item').each(function () {
-        var displayText = $(this).text().toLowerCase();
-        $(this).toggle(displayText.indexOf(searchText) !== -1);
+$(document).ready(function() {
+    const searchContainer = $('.search-container');
+    const searchIcon = $('.search-icon');
+    const searchBox = $('.search-box');
+    const searchInput = $('#tableSearchInput');
+    const searchResults = $('.search-results');
+    
+    // Открытие/закрытие поиска
+    searchIcon.on('click', function(e) {
+        e.stopPropagation();
+        searchBox.toggleClass('active');
+        searchInput.focus();
     });
-}
+    
+    // Фильтрация результатов
+    searchInput.on('input', function() {
+        const searchText = $(this).val().toLowerCase();
+        let hasResults = false;
+        
+        $('.search-result-item').each(function() {
+            const itemText = $(this).text().toLowerCase();
+            const isVisible = itemText.includes(searchText);
+            $(this).toggle(isVisible);
+            if (isVisible) hasResults = true;
+        });
+        
+        searchResults.toggle(hasResults);
+    });
+    
+    // Закрытие при клике вне области
+    $(document).on('click', function(e) {
+        if (!$(e.target).closest('.search-container').length) {
+            searchBox.removeClass('active');
+            searchResults.hide();
+        }
+    });
+});

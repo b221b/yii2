@@ -1,26 +1,27 @@
 <?php
-
 use yii\helpers\Url;
 use yii\helpers\Html;
-use yii\web\JsExpression;
-
 ?>
 
-<div class="table-search-widget" data-url="<?= Url::to(['site/table-data']) ?>">
-    <?= Html::textInput('table_search', '', [
-        'class' => 'form-control table-search-input',
-        'id' => 'tableSearchInput',
-        'placeholder' => 'Поиск ...',
-        'autocomplete' => 'off',
-    ]) ?>
-
-    <div class="search-results" style="display: none;">
-        <ul class="list-group">
+<div class="search-container">
+    <div class="search-icon">
+        <i class="fas fa-search"></i>
+    </div>
+    
+    <div class="search-box">
+        <input type="text" 
+               class="form-control search-input" 
+               placeholder="Поиск таблиц..."
+               autocomplete="off"
+               id="tableSearchInput">
+        
+        <div class="search-results">
             <?php foreach ($tables as $original => $display): ?>
-                <li class="list-group-item table-item" data-table="<?= Html::encode($original) ?>">
-                    <?= Html::encode($display) ?>
-                </li>
+                <a href="<?= Url::to(['site/table-data', 'table' => $original]) ?>" 
+                   class="search-result-item">
+                   <?= Html::encode($display) ?>
+                </a>
             <?php endforeach; ?>
-        </ul>
+        </div>
     </div>
 </div>
