@@ -1,37 +1,60 @@
 $(document).ready(function() {
-    const searchContainer = $('.search-container');
-    const searchIcon = $('.search-icon');
-    const searchBox = $('.search-box');
-    const searchInput = $('#tableSearchInput');
-    const searchResults = $('.search-results');
-    
-    // Открытие/закрытие поиска
-    searchIcon.on('click', function(e) {
-        e.stopPropagation();
-        searchBox.toggleClass('active');
-        searchInput.focus();
+    // Обработчик клика по иконке лупы
+    $('.search-icon').on('click', function() {
+        $('.search-box').toggleClass('visible');
+        if ($('.search-box').hasClass('visible')) {
+            setTimeout(function() {
+                $('#tableSearchInput').focus();
+            }, 400); // Задержка для плавного появления
+        }
     });
     
-    // Фильтрация результатов
-    searchInput.on('input', function() {
+    // Обработчик ввода текста в поисковую строку
+    $('#tableSearchInput').on('input', function() {
         const searchText = $(this).val().toLowerCase();
-        let hasResults = false;
+        const $results = $('.search-results');
         
-        $('.search-result-item').each(function() {
-            const itemText = $(this).text().toLowerCase();
-            const isVisible = itemText.includes(searchText);
-            $(this).toggle(isVisible);
-            if (isVisible) hasResults = true;
-        });
-        
-        searchResults.toggle(hasResults);
+        if (searchText.length > 0) {
+            // Фильтрация результатов
+            let hasResults = false;
+            $('.search-result-item').each(function() {
+                const itemText = $(this).text().toLowerCase();
+                if (itemText.includes(searchText)) {
+                    $(this).show();
+                    hasResults = true;
+                } else {
+                    $(this).hide();
+                }
+            });
+            
+            if (hasResults) {
+                $results.stop(true, true).fadeIn(200);
+            } else {
+                $results.stop(true, true).fadeOut(200);
+            }
+        } else {
+            $results.stop(true, true).fadeOut(200);
+        }
     });
     
-    // Закрытие при клике вне области
+    // Скрытие результатов при клике вне области поиска
     $(document).on('click', function(e) {
         if (!$(e.target).closest('.search-container').length) {
-            searchBox.removeClass('active');
-            searchResults.hide();
+            $('.search-results').fadeOut(200);
+            if ($('.search-box').hasClass('visible') && $('#tableSearchInput').val() === '') {
+                $('.search-box').removeClass('visible');
+            }
+        }
+    });
+    
+    // Закрытие поиска при нажатии ESC
+    $(document).on('keydown', function(e) {
+        if (e.key === 'Escape') {
+            $('.search-results').fadeOut(200);
+            if ($('#tableSearchInput').val() === '') {
+                $('.search-box').removeClass('visible');
+            }
+            $('#tableSearchInput').val('');
         }
     });
 });
