@@ -19,20 +19,21 @@ class Competitions extends ActiveRecord
     public static function getCachedCompetitions()
     {
         $cache = \Yii::$app->cache;
-        $cacheKey = 'competitions_data_' . date('Y-m-d');
+        $cacheKey = 'competitions_data_' . date('Y-m-d'); // Ключ кеша
 
-        if ($data = $cache->get($cacheKey)) {
-            var_dump('From cache');
-            return $data;
+        $data = $cache->get($cacheKey);
+
+        if ($data === false) {
+            // Если данных нет в кеше, получаем из БД
+            $data = self::find()
+                ->with(['structure', 'kindOfSport', 'sportsmanPrizewinner.sportsman'])
+                ->orderBy('name')
+                ->all();
+
+            // Сохраняем в кеш
+            $cache->set($cacheKey, $data, self::CACHE_DURATION);
         }
 
-        var_dump('From DB');
-        $data = self::find()
-            ->with(['structure', 'kindOfSport', 'sportsmanPrizewinner.sportsman'])
-            ->orderBy('name')
-            ->all();
-
-        $cache->set($cacheKey, $data, self::CACHE_DURATION);
         return $data;
     }
 
