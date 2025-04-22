@@ -11,7 +11,7 @@ use yii\helpers\Html;
     <div class="search-box">
         <input type="text" 
                class="form-control search-input" 
-               placeholder="Поиск таблиц..."
+               placeholder="Поиск ..."
                autocomplete="off"
                id="tableSearchInput">
         
