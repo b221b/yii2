@@ -23,6 +23,6 @@ class SportsmanPrizewinner extends ActiveRecord
 
     public function getSportsmanPrizewinner()
     {
-        return $this->hasMany(SportsmanPrizewinner::class, ['id_competition' => 'id']);
+        return $this->hasMany(SportsmanPrizewinner::class, ['id_competitions' => 'id']);
     }
 }

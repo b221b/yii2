@@ -55,7 +55,7 @@ class CompetitionCRUDController extends Controller
             foreach ($prizers as $prizerId => $sportsmanId) {
                 if ($sportsmanId) {
                     $sportsmenPrizer = new SportsmanPrizewinner();
-                    $sportsmenPrizer->id_competition = $model->id;
+                    $sportsmenPrizer->id_competitions = $model->id;
                     $sportsmenPrizer->id_prizewinner = $prizerId;
                     $sportsmenPrizer->id_sportsman = $sportsmanId;
                     $sportsmenPrizer->save();
@@ -74,7 +74,7 @@ class CompetitionCRUDController extends Controller
         $model = $this->findModel($id);
 
         // Получаем существующих призеров
-        $existingPrizers = SportsmanPrizewinner::find()->where(['id_competition' => $model->id])->all();
+        $existingPrizers = SportsmanPrizewinner::find()->where(['id_competitions' => $model->id])->all();
         $existingPrizersMap = [];
 
         foreach ($existingPrizers as $prizer) {
@@ -102,11 +102,11 @@ class CompetitionCRUDController extends Controller
                 }
 
                 // Очистка старых записей
-                SportsmanPrizewinner::deleteAll(['id_competition' => $model->id]);
+                SportsmanPrizewinner::deleteAll(['id_competitions' => $model->id]);
                 foreach ($prizers as $prizerId => $sportsmanId) {
                     if ($sportsmanId) {
                         $sportsmenPrizer = new SportsmanPrizewinner();
-                        $sportsmenPrizer->id_competition = $model->id;
+                        $sportsmenPrizer->id_competitions = $model->id;
                         $sportsmenPrizer->id_prizewinner = $prizerId;
                         $sportsmenPrizer->id_sportsman = $sportsmanId;
                         $sportsmenPrizer->save();
@@ -130,7 +130,7 @@ class CompetitionCRUDController extends Controller
         $model = $this->findModel($id);
 
         // Удаляем связанные записи из таблицы sportsmen_prizer
-        SportsmanPrizewinner::deleteAll(['id_competition' => $model->id]);
+        SportsmanPrizewinner::deleteAll(['id_competitions' => $model->id]);
 
         // Удаляем запись из sorevnovaniya
         $model->delete();

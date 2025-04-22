@@ -6,9 +6,55 @@ use yii\db\ActiveRecord;
 
 class Competitions extends ActiveRecord
 {
+    const CACHE_DURATION = 1800; // 30 минут
+
     public static function tableName()
     {
         return 'competitions';
+    }
+
+    /**
+     * Получает закешированные данные соревнований
+     */
+    public static function getCachedCompetitions()
+    {
+        $cache = \Yii::$app->cache;
+        $cacheKey = 'competitions_data_' . date('Y-m-d');
+
+        if ($data = $cache->get($cacheKey)) {
+            var_dump('From cache');
+            return $data;
+        }
+
+        var_dump('From DB');
+        $data = self::find()
+            ->with(['structure', 'kindOfSport', 'sportsmanPrizewinner.sportsman'])
+            ->orderBy('name')
+            ->all();
+
+        $cache->set($cacheKey, $data, self::CACHE_DURATION);
+        return $data;
+    }
+
+    /**
+     * Очищает кеш соревнований
+     */
+    public static function clearCompetitionsCache()
+    {
+        $cacheKey = 'competitions_data_' . date('Y-m-d');
+        \Yii::$app->cache->delete($cacheKey);
+    }
+
+    public function afterSave($insert, $changedAttributes)
+    {
+        parent::afterSave($insert, $changedAttributes);
+        self::clearCompetitionsCache(); // Очищаем кеш при сохранении
+    }
+
+    public function afterDelete()
+    {
+        parent::afterDelete();
+        self::clearCompetitionsCache(); // Очищаем кеш при удалении
     }
 
     public function getOrganisationsCompetitions()
