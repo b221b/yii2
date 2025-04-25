@@ -19,17 +19,6 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 
-    <script>
-        function toggleFilters() {
-            const filters = document.getElementById('filtersCollapse');
-            if (filters.style.display === 'none') {
-                filters.style.display = 'block';
-            } else {
-                filters.style.display = 'none';
-            }
-        }
-    </script>
-
     <div class="collapse" id="filtersCollapse" style="display: none;">
         <div class="card card-body mb-3">
             <?php $form = \yii\widgets\ActiveForm::begin([
@@ -77,36 +66,6 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php \yii\widgets\ActiveForm::end(); ?>
         </div>
     </div>
-
-    <style>
-        .sorevnovaniya-index {
-            padding: 20px;
-            background-color: #f8f9fa;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .table {
-            font-size: 0.95rem;
-        }
-
-        .table th {
-            white-space: nowrap;
-        }
-
-        .table-responsive {
-            overflow-x: auto;
-        }
-
-        .pagination {
-            margin-top: 20px;
-        }
-
-        /* Стили для кнопки фильтра */
-        .filter-btn {
-            margin-bottom: 15px;
-        }
-    </style>
 
     <div class="table-responsive">
         <table class="table table-striped table-bordered table-hover">

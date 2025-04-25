@@ -1,0 +1,26 @@
+.sorevnovaniya-index {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.table {
+    font-size: 0.95rem;
+}
+
+.table th {
+    white-space: nowrap;
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+.pagination {
+    margin-top: 20px;
+}
+
+.filter-btn {
+    margin-bottom: 15px;
+}

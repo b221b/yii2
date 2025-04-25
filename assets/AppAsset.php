@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @link https://www.yiiframework.com/
  * @copyright Copyright (c) 2008 Yii Software LLC
@@ -21,11 +22,10 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/site.css',
-        'css/sorev.css',
         'css/about.css',
         'css/cards.css',
         'css/logo.css',
-        
+
         'assets/vendors/bootstrap/css/bootstrap.min.css',
         'assets/vendors/bootstrap-select/bootstrap-select.min.css',
         'assets/vendors/jquery-ui/jquery-ui.css',
@@ -43,6 +43,7 @@ class AppAsset extends AssetBundle
         'assets/css/nisoz.css',
 
         'css/searchTable.css',
+        'css/competitions.css',
 
     ];
     public $js = [
@@ -71,7 +72,7 @@ class AppAsset extends AssetBundle
         'assets/js/nisoz.js',
 
         'js/searchTable.js',
-
+        'js/competitions.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

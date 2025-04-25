@@ -13,7 +13,7 @@ class CompetitionsController extends Controller
 {
     public function actionIndex()
     {
-        $model = new Competitions(); // Используем основную модель
+        $model = new Competitions(); 
 
         $query = Competitions::find()
             ->with(['structure', 'kindOfSport', 'sportsmanPrizewinner.sportsman'])
