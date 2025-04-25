@@ -14,6 +14,9 @@ if ($usersDataProvider && count($usersDataProvider->models) > 0) {
         if (!isset($groupedUsers[$userId])) {
             $groupedUsers[$userId] = [
                 'username' => $user['username'],
+                'avatar' => $user['avatar'] ?? null, // предполагаем, что есть поле avatar
+                'phone' => $user['phone'] ?? null, // основной телефон пользователя
+                'email' => $user['email'] ?? null, // основной email пользователя
                 'contacts' => []
             ];
         }
@@ -28,85 +31,150 @@ if ($usersDataProvider && count($usersDataProvider->models) > 0) {
 }
 ?>
 
-<?php if (!empty($groupedUsers)): ?>
-    <div class="row justify-content-center">
+<div class="profile-container">
+    <?php if (!empty($groupedUsers)): ?>
         <?php foreach ($groupedUsers as $userId => $userData): ?>
-            <div class="col-lg-8 mb-4">
-                <div class="card h-100 shadow-sm">
-                    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
-                        <h5 class="card-title mb-0"><?= Html::encode($userData['username']) ?></h5>
-                        <?= Html::a('Добавить контакт', ['create', 'user_id' => $userId], [
-                            'class' => 'btn btn-sm btn-light'
-                        ]) ?>
+            <div class="user-card">
+                <div class="user-header">
+                    <h2 class="user-title">Данные пользователя</h2>
+                </div>
+
+                <div class="user-profile">
+                    <div class="profile-section">
+                        <div class="profile-info">
+                            <div class="avatar-container">
+                                <?php if (!empty($userData['avatar'])): ?>
+                                    <img src="<?= Html::encode($userData['avatar']) ?>" alt="Аватар" class="avatar-img">
+                                <?php else: ?>
+                                    <div class="avatar-placeholder">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+
+                            <div class="user-details">
+                                <div class="detail-row">
+                                    <div class="detail-label">Логин:</div>
+                                    <div class="detail-value"><?= Html::encode($userData['username']) ?></div>
+                                </div>
+
+                                <!-- <?php if (!empty($userData['phone_number'])): ?>
+                                    <div class="detail-row">
+                                        <div class="detail-label">Телефон:</div>
+                                        <div class="detail-value"><?= Html::encode($userData['phone_number']) ?></div>
+                                    </div>
+                                <?php endif; ?>
+
+                                <?php if (!empty($userData['email'])): ?>
+                                    <div class="detail-row">
+                                        <div class="detail-label">Email:</div>
+                                        <div class="detail-value"><?= Html::encode($userData['email']) ?></div>
+                                    </div>
+                                <?php endif; ?> -->
+
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="card-body">
-                        <?php if (empty($userData['contacts'])): ?>
-                            <div class="alert alert-info mb-0">Нет контактных данных</div>
-                        <?php else: ?>
-                            <div class="row">
-                                <?php foreach ($userData['contacts'] as $contact): ?>
-                                    <div class="col-md-6 mb-3">
-                                        <div class="contact-item h-100 p-3 border rounded position-relative bg-light">
-                                            <button type="button" class="btn-close position-absolute top-0 end-0 m-2"
-                                                onclick="if(confirm('Удалить этот контакт?')) {
-                                                    window.location.href='<?= \yii\helpers\Url::to(['delete', 'id' => $contact['info_id']]) ?>'
-                                                }"></button>
+                    <div class="profile-section">
+                        <h3 class="profile-section-title">Контактные данные</h3>
 
-                                            <div class="d-flex align-items-center mb-2">
-                                                <i class="fas fa-user-circle fa-2x text-muted me-3"></i>
-                                                <div>
-                                                    <h6 class="mb-0">Контакт #<?= $contact['info_id'] ?></h6>
+                        <?php if (empty($userData['contacts'])): ?>
+                            <div class="empty-contacts">Нет дополнительных контактных данных</div>
+                        <?php else: ?>
+                            <div class="contact-grid">
+                                <?php foreach ($userData['contacts'] as $contact): ?>
+                                    <div class="contact-card">
+                                        <button type="button" class="delete-btn btn btn-sm btn-link text-danger"
+                                            onclick="if(confirm('Удалить этот контакт?')) {
+                                                window.location.href='<?= \yii\helpers\Url::to(['delete', 'id' => $contact['info_id']]) ?>'
+                                            }">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+
+                                        <div class="contact-field">
+                                            <div class="contact-icon">
+                                                <i class="fas fa-id-card"></i>
+                                            </div>
+                                            <div class="contact-value">
+                                                <strong>Контакт #<?= $contact['info_id'] ?></strong>
+                                            </div>
+                                        </div>
+
+                                        <?php if (!empty($contact['phone_number'])): ?>
+                                            <div class="contact-field">
+                                                <div class="contact-icon">
+                                                    <i class="fas fa-phone"></i>
+                                                </div>
+                                                <div class="contact-value">
+                                                    <?= Html::encode($contact['phone_number']) ?>
                                                 </div>
                                             </div>
+                                        <?php endif; ?>
 
-                                            <div class="ms-4 ps-3">
-                                                <p class="card-text mb-2">
-                                                    <i class="fas fa-phone text-muted me-2"></i>
-                                                    <?= $contact['phone_number'] ? Html::encode($contact['phone_number']) : '<span class="text-muted">Не указан</span>' ?>
-                                                </p>
-                                                <p class="card-text mb-3">
-                                                    <i class="fas fa-envelope text-muted me-2"></i>
-                                                    <?= $contact['email'] ? Html::encode($contact['email']) : '<span class="text-muted">Не указан</span>' ?>
-                                                </p>
-
-                                                <?= Html::a(
-                                                    '<i class="fas fa-edit me-1"></i> Редактировать',
-                                                    ['update', 'id' => $contact['info_id']],
-                                                    [
-                                                        'class' => 'btn btn-sm btn-outline-primary w-100'
-                                                    ]
-                                                ) ?>
+                                        <?php if (!empty($contact['email'])): ?>
+                                            <div class="contact-field">
+                                                <div class="contact-icon">
+                                                    <i class="fas fa-envelope"></i>
+                                                </div>
+                                                <div class="contact-value">
+                                                    <?= Html::encode($contact['email']) ?>
+                                                </div>
                                             </div>
+                                        <?php endif; ?>
+
+                                        <div class="action-buttons">
+                                            <?= Html::a(
+                                                '<i class="fas fa-edit"></i> Редактировать',
+                                                ['update', 'id' => $contact['info_id']],
+                                                ['class' => 'btn btn-sm btn-primary flex-grow-1']
+                                            ) ?>
                                         </div>
                                     </div>
                                 <?php endforeach; ?>
                             </div>
                         <?php endif; ?>
-                    </div>
 
-                    <div class="card-footer bg-transparent">
-                        <div class="main-menu__nav">
-                            <?= Nav::widget([
-                                'options' => ['class' => 'main-menu__list justify-content-end'],
-                                'items' => [
-                                    Yii::$app->user->isGuest
-                                        ? ['label' => 'Войти', 'url' => ['/site/login']]
-                                        : [
-                                            'label' => 'Выйти (' . Yii::$app->user->identity->username . ')',
-                                            'url' => ['/site/logout'],
-                                            'linkOptions' => ['data-method' => 'post']
-                                        ],
-                                ],
-                            ]); ?>
-                        </div>
+                        <?= Html::a(
+                            '<i class="fas fa-plus"></i> Добавить контакт',
+                            ['create', 'user_id' => $userId],
+                            ['class' => 'btn btn-primary add-contact-btn']
+                        ) ?>
                     </div>
                 </div>
             </div>
         <?php endforeach; ?>
+    <?php else: ?>
+        <div class="alert alert-warning">
+            <i class="fas fa-exclamation-circle"></i> Пользователи не найдены
+        </div>
+    <?php endif; ?>
+
+    <div class="text-end mt-3">
+        <?= Nav::widget([
+            'options' => ['class' => 'd-inline-flex'],
+            'items' => [
+                Yii::$app->user->isGuest
+                                ? [
+                                    'label' => 'Войти',
+                                    'url' => ['/site/login'],
+                                    'linkOptions' => ['class' => 'nav-link mx-1']
+                                ]
+                                : [
+                                    'label' => '<span class="nav-link-text">Выйти (' . Yii::$app->user->identity->username . ')</span>',
+                                    'url' => '#',
+                                    'encode' => false,
+                                    'linkOptions' => [
+                                        'class' => 'nav-link mx-1',
+                                        'onclick' => 'event.preventDefault(); document.getElementById(\'logout-form\').submit();'
+                                    ]
+                                ],
+                            '<li class="d-none">'
+                                . Html::beginForm(['/site/logout'], 'post', ['id' => 'logout-form'])
+                                . Html::csrfMetaTags()
+                                . Html::endForm()
+                                . '</li>'
+            ],
+        ]); ?>
     </div>
-<?php else: ?>
-    <div class="alert alert-warning">
-        <i class="fas fa-exclamation-circle"></i> Пользователи не найдены
-    </div>
-<?php endif; ?>
+</div>
