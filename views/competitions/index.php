@@ -71,13 +71,6 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 
-    <style>
-        /* .has-filter {
-            border-color: #28a745 !important;
-            background-color: #f8fff8 !important;
-        } */
-    </style>
-
     <div class="table-responsive">
         <table class="table table-striped table-bordered table-hover" style="table-layout: fixed;">
             <thead class="thead-dark">
@@ -89,34 +82,6 @@ $this->params['breadcrumbs'][] = $this->title;
                     <th class="<?= in_array('prizewinners', $activeFilters) ? 'active-filter' : '' ?>">Призеры</th>
                 </tr>
             </thead>
-
-            <style>
-                /* .active-filter {
-                    background-color: #d4edda !important;
-                    color: #155724 !important;
-                    font-weight: bold;
-                    position: relative;
-                }
-
-                .active-filter:after {
-                    content: "✓";
-                    position: absolute;
-                    right: 10px;
-                    top: 50%;
-                    transform: translateY(-50%);
-                    font-size: 14px;
-                }
-
-                #filtersCollapse .form-control:focus {
-                    border-color: #28a745;
-                    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
-                }
-
-                #filtersCollapse select option:checked {
-                    background-color: #d4edda;
-                    color: #155724;
-                } */
-            </style>
 
             <tbody>
                 <?php foreach ($sorevnovaniya as $sorevnovanie): ?>
