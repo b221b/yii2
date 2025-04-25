@@ -36,6 +36,7 @@ $this->registerLinkTag(['rel' => 'preconnect', 'href' => 'https://fonts.googleap
 $this->registerLinkTag(['rel' => 'preconnect', 'href' => 'https://fonts.gstatic.com', 'crossorigin' => 'true']);
 $this->registerLinkTag(['rel' => 'stylesheet', 'href' => 'https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Manrope:wght@300;400;500;600;700;800&display=swap']);
 
+$this->registerJsFile('@web/js/yii.js', ['depends' => [\yii\web\JqueryAsset::class]]);
 $this->registerJsFile('@web/js/searchTable.js', ['depends' => [\yii\web\JqueryAsset::class]]);
 ?>
 
@@ -155,13 +156,19 @@ $this->registerJsFile('@web/js/searchTable.js', ['depends' => [\yii\web\JqueryAs
                                     'linkOptions' => ['class' => 'nav-link mx-1']
                                 ]
                                 : [
-                                    'label' => 'Выйти (' . Yii::$app->user->identity->username . ')',
-                                    'url' => ['/site/logout'],
+                                    'label' => '<span class="nav-link-text">Выйти (' . Yii::$app->user->identity->username . ')</span>',
+                                    'url' => '#',
+                                    'encode' => false,
                                     'linkOptions' => [
                                         'class' => 'nav-link mx-1',
-                                        'data-method' => 'post'
+                                        'onclick' => 'event.preventDefault(); document.getElementById(\'logout-form\').submit();'
                                     ]
                                 ],
+                            '<li class="d-none">'
+                                . Html::beginForm(['/site/logout'], 'post', ['id' => 'logout-form'])
+                                . Html::csrfMetaTags()
+                                . Html::endForm()
+                                . '</li>'
                         ],
                     ]); ?>
                 </div>
