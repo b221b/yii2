@@ -30,12 +30,14 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="col-md-3">
                     <?= $form->field($model, 'name')->textInput([
                         'name' => 'Competitions[name]',
-                        'placeholder' => 'По названию'
+                        'placeholder' => 'По названию',
+                        'class' => 'form-control' . (!empty($model->name) ? ' has-filter' : '')
                     ]) ?>
                 </div>
                 <div class="col-md-3">
                     <?= $form->field($model, 'event_date')->input('date', [
-                        'name' => 'Competitions[event_date]'
+                        'name' => 'Competitions[event_date]',
+                        'class' => 'form-control' . (!empty($model->event_date) ? ' has-filter' : '')
                     ]) ?>
                 </div>
                 <div class="col-md-3">
@@ -43,7 +45,8 @@ $this->params['breadcrumbs'][] = $this->title;
                         \yii\helpers\ArrayHelper::map($structures, 'id', 'name'),
                         [
                             'name' => 'Competitions[id_structure]',
-                            'prompt' => 'Все места'
+                            'prompt' => 'Все места',
+                            'class' => 'form-control' . (!empty($model->id_structure) ? ' has-filter' : '')
                         ]
                     ) ?>
                 </div>
@@ -52,7 +55,8 @@ $this->params['breadcrumbs'][] = $this->title;
                         \yii\helpers\ArrayHelper::map($kindsOfSport, 'id', 'name'),
                         [
                             'name' => 'Competitions[id_kind_of_sport]',
-                            'prompt' => 'Все виды спорта'
+                            'prompt' => 'Все виды спорта',
+                            'class' => 'form-control' . (!empty($model->id_kind_of_sport) ? ' has-filter' : '')
                         ]
                     ) ?>
                 </div>
@@ -67,17 +71,53 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 
+    <style>
+        /* .has-filter {
+            border-color: #28a745 !important;
+            background-color: #f8fff8 !important;
+        } */
+    </style>
+
     <div class="table-responsive">
         <table class="table table-striped table-bordered table-hover" style="table-layout: fixed;">
             <thead class="thead-dark">
                 <tr>
-                    <th>Название</th>
-                    <th>Дата проведения</th>
-                    <th>Место проведения</th>
-                    <th>Вид спорта</th>
-                    <th>Призеры</th>
+                    <th class="<?= in_array('name', $activeFilters) ? 'active-filter' : '' ?>">Название</th>
+                    <th class="<?= in_array('event_date', $activeFilters) ? 'active-filter' : '' ?>">Дата проведения</th>
+                    <th class="<?= in_array('id_structure', $activeFilters) ? 'active-filter' : '' ?>">Место проведения</th>
+                    <th class="<?= in_array('id_kind_of_sport', $activeFilters) ? 'active-filter' : '' ?>">Вид спорта</th>
+                    <th class="<?= in_array('prizewinners', $activeFilters) ? 'active-filter' : '' ?>">Призеры</th>
                 </tr>
             </thead>
+
+            <style>
+                /* .active-filter {
+                    background-color: #d4edda !important;
+                    color: #155724 !important;
+                    font-weight: bold;
+                    position: relative;
+                }
+
+                .active-filter:after {
+                    content: "✓";
+                    position: absolute;
+                    right: 10px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    font-size: 14px;
+                }
+
+                #filtersCollapse .form-control:focus {
+                    border-color: #28a745;
+                    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+                }
+
+                #filtersCollapse select option:checked {
+                    background-color: #d4edda;
+                    color: #155724;
+                } */
+            </style>
+
             <tbody>
                 <?php foreach ($sorevnovaniya as $sorevnovanie): ?>
                     <tr style="cursor: pointer;" onclick="window.location.href='<?= \yii\helpers\Url::to(['view', 'id' => $sorevnovanie->id]) ?>'">

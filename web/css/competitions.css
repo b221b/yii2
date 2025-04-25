@@ -82,3 +82,34 @@ h1 {
 .text-muted {
     color: #6c757d;
 }
+
+.has-filter {
+    border-color: #28a745 !important;
+    background-color: #f8fff8 !important;
+}
+
+.active-filter {
+    background-color: #d4edda !important;
+    color: #155724 !important;
+    font-weight: bold;
+    position: relative;
+}
+
+.active-filter:after {
+    content: "✓";
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+}
+
+#filtersCollapse .form-control:focus {
+    border-color: #28a745;
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+#filtersCollapse select option:checked {
+    background-color: #d4edda;
+    color: #155724;
+}

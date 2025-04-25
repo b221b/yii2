@@ -14,29 +14,40 @@ class CompetitionsController extends Controller
     public function actionIndex()
     {
         $model = new Competitions();
-
         $query = Competitions::find()
-            ->with(['structure', 'kindOfSport', 'sportsmanPrizewinner.sportsman'])
-            ->orderBy('name');
+            ->with(['structure', 'kindOfSport', 'sportsmanPrizewinner.sportsman']);
 
-        // Фильтрация через параметры GET
+        // Массив для хранения активных фильтров
+        $activeFilters = [];
+
         $searchParams = Yii::$app->request->get('Competitions');
         if ($searchParams) {
-            if (!empty($searchParams['name'])) {
-                $query->andFilterWhere(['like', 'name', $searchParams['name']]);
-            }
             if (!empty($searchParams['event_date'])) {
                 $query->andFilterWhere(['event_date' => $searchParams['event_date']]);
+                $activeFilters[] = 'event_date';
             }
             if (!empty($searchParams['id_structure'])) {
                 $query->andFilterWhere(['id_structure' => $searchParams['id_structure']]);
+                $activeFilters[] = 'id_structure';
             }
             if (!empty($searchParams['id_kind_of_sport'])) {
                 $query->andFilterWhere(['id_kind_of_sport' => $searchParams['id_kind_of_sport']]);
+                $activeFilters[] = 'id_kind_of_sport';
+            }
+            if (!empty($searchParams['name'])) {
+                $query->andFilterWhere(['like', 'name', $searchParams['name']]);
+                $activeFilters[] = 'name';
             }
 
-            // Загружаем параметры в модель для отображения в форме
             $model->attributes = $searchParams;
+        }
+
+        // Обработка фильтра по призерам
+        $prizewinnerParams = Yii::$app->request->get('SportsmanPrizewinner');
+        if (!empty($prizewinnerParams['id_sportsman'])) {
+            $query->joinWith(['sportsmanPrizewinner'])
+                ->andWhere(['sportsman_prizewinner.id_sportsman' => $prizewinnerParams['id_sportsman']]);
+            $activeFilters[] = 'prizewinners';
         }
 
         $pagination = new Pagination([
@@ -45,7 +56,8 @@ class CompetitionsController extends Controller
             'pageSizeParam' => false,
         ]);
 
-        $sorevnovaniya = $query->offset($pagination->offset)
+        $sorevnovaniya = $query->orderBy('name')
+            ->offset($pagination->offset)
             ->limit($pagination->limit)
             ->all();
 
@@ -55,6 +67,7 @@ class CompetitionsController extends Controller
             'model' => $model,
             'structures' => Structure::find()->all(),
             'kindsOfSport' => KindOfSport::find()->all(),
+            'activeFilters' => $activeFilters, // Передаем массив активных фильтров
         ]);
     }
 
@@ -71,6 +84,18 @@ class CompetitionsController extends Controller
 
         return $this->render('view', [
             'model' => $model,
+        ]);
+    }
+
+    public function actionByDate($date)
+    {
+        $competitions = Competitions::find()
+            ->where(['event_date' => $date])
+            ->all();
+
+        return $this->render('by-date', [
+            'competitions' => $competitions,
+            'date' => $date,
         ]);
     }
 }

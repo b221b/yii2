@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Список соревнований', 'url' => ['index']];
@@ -19,23 +20,31 @@ $this->params['breadcrumbs'][] = $this->title;
                 </tr>
                 <tr>
                     <th>Дата проведения</th>
-                    <td><?= Yii::$app->formatter->asDate($model->event_date, 'php:d.m.Y') ?></td>
+                    <td class="clickable" onclick="window.location.href='<?= Url::to(['competitions/index', 'Competitions' => ['event_date' => $model->event_date]]) ?>'">
+                        <?= Yii::$app->formatter->asDate($model->event_date, 'php:d.m.Y') ?>
+                    </td>
                 </tr>
                 <tr>
                     <th>Место проведения</th>
-                    <td><?= Html::encode($model->structure->name) ?></td>
+                    <td class="clickable" onclick="window.location.href='<?= Url::to(['competitions/index', 'Competitions' => ['id_structure' => $model->id_structure]]) ?>'">
+                        <?= Html::encode($model->structure->name) ?>
+                    </td>
                 </tr>
                 <tr>
                     <th>Вид спорта</th>
-                    <td><?= Html::encode($model->kindOfSport->name) ?></td>
+                    <td class="clickable" onclick="window.location.href='<?= Url::to(['competitions/index', 'Competitions' => ['id_kind_of_sport' => $model->id_kind_of_sport]]) ?>'">
+                        <?= Html::encode($model->kindOfSport->name) ?>
+                    </td>
                 </tr>
                 <tr>
                     <th>Призеры</th>
                     <td>
                         <?php if ($model->sportsmanPrizewinner): ?>
-                            <ul>
+                            <ul class="list-unstyled">
                                 <?php foreach ($model->sportsmanPrizewinner as $prizer): ?>
-                                    <li><?= Html::encode($prizer->sportsman->name) ?></li>
+                                    <li class="clickable" onclick="window.location.href='<?= Url::to(['competitions/index', 'SportsmanPrizewinner' => ['id_sportsman' => $prizer->id_sportsman]]) ?>'">
+                                        <?= Html::encode($prizer->sportsman->name) ?>
+                                    </li>
                                 <?php endforeach; ?>
                             </ul>
                         <?php else: ?>
