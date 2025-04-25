@@ -68,7 +68,7 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 
     <div class="table-responsive">
-        <table class="table table-striped table-bordered table-hover">
+        <table class="table table-striped table-bordered table-hover" style="table-layout: fixed;">
             <thead class="thead-dark">
                 <tr>
                     <th>Название</th>
