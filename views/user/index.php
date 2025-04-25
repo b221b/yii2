@@ -155,25 +155,25 @@ if ($usersDataProvider && count($usersDataProvider->models) > 0) {
             'options' => ['class' => 'd-inline-flex'],
             'items' => [
                 Yii::$app->user->isGuest
-                                ? [
-                                    'label' => 'Войти',
-                                    'url' => ['/site/login'],
-                                    'linkOptions' => ['class' => 'nav-link mx-1']
-                                ]
-                                : [
-                                    'label' => '<span class="nav-link-text">Выйти (' . Yii::$app->user->identity->username . ')</span>',
-                                    'url' => '#',
-                                    'encode' => false,
-                                    'linkOptions' => [
-                                        'class' => 'nav-link mx-1',
-                                        'onclick' => 'event.preventDefault(); document.getElementById(\'logout-form\').submit();'
-                                    ]
-                                ],
-                            '<li class="d-none">'
-                                . Html::beginForm(['/site/logout'], 'post', ['id' => 'logout-form'])
-                                . Html::csrfMetaTags()
-                                . Html::endForm()
-                                . '</li>'
+                    ? [
+                        'label' => 'Войти',
+                        'url' => ['/site/login'],
+                        'linkOptions' => ['class' => 'nav-link mx-1']
+                    ]
+                    : [
+                        'label' => '<span class="nav-link-text">Выйти (' . Yii::$app->user->identity->username . ')</span>',
+                        'url' => '#',
+                        'encode' => false,
+                        'linkOptions' => [
+                            'class' => 'nav-link mx-1',
+                            'onclick' => 'event.preventDefault(); document.getElementById(\'logout-form\').submit();'
+                        ]
+                    ],
+                '<li class="d-none">'
+                    . Html::beginForm(['/site/logout'], 'post', ['id' => 'logout-form'])
+                    . Html::csrfMetaTags()
+                    . Html::endForm()
+                    . '</li>'
             ],
         ]); ?>
     </div>
