@@ -10,6 +10,104 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="sorevnovaniya-index">
     <h1><?= Html::encode($this->title) ?></h1>
 
+    <!-- Кнопка фильтрации и форма фильтров -->
+    <div class="row mb-3">
+        <div class="col-md-12 text-right">
+            <button class="btn btn-primary" type="button" onclick="toggleFilters()">
+                <i class="fas fa-filter"></i> Фильтры
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function toggleFilters() {
+            const filters = document.getElementById('filtersCollapse');
+            if (filters.style.display === 'none') {
+                filters.style.display = 'block';
+            } else {
+                filters.style.display = 'none';
+            }
+        }
+    </script>
+
+    <div class="collapse" id="filtersCollapse" style="display: none;">
+        <div class="card card-body mb-3">
+            <?php $form = \yii\widgets\ActiveForm::begin([
+                'method' => 'get',
+                'action' => ['index'],
+            ]); ?>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <?= $form->field($model, 'name')->textInput([
+                        'name' => 'Competitions[name]',
+                        'placeholder' => 'По названию'
+                    ]) ?>
+                </div>
+                <div class="col-md-3">
+                    <?= $form->field($model, 'event_date')->input('date', [
+                        'name' => 'Competitions[event_date]'
+                    ]) ?>
+                </div>
+                <div class="col-md-3">
+                    <?= $form->field($model, 'id_structure')->dropDownList(
+                        \yii\helpers\ArrayHelper::map($structures, 'id', 'name'),
+                        [
+                            'name' => 'Competitions[id_structure]',
+                            'prompt' => 'Все места'
+                        ]
+                    ) ?>
+                </div>
+                <div class="col-md-3">
+                    <?= $form->field($model, 'id_kind_of_sport')->dropDownList(
+                        \yii\helpers\ArrayHelper::map($kindsOfSport, 'id', 'name'),
+                        [
+                            'name' => 'Competitions[id_kind_of_sport]',
+                            'prompt' => 'Все виды спорта'
+                        ]
+                    ) ?>
+                </div>
+            </div>
+
+            <div class="form-group text-right">
+                <?= Html::submitButton('Применить', ['class' => 'btn btn-success']) ?>
+                <?= Html::a('Сбросить', ['index'], ['class' => 'btn btn-outline-secondary']) ?>
+            </div>
+
+            <?php \yii\widgets\ActiveForm::end(); ?>
+        </div>
+    </div>
+
+    <style>
+        .sorevnovaniya-index {
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .table {
+            font-size: 0.95rem;
+        }
+
+        .table th {
+            white-space: nowrap;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        .pagination {
+            margin-top: 20px;
+        }
+
+        /* Стили для кнопки фильтра */
+        .filter-btn {
+            margin-bottom: 15px;
+        }
+    </style>
+
     <div class="table-responsive">
         <table class="table table-striped table-bordered table-hover">
             <thead class="thead-dark">
