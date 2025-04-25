@@ -1,15 +1,22 @@
-table {
-    border-collapse: collapse;
-    width: 100%;
-}
+    .sorevnovaniya-index {
+        padding: 20px;
+        background-color: #f8f9fa;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
 
-th,
-td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-}
+    .table {
+        font-size: 0.95rem;
+    }
 
-th {
-    background-color: #f0f0f0;
-}
+    .table th {
+        white-space: nowrap;
+    }
+
+    .table-responsive {
+        overflow-x: auto;
+    }
+
+    .pagination {
+        margin-top: 20px;
+    }
