@@ -80,7 +80,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </thead>
             <tbody>
                 <?php foreach ($sorevnovaniya as $sorevnovanie): ?>
-                    <tr>
+                    <tr style="cursor: pointer;" onclick="window.location.href='<?= \yii\helpers\Url::to(['view', 'id' => $sorevnovanie->id]) ?>'">
                         <td><?= Html::encode($sorevnovanie->name) ?></td>
                         <td><?= Yii::$app->formatter->asDate($sorevnovanie->event_date, 'php:d.m.Y') ?></td>
                         <td><?= Html::encode($sorevnovanie->structure->name) ?></td>

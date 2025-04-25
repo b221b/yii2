@@ -13,7 +13,7 @@ class CompetitionsController extends Controller
 {
     public function actionIndex()
     {
-        $model = new Competitions(); 
+        $model = new Competitions();
 
         $query = Competitions::find()
             ->with(['structure', 'kindOfSport', 'sportsmanPrizewinner.sportsman'])
@@ -55,6 +55,22 @@ class CompetitionsController extends Controller
             'model' => $model,
             'structures' => Structure::find()->all(),
             'kindsOfSport' => KindOfSport::find()->all(),
+        ]);
+    }
+
+    public function actionView($id)
+    {
+        $model = Competitions::find()
+            ->with(['structure', 'kindOfSport', 'sportsmanPrizewinner.sportsman'])
+            ->where(['id' => $id])
+            ->one();
+
+        if (!$model) {
+            throw new \yii\web\NotFoundHttpException('Соревнование не найдено.');
+        }
+
+        return $this->render('view', [
+            'model' => $model,
         ]);
     }
 }
