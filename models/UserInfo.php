@@ -24,6 +24,8 @@ class UserInfo extends ActiveRecord
             [['id_user'], 'integer'],
             [['id_user'], 'exist', 'targetClass' => User::className(), 'targetAttribute' => 'id'],
 
+            ['status', 'default', 'value' => 0],
+
             [['email'], 'email'],
             [['id_user'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['id_user' => 'id']],
 
@@ -41,6 +43,7 @@ class UserInfo extends ActiveRecord
             'phone_number' => 'Номер телефона',
             'email' => 'Почта',
             'id_user' => 'Пользователь',
+            'status' => 'Статус лицензии',
         ];
     }
 }

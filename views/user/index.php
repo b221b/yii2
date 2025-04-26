@@ -17,6 +17,7 @@ if ($usersDataProvider && count($usersDataProvider->models) > 0) {
                 'avatar' => $user['avatar'] ?? null, // предполагаем, что есть поле avatar
                 'phone' => $user['phone'] ?? null, // основной телефон пользователя
                 'email' => $user['email'] ?? null, // основной email пользователя
+                'status' => $user['status'] ?? null, // основной email пользователя
                 'contacts' => []
             ];
         }
@@ -24,7 +25,8 @@ if ($usersDataProvider && count($usersDataProvider->models) > 0) {
             $groupedUsers[$userId]['contacts'][] = [
                 'phone_number' => $user['phone_number'],
                 'email' => $user['email'],
-                'info_id' => $user['info_id']
+                'info_id' => $user['info_id'],
+                'status' => $user['status']
             ];
         }
     }
@@ -58,6 +60,41 @@ if ($usersDataProvider && count($usersDataProvider->models) > 0) {
                                     <div class="detail-value"><?= Html::encode($userData['username']) ?></div>
                                 </div>
 
+                                <div class="detail-row">
+                                    <div class="detail-label">Статус лицензии:</div>
+                                    <div class="detail-value <?= $userData['status'] ? 'text-green' : 'text-red' ?>">
+                                        <?= Html::encode($userData['status'] ? 'Активна' : 'Не активна') ?>
+                                    </div>
+                                    <?php if (!$userData['status']): // Проверка на неактивный статус 
+                                    ?>
+                                        <button onclick="showLicenseRequest()">Заявка на лицензию</button>
+                                    <?php endif; ?>
+                                </div>
+
+                                <style>
+                                    .text-green {
+                                        color: green;
+                                    }
+
+                                    .text-red {
+                                        color: red;
+                                    }
+                                </style>
+
+                                <script>
+                                    function showLicenseRequest() {
+                                        if (confirm("Вы уверены, что хотите подать заявку на лицензию?")) {
+                                            // Здесь можно сделать AJAX-запрос на сервер для обработки заявки
+                                            // Для примера просто выводим сообщение
+                                            document.getElementById('license-message').innerText = "Заявка на лицензию подана.";
+                                        }
+                                    }
+                                </script>
+
+                                <div id="license-message" style="margin-top: 10px; color: green;"></div>
+
+
+
                                 <!-- <?php if (!empty($userData['phone_number'])): ?>
                                     <div class="detail-row">
                                         <div class="detail-label">Телефон:</div>
@@ -83,12 +120,14 @@ if ($usersDataProvider && count($usersDataProvider->models) > 0) {
                             <div class="empty-contacts">Нет дополнительных контактных данных</div>
                         <?php else: ?>
                             <div class="contact-grid">
-                                <?php foreach ($userData['contacts'] as $contact): ?>
+                                <?php
+                                $contactCounter = 1; // Инициализируем счетчик контактов для пользователя
+                                foreach ($userData['contacts'] as $contact): ?>
                                     <div class="contact-card">
                                         <button type="button" class="delete-btn btn btn-sm btn-link text-danger"
                                             onclick="if(confirm('Удалить этот контакт?')) {
-                                                window.location.href='<?= \yii\helpers\Url::to(['delete', 'id' => $contact['info_id']]) ?>'
-                                            }">
+                    window.location.href='<?= \yii\helpers\Url::to(['delete', 'id' => $contact['info_id']]) ?>'
+                }">
                                             <i class="fas fa-times"></i>
                                         </button>
 
@@ -97,7 +136,7 @@ if ($usersDataProvider && count($usersDataProvider->models) > 0) {
                                                 <i class="fas fa-id-card"></i>
                                             </div>
                                             <div class="contact-value">
-                                                <strong>Контакт #<?= $contact['info_id'] ?></strong>
+                                                <strong>Контакт #<?= $contactCounter ?></strong>
                                             </div>
                                         </div>
 
@@ -131,7 +170,9 @@ if ($usersDataProvider && count($usersDataProvider->models) > 0) {
                                             ) ?>
                                         </div>
                                     </div>
-                                <?php endforeach; ?>
+                                <?php
+                                    $contactCounter++; // Увеличиваем счетчик для следующего контакта
+                                endforeach; ?>
                             </div>
                         <?php endif; ?>
 

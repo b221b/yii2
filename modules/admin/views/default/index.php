@@ -22,6 +22,9 @@ $this->params['breadcrumbs'][] = $this->title;
     </p> -->
 
     <div class="container" style="margin-top: 20px;">
+
+        <? include 'stripe.php' ?>
+
         <div class="row">
 
             <div class="col-md-4">
@@ -49,6 +52,13 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
 
         </div>
+
+        <? include 'stripe.php' ?>
+
+        <!-- <div align="center">
+            <?= \yii\helpers\Html::a('Обработка заявок', Url::to(['xxx/index']), ['class' => 'btn btn-primary btn-block mb-3']) ?>
+        </div> -->
+
     </div>
 
 </div>

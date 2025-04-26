@@ -23,7 +23,8 @@ class UserController extends Controller
                     'u.username',
                     'ui.id as info_id',
                     'ui.phone_number',
-                    'ui.email'
+                    'ui.email',
+                    'ui.status'
                 ])
                 ->from('user u')
                 ->leftJoin('user_info ui', 'ui.id_user = u.id')

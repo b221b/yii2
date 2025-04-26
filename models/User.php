@@ -84,7 +84,7 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
     {
         return [
             'username' => 'Имя пользователя',
-            'isAdmin' => 'Статус',
+            'isAdmin' => 'Статус пользователя',
         ];
     }
 }
