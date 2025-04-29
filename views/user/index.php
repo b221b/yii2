@@ -65,9 +65,17 @@ if ($usersDataProvider && count($usersDataProvider->models) > 0) {
                                     <div class="detail-value <?= $userData['status'] ? 'text-green' : 'text-red' ?>">
                                         <?= Html::encode($userData['status'] ? 'Активна' : 'Не активна') ?>
                                     </div>
+
                                     <?php if (!$userData['status']): // Проверка на неактивный статус 
                                     ?>
-                                        <button onclick="showLicenseRequest()">Заявка на лицензию</button>
+
+                                        <button onclick="showLicenseRequest()" class="button">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 24">
+                                                <path d="m18 0 8 12 10-8-4 20H4L0 4l10 8 8-12z"></path>
+                                            </svg>
+                                            Купить лицензию
+                                        </button>
+
                                     <?php endif; ?>
                                 </div>
 
