@@ -41,6 +41,18 @@ $this->params['breadcrumbs'][] = $this->title;
             'phone_number',
             'email',
             [
+                'attribute' => 'status',
+                'value' => function ($model) {
+                    if ($model->status == 1) {
+                        return 'Активна';
+                    } elseif ($model->status == 2) {
+                        return 'На рассмотрении';
+                    } else {
+                        return 'Не активна';
+                    }
+                }
+            ],
+            [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, UserInfo $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);

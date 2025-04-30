@@ -37,6 +37,18 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $model->user ? $model->user->username : 'Не указано';
                 },
             ],
+            [
+                'attribute' => 'status',
+                'value' => function ($model) {
+                    if ($model->status == 1) {
+                        return 'Активна';
+                    } elseif ($model->status == 2) {
+                        return 'На рассмотрении';
+                    } else {
+                        return 'Не активна';
+                    }
+                }
+            ],
         ],
     ]) ?>
 </div>

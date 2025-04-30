@@ -25,6 +25,15 @@ use yii\widgets\ActiveForm;
         ['prompt' => 'Выберите пользователя']
     ) ?>
 
+    <?= $form->field($model, 'status')->dropDownList(
+        [
+            0 => 'Не активна',
+            1 => 'Активна',
+            2 => 'На рассмотрении',
+            ['prompt' => 'Выберите статус']
+        ]
+    ) ?>
+
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
         <?= Html::resetButton('Reset', ['class' => 'btn btn-outline-secondary']) ?>
