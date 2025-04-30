@@ -14,14 +14,15 @@ if ($usersDataProvider && count($usersDataProvider->models) > 0) {
         if (!isset($groupedUsers[$userId])) {
             $groupedUsers[$userId] = [
                 'username' => $user['username'],
-                'avatar' => $user['avatar'] ?? null, // предполагаем, что есть поле avatar
-                'phone' => $user['phone'] ?? null, // основной телефон пользователя
-                'email' => $user['email'] ?? null, // основной email пользователя
-                'status' => $user['status'] ?? null, // основной email пользователя
+                'avatar' => $user['avatar'] ?? null,
+                'phone' => $user['phone'] ?? null,
+                'email' => $user['email'] ?? null,
+                'status' => $user['status'] ?? null,
+                'info_id' => $user['info_id'] ?? null, // Добавляем info_id
                 'contacts' => []
             ];
         }
-        if ($user['info_id']) { // Добавляем только если есть запись в user_info
+        if ($user['info_id']) {
             $groupedUsers[$userId]['contacts'][] = [
                 'phone_number' => $user['phone_number'],
                 'email' => $user['email'],
@@ -66,14 +67,18 @@ if ($usersDataProvider && count($usersDataProvider->models) > 0) {
                                         <?= Html::encode($userData['status'] === 1 ? 'Активна' : ($userData['status'] === 2 ? 'На рассмотрении' : 'Не активна')) ?>
                                     </div>
 
-                                    <?php if ($userData['status'] === 0): // Проверка на неактивный статус 
-                                    ?>
-                                        <button onclick="showLicenseRequest()" class="button">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 24">
-                                                <path d="m18 0 8 12 10-8-4 20H4L0 4l10 8 8-12z"></path>
-                                            </svg>
-                                            Купить лицензию
-                                        </button>
+                                    <?php if ($userData['status'] === 0): ?>
+                                        <?= Html::a(
+                                            'Купить лицензию',
+                                            ['/user/request-license', 'id' => $userData['info_id']],
+                                            [
+                                                'class' => 'btn btn-warning',
+                                                'data' => [
+                                                    'method' => 'post',
+                                                    'confirm' => 'Вы уверены, что хотите подать заявку на лицензию?',
+                                                ],
+                                            ]
+                                        ) ?>
                                     <?php endif; ?>
                                 </div>
 
@@ -88,7 +93,6 @@ if ($usersDataProvider && count($usersDataProvider->models) > 0) {
 
                                     .text-orange {
                                         color: orange;
-                                        /* Новый класс для оранжевого цвета */
                                     }
                                 </style>
 

@@ -55,9 +55,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <? include 'stripe.php' ?>
 
-        <!-- <div align="center">
-            <?= \yii\helpers\Html::a('Обработка заявок', Url::to(['xxx/index']), ['class' => 'btn btn-primary btn-block mb-3']) ?>
-        </div> -->
+        <div align="center">
+            <?= \yii\helpers\Html::a('Обработка заявок', Url::to(['user/status']), ['class' => 'btn btn-primary btn-block mb-3']) ?>
+        </div>
 
     </div>
 

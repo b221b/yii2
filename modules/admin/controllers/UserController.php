@@ -3,7 +3,9 @@
 namespace app\modules\admin\controllers;
 
 use app\models\User;
+use app\models\UserInfo;
 use app\modules\admin\models\UserSearch;
+use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -46,6 +48,33 @@ class UserController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
+    }
+
+    public function actionStatus()
+    {
+        $users = User::find()
+            ->with('userInfo') // Жадная загрузка
+            ->all();
+
+        return $this->render('user', ['users' => $users]);
+    }
+
+    public function actionChangeStatus($id, $status)
+    {
+        $userInfo = UserInfo::findOne($id);
+
+        if ($userInfo) {
+            $userInfo->status = (int)$status;
+            if ($userInfo->save()) {
+                Yii::$app->session->setFlash('success', 'Статус успешно обновлен');
+            } else {
+                Yii::$app->session->setFlash('error', 'Ошибка при обновлении статуса');
+            }
+        } else {
+            Yii::$app->session->setFlash('error', 'Запись не найдена');
+        }
+
+        return $this->redirect(['status']);
     }
 
     /**

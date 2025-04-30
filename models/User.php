@@ -14,6 +14,11 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
         return 'user';
     }
 
+    public function getUserInfo()
+    {
+        return $this->hasMany(UserInfo::class, ['id_user' => 'id']);
+    }
+
     public static function findIdentity($id)
     {
         return static::findOne($id);

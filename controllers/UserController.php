@@ -42,6 +42,24 @@ class UserController extends Controller
         ]);
     }
 
+    public function actionRequestLicense($id)
+    {
+        $userInfo = UserInfo::findOne($id);
+
+        if ($userInfo) {
+            $userInfo->status = 2; // Устанавливаем статус "На рассмотрении"
+            if ($userInfo->save()) {
+                Yii::$app->session->setFlash('success', 'Заявка на лицензию успешно подана. Статус изменен на "На рассмотрении".');
+            } else {
+                Yii::$app->session->setFlash('error', 'Ошибка при подаче заявки на лицензию.');
+            }
+        } else {
+            Yii::$app->session->setFlash('error', 'Запись не найдена');
+        }
+
+        return $this->redirect(Yii::$app->request->referrer ?: ['index']);
+    }
+
     public function actionCreate($user_id)
     {
         $model = new UserInfo();
