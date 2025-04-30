@@ -62,20 +62,18 @@ if ($usersDataProvider && count($usersDataProvider->models) > 0) {
 
                                 <div class="detail-row">
                                     <div class="detail-label">Статус лицензии:</div>
-                                    <div class="detail-value <?= $userData['status'] ? 'text-green' : 'text-red' ?>">
-                                        <?= Html::encode($userData['status'] ? 'Активна' : 'Не активна') ?>
+                                    <div class="detail-value <?= $userData['status'] === 1 ? 'text-green' : ($userData['status'] === 2 ? 'text-orange' : 'text-red') ?>">
+                                        <?= Html::encode($userData['status'] === 1 ? 'Активна' : ($userData['status'] === 2 ? 'На рассмотрении' : 'Не активна')) ?>
                                     </div>
 
-                                    <?php if (!$userData['status']): // Проверка на неактивный статус 
+                                    <?php if ($userData['status'] === 0): // Проверка на неактивный статус 
                                     ?>
-
                                         <button onclick="showLicenseRequest()" class="button">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 24">
                                                 <path d="m18 0 8 12 10-8-4 20H4L0 4l10 8 8-12z"></path>
                                             </svg>
                                             Купить лицензию
                                         </button>
-
                                     <?php endif; ?>
                                 </div>
 
@@ -86,6 +84,11 @@ if ($usersDataProvider && count($usersDataProvider->models) > 0) {
 
                                     .text-red {
                                         color: red;
+                                    }
+
+                                    .text-orange {
+                                        color: orange;
+                                        /* Новый класс для оранжевого цвета */
                                     }
                                 </style>
 
@@ -100,8 +103,6 @@ if ($usersDataProvider && count($usersDataProvider->models) > 0) {
                                 </script>
 
                                 <div id="license-message" style="margin-top: 10px; color: green;"></div>
-
-
 
                                 <!-- <?php if (!empty($userData['phone_number'])): ?>
                                     <div class="detail-row">
