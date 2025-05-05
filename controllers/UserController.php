@@ -2,6 +2,9 @@
 
 namespace app\controllers;
 
+use app\models\KindOfSport;
+use app\models\SportsClub;
+use app\models\Trainers;
 use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -24,10 +27,21 @@ class UserController extends Controller
                     'ui.id as info_id',
                     'ui.phone_number',
                     'ui.email',
-                    'ui.status'
+                    'ui.birthday',
+                    'ui.gender',
+                    'ui.id_sports_club',
+                    'ui.id_trainers',
+                    'ui.id_kind_of_sport',
+                    'ui.status',
+                    't.name as trainer_name', // имя тренера
+                    'sc.name as club_name',   // название клуба
+                    'kos.name as sport_name'  // название вида спорта
                 ])
                 ->from('user u')
                 ->leftJoin('user_info ui', 'ui.id_user = u.id')
+                ->leftJoin('trainers t', 't.id = ui.id_trainers')
+                ->leftJoin('sports_club sc', 'sc.id = ui.id_sports_club')
+                ->leftJoin('kind_of_sport kos', 'kos.id = ui.id_kind_of_sport')
                 ->where(['u.id' => $currentUser->id])
                 ->all();
 
@@ -78,14 +92,23 @@ class UserController extends Controller
     {
         $model = UserInfo::findOne($id);
 
+        // Получение данных для выпадающих списков
+        $sportsClubs = SportsClub::find()->select(['name', 'id'])->indexBy('id')->column();
+        $trainers = Trainers::find()->select(['name', 'id'])->indexBy('id')->column();
+        $sportsKinds = KindOfSport::find()->select(['name', 'id'])->indexBy('id')->column();
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index']);
         }
 
         return $this->render('update', [
             'model' => $model,
+            'sportsClub' => $sportsClubs,  // Передача массива клубов в представление
+            'trainer' => $trainers,         // Передача массива тренеров в представление
+            'sportsKind' => $sportsKinds,   // Передача массива видов спорта в представление
         ]);
     }
+
 
     public function actionDelete($id)
     {

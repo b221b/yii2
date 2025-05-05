@@ -1,346 +1,251 @@
-.card {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-    transition: transform 0.2s ease-in-out;
-}
-
-.card-img-top {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-
-.card-body {
-    padding: 15px;
-    text-align: center;
-}
-
-.card-link {
-    text-decoration: none;
-    color: inherit;
-}
-
-.profile-container {
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.user-card {
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    margin-bottom: 30px;
-}
-
-.user-header {
-    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-    color: white;
-    padding: 20px;
-    text-align: center;
-}
-
-.user-title {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin: 0 0 10px 0;
-}
-
-.user-profile {
-    padding: 25px;
-    background: #f8f9fa;
-}
-
-.profile-section {
-    background: white;
-    border-radius: 10px;
-    padding: 25px;
-    margin-bottom: 25px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-}
-
-.profile-section-title {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-    color: #495057;
-    border-bottom: 1px solid #e9ecef;
-    padding-bottom: 10px;
-}
-
-.profile-info {
-    display: flex;
-    align-items: flex-start;
-    gap: 25px;
-}
-
-.avatar-container {
-    flex-shrink: 0;
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    background: #e9ecef;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    border: 3px solid white;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-}
-
-.avatar-placeholder {
-    font-size: 40px;
-    color: #adb5bd;
-}
-
-.avatar-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.user-details {
-    flex-grow: 1;
-}
-
-.detail-row {
-    display: flex;
-    margin-bottom: 12px;
-}
-
-.detail-label {
-    width: 120px;
-    font-weight: 500;
-    color: #6c757d;
-}
-
-.detail-value {
-    flex-grow: 1;
-}
-
-.contact-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-}
-
-.contact-card {
-    background: white;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-    position: relative;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.contact-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-}
-
-.contact-card .delete-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    opacity: 0.5;
-    transition: opacity 0.2s;
-}
-
-.contact-card .delete-btn:hover {
-    opacity: 1;
-}
-
-.contact-field {
-    display: flex;
-    align-items: center;
-    margin-bottom: 12px;
-}
-
-.contact-icon {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background: #f0f4ff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 12px;
-    color: #2575fc;
-}
-
-.contact-value {
-    font-size: 0.95rem;
-}
-
-.empty-contacts {
-    padding: 20px;
-    text-align: center;
-    color: #6c757d;
-    font-style: italic;
-}
-
-.action-buttons {
-    display: flex;
-    gap: 10px;
-    margin-top: 15px;
-}
-
-.add-contact-btn {
-    margin-top: 20px;
-}
-
-/* Цвета статуса в профиле */
-.text-green {
-    color: green;
-}
-
-.text-red {
-    color: red;
-}
-
-.text-orange {
-    color: orange;
-}
-
-/* КНОПКА ЛИЦЕНЗИИ */
-.pay-btn {
-    position: relative;
-    padding: 12px 24px;
-    font-size: 16px;
-    background: #1a1a1a;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    transition: all 0.3s ease;
-}
-
-.pay-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
-}
-
-.icon-container {
-    position: relative;
-    width: 24px;
-    height: 24px;
-}
-
-.icon {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 24px;
-    height: 24px;
-    color: #22c55e;
-    opacity: 0;
-    visibility: hidden;
-}
-
-.default-icon {
-    opacity: 1;
-    visibility: visible;
-}
-
-/* Hover animations */
-.pay-btn:hover .icon {
-    animation: none;
-}
-
-.pay-btn:hover .wallet-icon {
-    opacity: 0;
-    visibility: hidden;
-}
-
-.pay-btn:hover .card-icon {
-    animation: iconRotate 2.5s infinite;
-    animation-delay: 0s;
-}
-
-.pay-btn:hover .payment-icon {
-    animation: iconRotate 2.5s infinite;
-    animation-delay: 0.5s;
-}
-
-.pay-btn:hover .dollar-icon {
-    animation: iconRotate 2.5s infinite;
-    animation-delay: 1s;
-}
-
-.pay-btn:hover .check-icon {
-    animation: iconRotate 2.5s infinite;
-    animation-delay: 1.5s;
-}
-
-/* Active state - show only checkmark */
-.pay-btn:active .icon {
-    animation: none;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-}
-
-.pay-btn:active .check-icon {
-    animation: checkmarkAppear 0.6s ease forwards;
-    visibility: visible;
-}
-
-.btn-text {
-    font-weight: 600;
-    font-family:
-        system-ui,
-        -apple-system,
-        sans-serif;
-}
-
-@keyframes iconRotate {
-    0% {
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(10px) scale(0.5);
+    .profile-container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px;
     }
 
-    5% {
+    .user-card {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        margin-bottom: 30px;
+    }
+
+    .user-header {
+        background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .user-title {
+        font-size: 1.8rem;
+        font-weight: 600;
+        margin: 0;
+    }
+
+    .user-profile {
+        padding: 25px;
+        background: #f8f9fa;
+    }
+
+    .profile-section {
+        background: white;
+        border-radius: 10px;
+        padding: 25px;
+        margin-bottom: 25px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #e9ecef;
+        padding-bottom: 10px;
+    }
+
+    .profile-section-title {
+        font-size: 1.3rem;
+        margin: 0;
+        color: #495057;
+    }
+
+    .profile-info {
+        display: flex;
+        align-items: flex-start;
+        gap: 25px;
+    }
+
+    .avatar-container {
+        flex-shrink: 0;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background: #e9ecef;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        border: 3px solid white;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .avatar-placeholder {
+        font-size: 40px;
+        color: #adb5bd;
+    }
+
+    .avatar-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .user-details {
+        flex-grow: 1;
+    }
+
+    .detail-row {
+        display: flex;
+        margin-bottom: 12px;
+        align-items: center;
+    }
+
+    .detail-label {
+        width: 180px;
+        font-weight: 500;
+        color: #6c757d;
+    }
+
+    .detail-value {
+        flex-grow: 1;
+        padding: 8px 0;
+    }
+
+    .contact-details {
+        padding: 15px 0;
+    }
+
+    .empty-contacts {
+        padding: 30px 20px;
+        text-align: center;
+        color: #6c757d;
+        border: 2px dashed #dee2e6;
+        border-radius: 8px;
+        margin: 20px 0;
+    }
+
+    .empty-contacts p {
+        margin-bottom: 20px;
+        font-size: 1.1rem;
+    }
+
+    .edit-btn,
+    .add-contact-btn {
+        padding: 8px 20px;
+        font-size: 0.95rem;
+        border-radius: 6px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .text-green {
+        color: #28a745;
+        font-weight: 500;
+    }
+
+    .text-red {
+        color: #dc3545;
+        font-weight: 500;
+    }
+
+    .text-orange {
+        color: #fd7e14;
+        font-weight: 500;
+    }
+
+    .text-muted {
+        color: #6c757d;
+        font-style: italic;
+    }
+
+    /* Кнопка лицензии */
+    .pay-btn {
+        position: relative;
+        padding: 12px 24px;
+        font-size: 16px;
+        background: #1a1a1a;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: all 0.3s ease;
+    }
+
+    .pay-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    }
+
+    .icon-container {
+        position: relative;
+        width: 24px;
+        height: 24px;
+    }
+
+    .icon {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 24px;
+        height: 24px;
+        color: #22c55e;
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .default-icon {
         opacity: 1;
         visibility: visible;
-        transform: translateY(0) scale(1);
     }
 
-    15% {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0) scale(1);
+    .btn-text {
+        font-weight: 600;
+        font-family: system-ui, -apple-system, sans-serif;
     }
 
-    20% {
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(-10px) scale(0.5);
+    @keyframes iconRotate {
+        0% {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px) scale(0.5);
+        }
+
+        5% {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+        }
+
+        15% {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+        }
+
+        20% {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px) scale(0.5);
+        }
+
+        100% {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px) scale(0.5);
+        }
     }
 
-    100% {
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(-10px) scale(0.5);
-    }
-}
+    @keyframes checkmarkAppear {
+        0% {
+            opacity: 0;
+            transform: scale(0.5) rotate(-45deg);
+        }
 
-@keyframes checkmarkAppear {
-    0% {
-        opacity: 0;
-        transform: scale(0.5) rotate(-45deg);
-    }
+        50% {
+            opacity: 0.5;
+            transform: scale(1.2) rotate(0deg);
+        }
 
-    50% {
-        opacity: 0.5;
-        transform: scale(1.2) rotate(0deg);
+        100% {
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
+        }
     }
-
-    100% {
-        opacity: 1;
-        transform: scale(1) rotate(0deg);
-    }
-}
