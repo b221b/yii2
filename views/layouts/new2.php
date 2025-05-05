@@ -85,7 +85,7 @@ $this->registerJsFile('@web/js/searchTable.js', ['depends' => [\yii\web\JqueryAs
                         <?php if (!Yii::$app->user->isGuest && Yii::$app->user->identity->isAdmin == 1): ?>
                             <li><a href="<?= Url::to(['/admin']) ?>">Admin</a></li>
                         <?php endif; ?>
-
+жопа
                         <!-- <li><a href="<?= Url::to(['site/contact1']) ?>">404</a></li> -->
                     </ul><!-- /.list-menu -->
                     <div class="topbar__social">
