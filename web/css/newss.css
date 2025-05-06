@@ -1,0 +1,449 @@
+.news-list {
+    margin-top: 20px;
+}
+
+.news-item {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+}
+
+.news-item h3 {
+    margin-top: 0;
+}
+
+.meta {
+    color: #666;
+    margin-bottom: 10px;
+    font-size: 0.9em;
+}
+
+.meta .date {
+    margin-right: 15px;
+}
+
+.description {
+    margin-bottom: 15px;
+}
+
+.organisations {
+    margin-bottom: 15px;
+    font-size: 0.9em;
+}
+
+.event-view .event-date,
+.event-view .event-sport {
+    margin-bottom: 15px;
+}
+
+.event-view h3 {
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+/* Основные стили для страницы новостей */
+.news-index {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    background-color: #f8f9fa;
+}
+
+.news-index h1 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.news-index h1:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, #3498db, #2ecc71);
+}
+
+/* Стили для фильтра по видам спорта */
+.sport-filter {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.sport-filter h4 {
+    color: #2c3e50;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.sport-filter ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.sport-filter li {
+    margin: 0;
+}
+
+.sport-filter a {
+    display: block;
+    padding: 8px 15px;
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+.sport-filter a:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Стили для списка новостей */
+.news-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.news-item {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.news-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.news-item h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #2c3e50;
+    font-size: 1.3rem;
+    line-height: 1.4;
+}
+
+.news-item h3 a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.news-item h3 a:hover {
+    color: #3498db;
+}
+
+.meta {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+    color: #7f8c8d;
+}
+
+.meta .date {
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.meta .date:before {
+    content: '📅';
+    margin-right: 5px;
+}
+
+.meta .sport {
+    display: flex;
+    align-items: center;
+}
+
+.meta .sport:before {
+    content: '🏆';
+    margin-right: 5px;
+}
+
+.description {
+    margin-bottom: 20px;
+    color: #555;
+    line-height: 1.6;
+    flex-grow: 1;
+}
+
+.organisations {
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+
+.organisations strong {
+    color: #2c3e50;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.organisations span {
+    display: inline-block;
+    background-color: #e8f4fc;
+    color: #3498db;
+    padding: 3px 8px;
+    border-radius: 4px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    font-size: 0.85rem;
+}
+
+.news-item .btn {
+    align-self: flex-start;
+    background: linear-gradient(90deg, #3498db, #2ecc71);
+    border: none;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.3s;
+}
+
+.news-item .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Стили для страницы просмотра новости */
+.news-view {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.news-view h1 {
+    color: #2c3e50;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #f1f1f1;
+}
+
+.event-date,
+.event-sport {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    color: #555;
+    font-size: 1.1rem;
+}
+
+.event-date strong,
+.event-sport strong {
+    color: #2c3e50;
+    margin-right: 10px;
+    min-width: 120px;
+}
+
+.event-description {
+    margin: 25px 0;
+    line-height: 1.7;
+    color: #444;
+    font-size: 1.05rem;
+}
+
+.event-description h3 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.event-organisations,
+.event-winners {
+    margin: 25px 0;
+}
+
+.event-organisations h3,
+.event-winners h3 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #eee;
+}
+
+.event-organisations ul,
+.event-winners ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.event-organisations li,
+.event-winners li {
+    padding: 8px 15px;
+    margin-bottom: 8px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+
+.event-organisations li:hover,
+.event-winners li:hover {
+    background-color: #e9ecef;
+    transform: translateX(5px);
+}
+
+.news-view .btn {
+    margin-top: 20px;
+    background: linear-gradient(90deg, #3498db, #2ecc71);
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 25px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.3s;
+}
+
+.news-view .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Стили для виджета последних новостей */
+.last-news {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid #eee;
+}
+
+.last-news h4 {
+    color: #2c3e50;
+    margin-top: 0;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f1f1f1;
+    font-size: 1.2rem;
+}
+
+.last-news ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.last-news li {
+    padding: 10px 0;
+    border-bottom: 1px dashed #eee;
+}
+
+.last-news li:last-child {
+    border-bottom: none;
+}
+
+.last-news a {
+    color: #3498db;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 500;
+    display: block;
+}
+
+.last-news a:hover {
+    color: #2980b9;
+}
+
+.last-news .date {
+    display: block;
+    font-size: 0.8rem;
+    color: #7f8c8d;
+    margin-top: 3px;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .news-list {
+        grid-template-columns: 1fr;
+    }
+
+    .news-index,
+    .news-view {
+        padding: 15px;
+    }
+
+    .sport-filter ul {
+        flex-direction: column;
+    }
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.news-item {
+    animation: fadeIn 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+.news-item:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.news-item:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.news-item:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.news-item:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.news-item:nth-child(5) {
+    animation-delay: 0.5s;
+}

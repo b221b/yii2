@@ -41,19 +41,19 @@ $config = [
         // ],
 
         // 'mailer' => [
-         //     'class' => \yii\symfonymailer\Mailer::class,
-         //     'viewPath' => '@app/mail',
-         //     'useFileTransport' => false,
-         //     'transport' => [
-         //         'scheme' => 'smtps',  // or 'smtps' for SSL
-         //         'host' => 'smtp.gmail.com',
-         //         'username' => 'titarenkomiroslav5@gmail.com',
-         //         'password' => '123',
-         //         'port' => 465,      // typically 587 for SMTP or 465 for SMTPS
-         //         'dsn' => 'smtps://titarenkomiroslav5@gmail.com:123@smtp.gmail.com:465',
-         //         'encryption' => 'ssl', // or 'tls'
-         //     ],
-         // ],
+        //     'class' => \yii\symfonymailer\Mailer::class,
+        //     'viewPath' => '@app/mail',
+        //     'useFileTransport' => false,
+        //     'transport' => [
+        //         'scheme' => 'smtps',  // or 'smtps' for SSL
+        //         'host' => 'smtp.gmail.com',
+        //         'username' => 'titarenkomiroslav5@gmail.com',
+        //         'password' => '123',
+        //         'port' => 465,      // typically 587 for SMTP or 465 for SMTPS
+        //         'dsn' => 'smtps://titarenkomiroslav5@gmail.com:123@smtp.gmail.com:465',
+        //         'encryption' => 'ssl', // or 'tls'
+        //     ],
+        // ],
 
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -65,7 +65,7 @@ $config = [
             ],
         ],
         'db' => $db,
-        
+
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
@@ -73,9 +73,11 @@ $config = [
             'rules' => [
                 '/' => 'site/index',
                 'about' => 'site/about',
+                'newss' => 'newss/index',
+                'newss/<id:\d+>' => 'newss/view',
             ],
         ],
-        
+
     ],
     'params' => $params,
     'modules' => [

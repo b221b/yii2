@@ -63,6 +63,10 @@ $this->params['breadcrumbs'][] = $this->title;
                     ?>
                 </td>
             </tr>
+            <tr>
+                <td><strong>Описание</strong></td>
+                <td><?= Html::encode($model->description) ?></td>
+            </tr>
         </tbody>
     </table>
 </div>

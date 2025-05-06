@@ -91,6 +91,8 @@ class Competitions extends ActiveRecord
             [['id_structure', 'id_kind_of_sport'], 'integer'],
             [['name', 'event_date', 'id_structure', 'id_kind_of_sport'], 'required'],
 
+            [['description'], 'safe'],
+            [['description'], 'string', 'max' => 255],
         ];
     }
 

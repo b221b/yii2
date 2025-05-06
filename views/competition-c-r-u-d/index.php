@@ -41,6 +41,10 @@ $this->params['breadcrumbs'][] = $this->title;
             },
         ],
         [
+            'attribute' => 'description',
+            'label' => 'Описание',
+        ],
+        [
             'class' => 'yii\grid\ActionColumn',
             'header' => 'Действия',
             'template' => '{view} {update} {delete}',

@@ -36,6 +36,8 @@ $this->registerLinkTag(['rel' => 'preconnect', 'href' => 'https://fonts.googleap
 $this->registerLinkTag(['rel' => 'preconnect', 'href' => 'https://fonts.gstatic.com', 'crossorigin' => 'true']);
 $this->registerLinkTag(['rel' => 'stylesheet', 'href' => 'https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Manrope:wght@300;400;500;600;700;800&display=swap']);
 
+$this->registerCssFile('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+
 $this->registerJsFile('@web/js/yii.js', ['depends' => [\yii\web\JqueryAsset::class]]);
 $this->registerJsFile('@web/js/searchTable.js', ['depends' => [\yii\web\JqueryAsset::class]]);
 ?>
@@ -131,6 +133,8 @@ $this->registerJsFile('@web/js/searchTable.js', ['depends' => [\yii\web\JqueryAs
                         ],
                         'dropdownClass' => \yii\bootstrap5\Dropdown::class,
                         'items' => [
+                            ['label' => 'Новости', 'url' => ['/newss/index']],
+                            // ['label' => 'Новости', 'url' => ['/news/index']],
                             [
                                 'label' => 'Соревнования',
                                 'url' => ['/competitions/index'],
