@@ -18,11 +18,17 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'birthday')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'birthday')->textInput([
+        'type' => 'date',
+        'placeholder' => 'гггг.мм.дд',
+        'maxlength' => true,
+        'pattern' => '\d{4}-\d{2}-\d{2}', // Добавляем паттерн для валидации
+        'title' => 'Формат: гггг.мм.дд' // Подсказка для пользователя
+    ]) ?>
 
     <?= $form->field($model, 'gender')->radioList([
-        1 => 'М',  // Значение 1 для мужского пола
-        2 => 'Ж'   // Значение 0 для женского пола
+        1 => 'М',  
+        2 => 'Ж'  
     ])->label('Пол') ?>
 
     <?= $form->field($model, 'id_kind_of_sport')->dropDownList($sportsKind, ['prompt' => 'Выберите вид спорта']) ?>

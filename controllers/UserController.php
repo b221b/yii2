@@ -60,18 +60,46 @@ class UserController extends Controller
     {
         $userInfo = UserInfo::findOne($id);
 
-        if ($userInfo) {
-            $userInfo->status = 2; // Устанавливаем статус "На рассмотрении"
-            if ($userInfo->save()) {
-                Yii::$app->session->setFlash('success', 'Заявка на лицензию успешно подана. Статус изменен на "На рассмотрении".');
-            } else {
-                Yii::$app->session->setFlash('error', 'Ошибка при подаче заявки на лицензию.');
-            }
-        } else {
+        if (!$userInfo) {
             Yii::$app->session->setFlash('error', 'Запись не найдена');
+            return $this->redirect(['index']);
         }
 
-        return $this->redirect(Yii::$app->request->referrer ?: ['index']);
+        // Проверяем заполненность всех обязательных полей
+        $requiredFields = [
+            'phone_number' => 'Телефон',
+            'email' => 'Email',
+            'birthday' => 'Дата рождения',
+            'gender' => 'Пол',
+            'id_sports_club' => 'Спортивный клуб',
+            'id_trainers' => 'Тренер',
+            'id_kind_of_sport' => 'Вид спорта'
+        ];
+
+        $missingFields = [];
+        foreach ($requiredFields as $field => $name) {
+            if (empty($userInfo->$field)) {
+                $missingFields[] = $name;
+            }
+        }
+
+        if (!empty($missingFields)) {
+            Yii::$app->session->setFlash(
+                'error',
+                'Не все обязательные поля заполнены. Пожалуйста, заполните: ' . implode(', ', $missingFields)
+            );
+            return $this->redirect(['index']);
+        }
+
+        // Если все поля заполнены, меняем статус
+        $userInfo->status = 2; // Устанавливаем статус "На рассмотрении"
+        if ($userInfo->save()) {
+            Yii::$app->session->setFlash('success', 'Заявка на лицензию успешно подана. Статус изменен на "На рассмотрении".');
+        } else {
+            Yii::$app->session->setFlash('error', 'Ошибка при подаче заявки на лицензию.');
+        }
+
+        return $this->redirect(['index']);
     }
 
     public function actionCreate($user_id)
