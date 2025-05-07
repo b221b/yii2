@@ -5,6 +5,7 @@ use yii\grid\GridView;
 use yii\widgets\LinkPager;
 
 $this->title = 'Соревнования CRUD';
+$this->params['breadcrumbs'][] = ['label' => 'Административная часть', 'url' => ['/admin']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
