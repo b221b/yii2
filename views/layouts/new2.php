@@ -128,8 +128,7 @@ $this->registerJsFile('@web/js/searchTable.js', ['depends' => [\yii\web\JqueryAs
                 <div class="main-menu__nav">
                     <?= Nav::widget([
                         'options' => [
-                            'class' => 'main-menu__list flex-row', //navbar-nav
-                            'style' => 'flex-wrap: nowrap;'
+                            'class' => 'main-menu__list flex-row', // горизонтальное расположение для десктопа
                         ],
                         'dropdownClass' => \yii\bootstrap5\Dropdown::class,
                         'items' => [
@@ -294,9 +293,9 @@ $this->registerJsFile('@web/js/searchTable.js', ['depends' => [\yii\web\JqueryAs
 
             <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
 
-            <div class="logo-box">
-                <a href="<?= Yii::$app->homeUrl ?>" class="main-menu__logo">
-                    <img src="<?= Url::to('@web/assets/images/logo-light3.png') ?>" alt="nisoz" width="70">
+            <div class="main-menu__logo me-4">
+                <a href="<?= Yii::$app->homeUrl ?>" class="logo">
+                    SportOrg
                 </a>
             </div>
             <!-- /.logo-box -->

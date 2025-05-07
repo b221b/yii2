@@ -21,11 +21,6 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/site.css',
-        'css/about.css',
-        'css/cards.css',
-        'css/logo.css',
-
         'assets/vendors/bootstrap/css/bootstrap.min.css',
         'assets/vendors/bootstrap-select/bootstrap-select.min.css',
         'assets/vendors/jquery-ui/jquery-ui.css',
@@ -42,10 +37,14 @@ class AppAsset extends AssetBundle
         'assets/vendors/owl-carousel/assets/owl.theme.default.min.css',
         'assets/css/nisoz.css',
 
+        'css/about.css',
+        'css/cards.css',
+        'css/logo.css',
         'css/searchTable.css',
         'css/competitions.css',
         'css/newss.css',
         'css/user_details.css',
+        'css/site.css',
 
     ];
     public $js = [
