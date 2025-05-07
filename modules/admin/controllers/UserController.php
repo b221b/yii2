@@ -166,4 +166,29 @@ class UserController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+    public function actionDetails($id)
+    {
+        Yii::info("Начало обработки запроса details для пользователя ID: $id");
+
+        try {
+            $user = User::find()
+                ->where(['id' => $id])
+                ->with(['userInfo', 'userInfo.sportsClub', 'userInfo.trainer', 'userInfo.kindOfSport'])
+                ->one(); 
+
+            Yii::debug('Данные пользователя: ' . print_r($user, true));
+
+            if (!$user) {
+                throw new NotFoundHttpException('Пользователь не найден');
+            }
+
+            return $this->renderPartial('_user_details', [
+                'user' => $user,
+            ]);
+        } catch (\Exception $e) {
+            Yii::error("Ошибка в actionDetails: " . $e->getMessage());
+            throw $e;
+        }
+    }
 }

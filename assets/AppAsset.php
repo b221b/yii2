@@ -45,6 +45,7 @@ class AppAsset extends AssetBundle
         'css/searchTable.css',
         'css/competitions.css',
         'css/newss.css',
+        'css/user_details.css',
 
     ];
     public $js = [
