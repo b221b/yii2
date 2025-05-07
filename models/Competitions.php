@@ -103,6 +103,7 @@ class Competitions extends ActiveRecord
             'event_date' => 'Дата проведения',
             'id_structure' => 'Структура',
             'id_kind_of_sport' => 'Вид спорта',
+            'description' => 'Описание',
         ];
     }
 }

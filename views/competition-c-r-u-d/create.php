@@ -61,6 +61,8 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php endforeach; ?>
         </div>
 
+        <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
+
         <div class="form-group">
             <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
         </div>
