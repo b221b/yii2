@@ -1,254 +1,290 @@
-    
-    /* Стили профиля */
-    
+    /* Основные стили */
+    :root {
+        --primary-color: #4361ee;
+        --secondary-color: #3f37c9;
+        --accent-color: #4895ef;
+        --success-color: #4cc9f0;
+        --danger-color: #f72585;
+        --warning-color: #f8961e;
+        --light-color: #f8f9fa;
+        --dark-color: #212529;
+        --gray-color: #6c757d;
+        --border-radius: 12px;
+        --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        --transition: all 0.3s ease;
+    }
+
+    body {
+        font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        background-color: #f5f7fa;
+        color: #333;
+        line-height: 1.6;
+    }
+
     .profile-container {
-        max-width: 900px;
-        margin: 0 auto;
-        padding: 20px;
+        max-width: 800px;
+        margin: 2rem auto;
+        padding: 0 1rem;
     }
 
-    .user-card {
+    /* Карточка профиля */
+    .profile-card {
         background: white;
-        border-radius: 12px;
-        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
         overflow: hidden;
-        margin-bottom: 30px;
+        margin-bottom: 2rem;
     }
 
-    .user-header {
-        background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    /* Шапка профиля */
+    .profile-header {
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
         color: white;
-        padding: 20px;
+        padding: 2rem;
         text-align: center;
+        position: relative;
     }
 
-    .user-title {
+    .profile-avatar {
+        width: 120px;
+        height: 120px;
+        margin: 0 auto 1.5rem;
+        border-radius: 50%;
+        border: 4px solid rgba(255, 255, 255, 0.3);
+        overflow: hidden;
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .avatar-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .avatar-initials {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        font-weight: bold;
+        color: white;
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    .profile-name {
         font-size: 1.8rem;
         font-weight: 600;
-        margin: 0;
+        margin: 0 0 0.5rem;
+        color: white;
     }
 
-    .user-profile {
-        padding: 25px;
-        background: #f8f9fa;
+    .profile-status {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        margin-bottom: 1.5rem;
+    }
+
+    .status-active {
+        background-color: rgba(76, 201, 240, 0.2);
+        color: #4cc9f0;
+        border: 1px solid #4cc9f0;
+    }
+
+    .status-pending {
+        background-color: rgba(248, 150, 30, 0.2);
+        color: #f8961e;
+        border: 1px solid #f8961e;
+    }
+
+    .status-inactive {
+        background-color: rgba(247, 37, 133, 0.2);
+        color: #f72585;
+        border: 1px solid #f72585;
+    }
+
+    /* Кнопка лицензии */
+    .license-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.75rem 1.5rem;
+        background-color: white;
+        color: var(--primary-color);
+        border-radius: 50px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: var(--transition);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        margin-top: 0.5rem;
+    }
+
+    .license-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        color: var(--secondary-color);
+    }
+
+    .license-btn i {
+        margin-right: 0.5rem;
+    }
+
+    /* Секции профиля */
+    .profile-sections {
+        padding: 1.5rem;
     }
 
     .profile-section {
+        margin-bottom: 1.5rem;
         background: white;
-        border-radius: 10px;
-        padding: 25px;
-        margin-bottom: 25px;
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        border-radius: var(--border-radius);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        overflow: hidden;
     }
 
     .section-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 20px;
-        border-bottom: 1px solid #e9ecef;
-        padding-bottom: 10px;
+        padding: 1rem 1.5rem;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     }
 
-    .profile-section-title {
-        font-size: 1.3rem;
+    .section-title {
+        font-size: 1.2rem;
+        font-weight: 600;
         margin: 0;
-        color: #495057;
-    }
-
-    .profile-info {
-        display: flex;
-        align-items: flex-start;
-        gap: 25px;
-    }
-
-    .avatar-container {
-        flex-shrink: 0;
-        width: 120px;
-        height: 120px;
-        border-radius: 50%;
-        background: #e9ecef;
+        color: var(--dark-color);
         display: flex;
         align-items: center;
-        justify-content: center;
-        overflow: hidden;
-        border: 3px solid white;
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
     }
 
-    .avatar-placeholder {
-        font-size: 40px;
-        color: #adb5bd;
+    .section-title i {
+        margin-right: 0.75rem;
+        color: var(--accent-color);
     }
 
-    .avatar-img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
-    .user-details {
-        flex-grow: 1;
-    }
-
-    .detail-row {
-        display: flex;
-        margin-bottom: 12px;
-        align-items: center;
-    }
-
-    .detail-label {
-        width: 180px;
-        font-weight: 500;
-        color: #6c757d;
-    }
-
-    .detail-value {
-        flex-grow: 1;
-        padding: 8px 0;
-    }
-
-    .contact-details {
-        padding: 15px 0;
-    }
-
-    .empty-contacts {
-        padding: 30px 20px;
-        text-align: center;
-        color: #6c757d;
-        border: 2px dashed #dee2e6;
-        border-radius: 8px;
-        margin: 20px 0;
-    }
-
-    .empty-contacts p {
-        margin-bottom: 20px;
-        font-size: 1.1rem;
-    }
-
-    .edit-btn,
-    .add-contact-btn {
-        padding: 8px 20px;
-        font-size: 0.95rem;
-        border-radius: 6px;
+    /* Кнопка редактирования */
+    .edit-btn {
         display: inline-flex;
         align-items: center;
-        gap: 8px;
-    }
-
-    .text-green {
-        color: #28a745;
-        font-weight: 500;
-    }
-
-    .text-red {
-        color: #dc3545;
-        font-weight: 500;
-    }
-
-    .text-orange {
-        color: #fd7e14;
-        font-weight: 500;
-    }
-
-    .text-muted {
-        color: #6c757d;
-        font-style: italic;
-    }
-
-    /* Кнопка лицензии */
-    .pay-btn {
-        position: relative;
-        padding: 12px 24px;
-        font-size: 16px;
-        background: #1a1a1a;
-        color: white;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background-color: var(--light-color);
+        color: var(--gray-color);
+        text-decoration: none;
+        transition: var(--transition);
         border: none;
-        border-radius: 8px;
         cursor: pointer;
+    }
+
+    .edit-btn:hover {
+        background-color: var(--accent-color);
+        color: white;
+        transform: rotate(15deg);
+    }
+
+    /* Сетка информации */
+    .info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.5rem;
+        padding: 1.5rem;
+    }
+
+    .info-item {
         display: flex;
-        align-items: center;
-        gap: 10px;
-        transition: all 0.3s ease;
+        flex-direction: column;
     }
 
-    .pay-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    .info-label {
+        font-size: 0.85rem;
+        color: var(--gray-color);
+        margin-bottom: 0.25rem;
+        font-weight: 500;
     }
 
-    .icon-container {
-        position: relative;
-        width: 24px;
-        height: 24px;
+    .info-value {
+        font-size: 1rem;
+        font-weight: 500;
+        color: var(--dark-color);
+        padding: 0.5rem 0;
     }
 
-    .icon {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 24px;
-        height: 24px;
-        color: #22c55e;
-        opacity: 0;
-        visibility: hidden;
+    .empty-field {
+        color: var(--gray-color);
+        font-style: italic;
+        font-weight: normal;
     }
 
-    .default-icon {
-        opacity: 1;
-        visibility: visible;
+    /* Пустые секции */
+    .empty-section {
+        padding: 2rem;
+        text-align: center;
+        color: var(--gray-color);
     }
 
-    .btn-text {
-        font-weight: 600;
-        font-family: system-ui, -apple-system, sans-serif;
+    .empty-section p {
+        margin-bottom: 1rem;
     }
 
-    @keyframes iconRotate {
-        0% {
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(10px) scale(0.5);
-        }
-
-        5% {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0) scale(1);
-        }
-
-        15% {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0) scale(1);
-        }
-
-        20% {
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px) scale(0.5);
-        }
-
-        100% {
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px) scale(0.5);
-        }
+    .add-btn {
+        display: inline-block;
+        padding: 0.5rem 1.25rem;
+        background-color: var(--light-color);
+        color: var(--primary-color);
+        border-radius: 50px;
+        font-weight: 500;
+        text-decoration: none;
+        transition: var(--transition);
+        border: 1px solid rgba(67, 97, 238, 0.3);
     }
 
-    @keyframes checkmarkAppear {
-        0% {
-            opacity: 0;
-            transform: scale(0.5) rotate(-45deg);
+    .add-btn:hover {
+        background-color: var(--primary-color);
+        color: white;
+    }
+
+    /* Сообщение об отсутствии профиля */
+    .empty-profile {
+        text-align: center;
+        padding: 3rem;
+        color: var(--gray-color);
+    }
+
+    .empty-profile i {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        color: var(--gray-color);
+        opacity: 0.5;
+    }
+
+    .empty-profile p {
+        font-size: 1.2rem;
+    }
+
+    /* Адаптивность */
+    @media (max-width: 768px) {
+        .profile-header {
+            padding: 1.5rem;
         }
 
-        50% {
-            opacity: 0.5;
-            transform: scale(1.2) rotate(0deg);
+        .profile-avatar {
+            width: 100px;
+            height: 100px;
         }
 
-        100% {
-            opacity: 1;
-            transform: scale(1) rotate(0deg);
+        .profile-name {
+            font-size: 1.5rem;
+        }
+
+        .info-grid {
+            grid-template-columns: 1fr;
         }
     }

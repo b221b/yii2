@@ -2,6 +2,7 @@
 
 use yii\grid\GridView;
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 $tableNamesMap = [
     'kind_of_sport' => 'Виды спорта',
@@ -13,21 +14,14 @@ $tableNamesMap = [
     'trainers' => 'Тренеры',
 ];
 
-// Массив соответствий столбцов и их русских названий
 $columnLabels = [
-    'kind_of_sport' => [
-        'name' => 'Название',
-    ],
-    'organisations' => [
-        'full_name' => 'Название организатора',
-    ],
+    'kind_of_sport' => ['name' => 'Название'],
+    'organisations' => ['full_name' => 'Название организатора'],
     'prizewinner' => [
         'prize_place' => 'Призовое место',
         'reward' => 'Награда',
     ],
-    'sports_club' => [
-        'name' => 'Название клуба',
-    ],
+    'sports_club' => ['name' => 'Название клуба'],
     'sportsman' => [
         'name' => 'Имя',
         'discharge' => 'Разряд',
@@ -45,19 +39,32 @@ $columnLabels = [
 
 $this->title = ($tableNamesMap[$tableName] ?? $tableName);
 $this->params['breadcrumbs'][] = $this->title;
-
-$this->title = 'Данные таблицы: ' . ($tableNamesMap[$tableName] ?? $tableName);
 ?>
 
 <h1><?= Html::encode($this->title) ?></h1>
 
 <?= GridView::widget([
     'dataProvider' => $dataProvider,
+    'rowOptions' => function ($model) use ($tableName, $pkField) {
+        return [
+            'style' => 'cursor: pointer',
+            'onclick' => 'window.location.href="' . Url::to(['view-record', 'table' => $tableName, 'id' => $model[$pkField]]) . '"',
+        ];
+    },
     'columns' => array_map(
-        function ($column) use ($tableName, $columnLabels) {
+        function ($column) use ($tableName, $columnLabels, $tableNamesMap) {
             return [
-                'attribute' => $column,  // Поле в БД
-                'label' => $columnLabels[$tableName][$column] ?? $column,  // Русское название (если есть)
+                'attribute' => $column,
+                'label' => $columnLabels[$tableName][$column] ?? $column,
+                'content' => function ($model) use ($column, $tableName, $columnLabels, $tableNamesMap) {
+                    if (strpos($column, 'id_') === 0) {
+                        $relatedTable = substr($column, 3);
+                        if (isset($tableNamesMap[$relatedTable])) {
+                            return $model[$column] . ' (' . $tableNamesMap[$relatedTable] . ')';
+                        }
+                    }
+                    return Html::encode($model[$column]);
+                },
             ];
         },
         array_filter(
