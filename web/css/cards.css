@@ -288,3 +288,44 @@
             grid-template-columns: 1fr;
         }
     }
+
+    /* Edit profile styles */
+    .card-custom {
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .card-header-custom {
+        font-size: 1.5rem;
+    }
+
+    .input-group-custom {
+        min-width: 100px;
+        justify-content: center;
+        background-color: #f8f9fa;
+        border-right: none;
+    }
+
+    .phone-input-custom {
+        border-left: none;
+    }
+
+    .form-check-input-custom {
+        margin-top: 0.2rem;
+    }
+
+    .btn-custom {
+        transition: all 0.3s;
+    }
+
+    .invalid-feedback-custom {
+        display: block;
+    }
+
+    .user-update .form-group-custom {
+        margin-bottom: 1rem;
+    }
+
+    .row-custom {
+        justify-content: center;
+    }

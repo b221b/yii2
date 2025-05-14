@@ -74,6 +74,7 @@ class AppAsset extends AssetBundle
 
         'js/searchTable.js',
         'js/competitions.js',
+        'js/user_profile.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
