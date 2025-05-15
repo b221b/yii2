@@ -45,6 +45,7 @@ class AppAsset extends AssetBundle
         'css/newss.css',
         'css/user_details.css',
         'css/site.css',
+        'css/upcoming-events.css',
 
     ];
     public $js = [

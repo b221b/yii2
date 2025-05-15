@@ -2,12 +2,14 @@
 
 namespace app\controllers;
 
+use app\models\CompetitionRegistration;
 use yii\web\Controller;
 use yii\data\Pagination;
 use app\models\Competitions;
 use app\models\KindOfSport;
 use app\models\Structure;
 use Yii;
+use yii\web\NotFoundHttpException;
 
 class CompetitionsController extends Controller
 {
@@ -97,5 +99,77 @@ class CompetitionsController extends Controller
             'competitions' => $competitions,
             'date' => $date,
         ]);
+    }
+
+    public function actionRegister($id)
+    {
+        $competition = $this->findModel($id);
+
+        if (Yii::$app->user->isGuest) {
+            return $this->redirect(['site/login']);
+        }
+
+        // Проверяем, не записан ли уже пользователь
+        $existingRegistration = CompetitionRegistration::find()
+            ->where([
+                'competition_id' => $id,
+                'user_id' => Yii::$app->user->id
+            ])
+            ->one();
+
+        if ($existingRegistration) {
+            Yii::$app->session->setFlash('warning', 'Вы уже записаны на это соревнование.');
+            return $this->redirect(['view', 'id' => $id]);
+        }
+
+        $registration = new CompetitionRegistration([
+            'competition_id' => $id,
+            'user_id' => Yii::$app->user->id,
+            'registration_date' => date('Y-m-d H:i:s'),
+        ]);
+
+        if ($registration->save()) {
+            Yii::$app->session->setFlash('success', 'Вы успешно записаны на соревнование!');
+        } else {
+            Yii::$app->session->setFlash('error', 'Ошибка при записи на соревнование: ' .
+                implode(' ', $registration->getFirstErrors()));
+        }
+
+        return $this->redirect(['view', 'id' => $id]);
+    }
+
+    public function actionUnregister($id)
+    {
+        if (Yii::$app->user->isGuest) {
+            return $this->redirect(['site/login']);
+        }
+
+        $registration = CompetitionRegistration::find()
+            ->where([
+                'competition_id' => $id,
+                'user_id' => Yii::$app->user->id
+            ])
+            ->one();
+
+        if (!$registration) {
+            throw new NotFoundHttpException('Запись на соревнование не найдена.');
+        }
+
+        if ($registration->delete()) {
+            Yii::$app->session->setFlash('success', 'Запись на соревнование отменена.');
+        } else {
+            Yii::$app->session->setFlash('error', 'Не удалось отменить запись.');
+        }
+
+        return $this->redirect(['/user/index']);
+    }
+
+    protected function findModel($id)
+    {
+        if (($model = Competitions::findOne($id)) !== null) {
+            return $model;
+        }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
 }

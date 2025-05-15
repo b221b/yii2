@@ -9,12 +9,12 @@ use yii\helpers\Html;
 class UpcomingEventsWidget extends Widget
 {
     public $limit = 5;
+    public $showRegisterButton = true; // Новая опция для отображения кнопки записи
 
     public function init()
     {
-        parent::init(); // Вызов родительского метода init
+        parent::init();
 
-        // Нормализация свойства $limit
         if (!is_int($this->limit) || $this->limit <= 0) {
             $this->limit = 5;
         }
@@ -30,6 +30,7 @@ class UpcomingEventsWidget extends Widget
 
         return $this->render('upcoming-events', [
             'events' => $upcomingEvents,
+            'showRegisterButton' => $this->showRegisterButton,
         ]);
     }
 }

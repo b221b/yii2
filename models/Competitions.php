@@ -83,6 +83,17 @@ class Competitions extends ActiveRecord
         return $this->hasMany(SportsmanCompetitions::class, ['id_competitions' => 'id']);
     }
 
+    public function getRegistrations()
+    {
+        return $this->hasMany(CompetitionRegistration::className(), ['competition_id' => 'id']);
+    }
+
+    public function getRegisteredUsers()
+    {
+        return $this->hasMany(User::className(), ['id' => 'user_id'])
+            ->via('registrations');
+    }
+
     // Правила валидации
     public function rules()
     {

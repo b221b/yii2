@@ -7,161 +7,251 @@ $this->title = 'Городская спортивная лига';
 
 <div class="site-index">
 
-    <div class="jumbotron text-center bg-transparent mt-5 mb-5">
-        <h1 class="display-4">Добро пожаловать!</h1>
-
-        <p class="lead">Вы успешно попали в веб-приложение Титаренко Мирослава</p>
-
-        <!-- <p><a class="btn btn-lg btn-success" href="https://www.yiiframework.com">Get started with Yii</a></p> -->
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="display-4 text-center rounded-pill bg-light p-3 shadow-sm">Городская спортивная лига</h1>
+                <p class="text-center text-muted mt-3">Объединяем спортсменов, тренеров и мероприятия вашего города</p>
+            </div>
+        </div>
     </div>
 
-    <?= \app\widgets\UpcomingEventsWidget::widget(['limit' => 5]); ?>
+    <!-- Upcoming Events -->
+    <div class="container mt-5">
+        <?= \app\widgets\UpcomingEventsWidget::widget(['limit' => 5]); ?>
+    </div>
 
-    <div class="body-content">
+    <!-- Main Content -->
+    <div class="container main-content mt-5">
+        <h2 class="section-title text-center mb-5">Навигация по системе</h2>
 
-        <div class="row">
-
-            <!-- Блоки с изображением и текстом -->
-
-            <!-- не реализован -->
-            <!-- <div class="col-lg-4 mb-3">
-                <a href="<?= Yii::$app->urlManager->createUrl(['/structure/index']) ?>" class="card-link">
-                    <div class="card">
-                        <img src="img/cards/1660195230_1-sportishka-com-p-otkritie-ploskostnie-sportivnie-sooruzheni-1.jpg" class="card-img-top" alt="Image 1">
-                        <div class="card-body">
-                            <p class="card-text">Спортивные сооружения</p>
-                        </div>
-                    </div>
-                </a>
-            </div> -->
-
-            <div class="col-lg-4 mb-3">
+        <div class="row g-4">
+            <!-- Спортсмены -->
+            <div class="col-md-4 col-sm-6">
                 <a href="<?= Yii::$app->urlManager->createUrl(['/sportsmans/index']) ?>" class="card-link">
-                    <div class="card">
-                        <img src="img/cards/vV_OdrHqMKw.jpg" class="card-img-top" alt="Image 2">
+                    <div class="feature-card">
+                        <div class="card-image" style="background-image: url('img/cards/vV_OdrHqMKw.jpg')"></div>
                         <div class="card-body">
-                            <p class="card-text">Спортсмены (вид спорта)</p>
+                            <h3>Спортсмены</h3>
+                            <p>Просмотр спортсменов по видам спорта</p>
+                            <span class="card-arrow">→</span>
                         </div>
                     </div>
                 </a>
             </div>
 
-            <div class="col-lg-4 mb-3">
+            <!-- Команды тренеров -->
+            <div class="col-md-4 col-sm-6">
                 <a href="<?= Yii::$app->urlManager->createUrl(['/sportsman-trainers/index']) ?>" class="card-link">
-                    <div class="card">
-                        <img src="img/cards/scale_1200.png" class="card-img-top" alt="Image 3">
+                    <div class="feature-card">
+                        <div class="card-image" style="background-image: url('img/cards/scale_1200.png')"></div>
                         <div class="card-body">
-                            <p class="card-text">Команды тренеров</p>
+                            <h3>Команды тренеров</h3>
+                            <p>Список тренерских составов</p>
+                            <span class="card-arrow">→</span>
                         </div>
                     </div>
                 </a>
             </div>
 
-            <div class="col-lg-4 mb-3">
+            <!-- Многопрофильные атлеты -->
+            <div class="col-md-4 col-sm-6">
                 <a href="<?= Yii::$app->urlManager->createUrl(['/sportsman-kind-of-sport/index']) ?>" class="card-link">
-                    <div class="card">
-                        <img src="img/cards/123.webp" class="card-img-top" alt="Image 4">
+                    <div class="feature-card">
+                        <div class="card-image" style="background-image: url('img/cards/123.webp')"></div>
                         <div class="card-body">
-                            <p class="card-text">Многопрофильные атлеты</p>
+                            <h3>Многопрофильные атлеты</h3>
+                            <p>Спортсмены в нескольких дисциплинах</p>
+                            <span class="card-arrow">→</span>
                         </div>
                     </div>
                 </a>
             </div>
 
-            <div class="col-lg-4 mb-3">
+            <!-- События за период -->
+            <div class="col-md-4 col-sm-6">
                 <a href="<?= Yii::$app->urlManager->createUrl(['/competition-organisation/index']) ?>" class="card-link">
-                    <div class="card">
-                        <img src="img/cards/sorev6.jpg" class="card-img-top" alt="Image 6">
+                    <div class="feature-card">
+                        <div class="card-image" style="background-image: url('img/cards/sorev6.jpg')"></div>
                         <div class="card-body">
-                            <p class="card-text">События за период</p>
+                            <h3>События за период</h3>
+                            <p>Календарь мероприятий</p>
+                            <span class="card-arrow">→</span>
                         </div>
                     </div>
                 </a>
             </div>
 
-            <div class="col-lg-4 mb-3">
+            <!-- Медалисты -->
+            <div class="col-md-4 col-sm-6">
                 <a href="<?= Yii::$app->urlManager->createUrl(['/prizewinner/index']) ?>" class="card-link">
-                    <div class="card">
-                        <img src="img/cards/prizer7.jpeg" class="card-img-top" alt="Image 7">
+                    <div class="feature-card">
+                        <div class="card-image" style="background-image: url('img/cards/prizer7.jpeg')"></div>
                         <div class="card-body">
-                            <p class="card-text">Медалисты</p>
+                            <h3>Медалисты</h3>
+                            <p>Лучшие спортсмены по итогам соревнований</p>
+                            <span class="card-arrow">→</span>
                         </div>
                     </div>
                 </a>
             </div>
 
-            <div class="col-lg-4 mb-3">
+            <!-- Мероприятия по сооружениям -->
+            <div class="col-md-4 col-sm-6">
                 <a href="<?= Yii::$app->urlManager->createUrl(['/competitions-structure/index']) ?>" class="card-link">
-                    <div class="card">
-                        <img src="img/cards/sorevVidsporta8.jpg" class="card-img-top" alt="Image 8">
+                    <div class="feature-card">
+                        <div class="card-image" style="background-image: url('img/cards/sorevVidsporta8.jpg')"></div>
                         <div class="card-body">
-                            <p class="card-text">Перечень мероприятий по сооружениям</p>
+                            <h3>Мероприятия по сооружениям</h3>
+                            <p>Расписание по спортивным объектам</p>
+                            <span class="card-arrow">→</span>
                         </div>
                     </div>
                 </a>
             </div>
 
-            <div class="col-lg-4 mb-3">
+            <!-- Активность клубов -->
+            <div class="col-md-4 col-sm-6">
                 <a href="<?= Yii::$app->urlManager->createUrl(['/sports-club/index']) ?>" class="card-link">
-                    <div class="card">
-                        <img src="img/cards/clubs9.webp" class="card-img-top" alt="Image 9">
+                    <div class="feature-card">
+                        <div class="card-image" style="background-image: url('img/cards/clubs9.webp')"></div>
                         <div class="card-body">
-                            <p class="card-text">Активность клубов</p>
+                            <h3>Активность клубов</h3>
+                            <p>Статистика спортивных клубов</p>
+                            <span class="card-arrow">→</span>
                         </div>
                     </div>
                 </a>
             </div>
 
-            <div class="col-lg-4 mb-3">
+            <!-- Тренеры -->
+            <div class="col-md-4 col-sm-6">
                 <a href="<?= Yii::$app->urlManager->createUrl(['/trainers/index']) ?>" class="card-link">
-                    <div class="card">
-                        <img src="img/cards/treners10.jpg" class="card-img-top" alt="Image 10">
+                    <div class="feature-card">
+                        <div class="card-image" style="background-image: url('img/cards/treners10.jpg')"></div>
                         <div class="card-body">
-                            <p class="card-text">Тренеры (вид спорта)</p>
+                            <h3>Тренеры</h3>
+                            <p>Тренерский состав по видам спорта</p>
+                            <span class="card-arrow">→</span>
                         </div>
                     </div>
                 </a>
             </div>
 
-            <div class="col-lg-4 mb-3">
+            <!-- Неучаствующие атлеты -->
+            <div class="col-md-4 col-sm-6">
                 <a href="<?= Yii::$app->urlManager->createUrl(['/sportsman-competitions/index']) ?>" class="card-link">
-                    <div class="card">
-                        <img src="img/cards/otst11.jpg" class="card-img-top" alt="Image 11">
+                    <div class="feature-card">
+                        <div class="card-image" style="background-image: url('img/cards/otst11.jpg')"></div>
                         <div class="card-body">
-                            <p class="card-text">Неучаствующие атлеты</p>
+                            <h3>Неучаствующие атлеты</h3>
+                            <p>Спортсмены без текущих соревнований</p>
+                            <span class="card-arrow">→</span>
                         </div>
                     </div>
                 </a>
             </div>
-
-            <div class="col-lg-4 mb-3">
-                <a href="<?= Yii::$app->urlManager->createUrl(['/organisations/index']) ?>" class="card-link">
-                    <div class="card">
-                        <img src="img/cards/orgs12.webp" class="card-img-top" alt="Image 12">
-                        <div class="card-body">
-                            <p class="card-text">Активность организаторов</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-lg-4 mb-3">
-                <a href="<?= Yii::$app->urlManager->createUrl(['/sport/index']) ?>" class="card-link">
-                    <div class="card">
-                        <img src="img/cards/sooryzheniya13.webp" class="card-img-top" alt="Image 13">
-                        <div class="card-body">
-                            <p class="card-text">Арены и события</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <!--Google Map Start-->
-            <section class="google-map">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3831.10021723342!2d39.712859661850594!3d47.23620567845806!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40e3bbd25efc8dab%3A0xe71795934da757ba!2z0JTQvtC90YHQutC-0Lkg0LPQvtGB0YPQtNCw0YDRgdGC0LLQtdC90L3Ri9C5INGC0LXRhdC90LjRh9C10YHQutC40Lkg0YPQvdC40LLQtdGA0YHQuNGC0LXRgg!5e0!3m2!1sru!2sru!4v1717487879917!5m2!1sru!2sru" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </section>
-            <!--Google Map End-->
         </div>
+    </div>
 
+    <!-- Map Section -->
+    <div class="map-section mt-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-4">Наши спортивные объекты</h2>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3831.10021723342!2d39.712859661850594!3d47.23620567845806!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40e3bbd25efc8dab%3A0xe71795934da757ba!2z0JTQvtC90YHQutC-0Lkg0LPQvtGB0YPQtNCw0YDRgdGC0LLQtdC90L3Ri9C5INGC0LXRhdC90LjRh9C10YHQutC40Lkg0YPQvdC40LLQtdGA0YHQuNGC0LXRgg!5e0!3m2!1sru!2sru!4v1717487879917!5m2!1sru!2sru" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stats Section -->
+    <div class="stats-section py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Статистика лиги</h2>
+            <div class="row justify-content-center">
+                <?php
+                // Получаем данные из БД
+                $sportsmanCount = \app\models\Sportsman::find()->count();
+                $trainerCount = \app\models\Trainers::find()->count();
+                $sportTypesCount = \app\models\KindOfSport::find()->count();
+
+                $upcomingEventsCount = \app\models\Competitions::find()
+                    ->where(['>=', 'event_date', date('Y-m-d')])
+                    ->count();
+
+                $pastEventsCount = \app\models\Competitions::find()
+                    ->where(['<', 'event_date', date('Y-m-d')])
+                    ->count();
+                ?>
+
+                <div class="col-lg-2 col-md-4 col-6 mb-4">
+                    <a href="site/table-data?table=sportsman" class="stat-link">
+                        <div class="stat-item bg-white rounded-4 p-4 text-center shadow-sm h-100 transition-all">
+                            <div class="stat-number fs-2 fw-bold text-primary" data-count="<?= $sportsmanCount ?>">0</div>
+                            <div class="stat-label text-muted mt-2">Спортсменов</div>
+                            <div class="mt-3">
+                                <i class="fas fa-running fa-2x text-primary"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-2 col-md-4 col-6 mb-4">
+                    <a href="site/table-data?table=trainers" class="stat-link">
+                        <div class="stat-item bg-white rounded-4 p-4 text-center shadow-sm h-100 transition-all">
+                            <div class="stat-number fs-2 fw-bold text-success" data-count="<?= $trainerCount ?>">0</div>
+                            <div class="stat-label text-muted mt-2">Тренеров</div>
+                            <div class="mt-3">
+                                <i class="fas fa-user-tie fa-2x text-success"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-2 col-md-4 col-6 mb-4">
+                    <a href="site/table-data?table=kind_of_sport" class="stat-link">
+                        <div class="stat-item bg-white rounded-4 p-4 text-center shadow-sm h-100 transition-all">
+                            <div class="stat-number fs-2 fw-bold text-info" data-count="<?= $sportTypesCount ?>">0</div>
+                            <div class="stat-label text-muted mt-2">Видов спорта</div>
+                            <div class="mt-3">
+                                <i class="fas fa-trophy fa-2x text-info"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-2 col-md-4 col-6 mb-4">
+                    <a href="competitions/index" class="stat-link">
+                        <div class="stat-item bg-white rounded-4 p-4 text-center shadow-sm h-100 transition-all">
+                            <div class="stat-number fs-2 fw-bold text-warning" data-count="<?= $upcomingEventsCount ?>">0</div>
+                            <div class="stat-label text-muted mt-2">Предстоящих мероприятий</div>
+                            <div class="mt-3">
+                                <i class="fas fa-calendar-alt fa-2x text-warning"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-2 col-md-4 col-6 mb-4">
+                    <a href="competitions/index" class="stat-link">
+                        <div class="stat-item bg-white rounded-4 p-4 text-center shadow-sm h-100 transition-all">
+                            <div class="stat-number fs-2 fw-bold text-danger" data-count="<?= $pastEventsCount ?>">0</div>
+                            <div class="stat-label text-muted mt-2">Проведенных мероприятий</div>
+                            <div class="mt-3">
+                                <i class="fas fa-history fa-2x text-danger"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+<style>
+    
+</style>
+
+<script>
+    
+</script>

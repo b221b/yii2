@@ -184,4 +184,7 @@ if ($usersDataProvider && count($usersDataProvider->models) > 0) {
             <p>Пользователь не найден</p>
         </div>
     <?php endif; ?>
+
+    <?= \app\widgets\UserRegistrationsWidget::widget() ?>
+    
 </div>
