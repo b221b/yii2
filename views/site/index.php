@@ -128,7 +128,7 @@ $this->title = 'Городская спортивная лига';
             <div class="col-md-4 col-sm-6">
                 <a href="<?= Yii::$app->urlManager->createUrl(['/trainers/index']) ?>" class="card-link">
                     <div class="feature-card">
-                        <div class="card-image" style="background-image: url('img/cards/treners10.jpg')"></div>
+                        <div class="card-image" style="background-image: url('https://hcnh.ru/upload/iblock/400/400d299e3383c9047e46ffc773d767e6.jpg')"></div>
                         <div class="card-body">
                             <h3>Тренеры</h3>
                             <p>Тренерский состав по видам спорта</p>
@@ -249,9 +249,9 @@ $this->title = 'Городская спортивная лига';
 </div>
 
 <style>
-    
+
 </style>
 
 <script>
-    
+
 </script>
