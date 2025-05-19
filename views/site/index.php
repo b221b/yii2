@@ -83,7 +83,8 @@ $this->title = 'Городская спортивная лига';
             </div>
 
             <!-- Медалисты -->
-            <div class="col-md-4 col-sm-6">
+            <!-- есть баги в коде, надо фиксануть -->
+            <!-- <div class="col-md-4 col-sm-6">
                 <a href="<?= Yii::$app->urlManager->createUrl(['/prizewinner/index']) ?>" class="card-link">
                     <div class="feature-card">
                         <div class="card-image" style="background-image: url('img/cards/prizer7.jpeg')"></div>
@@ -94,10 +95,11 @@ $this->title = 'Городская спортивная лига';
                         </div>
                     </div>
                 </a>
-            </div>
+            </div> -->
 
             <!-- Мероприятия по сооружениям -->
-            <div class="col-md-4 col-sm-6">
+             <!-- юзлес блок -->
+            <!-- <div class="col-md-4 col-sm-6">
                 <a href="<?= Yii::$app->urlManager->createUrl(['/competitions-structure/index']) ?>" class="card-link">
                     <div class="feature-card">
                         <div class="card-image" style="background-image: url('img/cards/sorevVidsporta8.jpg')"></div>
@@ -108,7 +110,7 @@ $this->title = 'Городская спортивная лига';
                         </div>
                     </div>
                 </a>
-            </div>
+            </div> -->
 
             <!-- Активность клубов -->
             <div class="col-md-4 col-sm-6">

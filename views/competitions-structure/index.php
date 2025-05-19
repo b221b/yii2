@@ -2,50 +2,89 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\Url;
 
 $this->title = 'Перечень соревнований по сооружениям и видам спорта';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<div class="sorevnovaniya-index">
+<div class="data-container">
+    <div class="filter-container">
+        <h1 class="data-title"><?= Html::encode($this->title) ?></h1>
 
-    <h1><?= Html::encode($this->title) ?></h1>
+        <div class="filter-card">
+            <?php $form = ActiveForm::begin([
+                'options' => ['class' => 'filter-form'],
+                'fieldConfig' => [
+                    'options' => ['class' => 'filter-field'],
+                    'template' => "{label}\n{input}\n{error}",
+                ],
+            ]); ?>
 
-    <div class="search-form">
-        <?php $form = ActiveForm::begin(); ?>
+            <div class="filter-row">
+                <div class="filter-col">
+                    <?= $form->field($model, 'id_structure')->dropDownList(
+                        $structures,
+                        [
+                            'prompt' => 'Выберите спортивное сооружение',
+                            'class' => 'form-control filter-select'
+                        ]
+                    ) ?>
+                </div>
 
-        <?= $form->field($model, 'id_structure')->dropDownList($structures, ['prompt' => 'Выберите спортивное сооружение']) ?>
+                <div class="filter-col">
+                    <?= $form->field($model, 'id_kind_of_sport')->dropDownList(
+                        $vidSportas,
+                        [
+                            'prompt' => 'Выберите вид спорта',
+                            'class' => 'form-control filter-select'
+                        ]
+                    ) ?>
+                </div>
 
-        <?= $form->field($model, 'id_kind_of_sport')->dropDownList($vidSportas, ['prompt' => 'Выберите вид спорта']) ?>
+                <div class="filter-col filter-buttons">
+                    <?= Html::submitButton('<i class="fas fa-search"></i> Получить записи', [
+                        'class' => 'btn btn-primary filter-btn'
+                    ]) ?>
+                    <?= Html::a('<i class="fas fa-broom"></i> Получить все записи', ['index'], [
+                        'class' => 'btn btn-outline-secondary filter-btn'
+                    ]) ?>
+                </div>
+            </div>
 
-        <div class="form-group">
-            <?= Html::submitButton('Получить записи', ['class' => 'btn btn-primary']) ?>
-            <?= Html::a('Получить все записи', ['index'], ['class' => 'btn btn-default']) ?>
+            <?php ActiveForm::end(); ?>
         </div>
-
-        <?php ActiveForm::end(); ?>
     </div>
 
-    <h2>Список соревнований</h2>
+    <div class="results-container">
+        <div class="results-header">
+            <h2 class="section-title">Список соревнований</h2>
+            <div class="results-count">
+                Найдено: <?= count($competitions) ?> записей
+            </div>
+        </div>
 
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Название соревнования</th>
-                <th>Спортивное сооружение</th>
-                <th>Тип сооружения</th>
-                <th>Вид спорта</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($competitions as $competition): ?> 
-                <tr>
-                    <td><?= Html::encode($competition->name) ?></td>
-                    <td><?= Html::encode($competition->structure->name) ?></td>
-                    <td><?= Html::encode($competition->structure->type) ?></td>
-                    <td><?= Html::encode($competition->kindOfSport->name) ?></td>
-                </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
+        <div class="table-responsive">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th width="30%">Название соревнования</th>
+                        <th width="25%">Спортивное сооружение</th>
+                        <th width="20%">Тип сооружения</th>
+                        <th width="25%">Вид спорта</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($competitions as $competition): ?>
+                        <tr class="clickable-row" onclick="window.location.href='<?= Url::to(['/competitions/view', 'id' => $competition->id]) ?>'">
+                            <td><?= Html::encode($competition->name) ?></td>
+                            <td><?= Html::encode($competition->structure->name) ?></td>
+                            <td><?= Html::encode($competition->structure->type) ?></td>
+                            <td><?= Html::encode($competition->kindOfSport->name) ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>

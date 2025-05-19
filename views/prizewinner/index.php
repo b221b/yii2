@@ -44,8 +44,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 <tr>
                     <td><?= Html::encode($prizer['sportsman_name']) ?></td>
                     <td><?= Html::encode($prizer['sorevnovanie_name']) ?></td>
-                    <td><?= Html::encode($prizer['mesto']) ?></td>
-                    <td><?= Html::encode($prizer['nagrada']) ?></td>
+                    <td><?= Html::encode($prizer['prize_place']) ?></td>
+                    <td><?= Html::encode($prizer['reward']) ?></td>
                 </tr>
             <?php endforeach; ?>
         <?php else: ?>
