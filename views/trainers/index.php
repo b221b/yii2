@@ -3,47 +3,96 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\grid\GridView;
+use yii\helpers\Url;
 
 $this->title = 'Список тренеров по виду спорта';
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
 
-<div class="treners-index">
-    <h1><?= Html::encode($this->title) ?></h1>
+<div class="data-container">
+    <div class="filter-container">
+        <h1 class="data-title"><?= Html::encode($this->title) ?></h1>
 
-    <div class="search-form">
-        <?php $form = ActiveForm::begin(); ?>
+        <div class="filter-card">
+            <?php $form = ActiveForm::begin([
+                'options' => ['class' => 'filter-form'],
+                'fieldConfig' => [
+                    'options' => ['class' => 'filter-field'],
+                    'template' => "{label}\n{input}\n{error}",
+                ],
+            ]); ?>
 
-        <?= $form->field($model, 'sport')->dropDownList($sports, ['prompt' => 'Выберите вид спорта']) ?>
+            <div class="filter-row">
+                <div class="filter-col">
+                    <?= $form->field($model, 'sport')->dropDownList(
+                        $sports,
+                        [
+                            'prompt' => 'Выберите вид спорта',
+                            'class' => 'form-control filter-select'
+                        ]
+                    ) ?>
+                </div>
 
-        <div class="form-group">
-            <?= Html::submitButton('Получить тренеров', ['class' => 'btn btn-primary']) ?>
-            <?= Html::a('Получить все записи', ['index'], ['class' => 'btn btn-default']) ?>
+                <div class="filter-col filter-buttons">
+                    <?= Html::submitButton('<i class="fas fa-search"></i> Получить тренеров', [
+                        'class' => 'btn btn-primary filter-btn'
+                    ]) ?>
+                    <?= Html::a('<i class="fas fa-broom"></i> Получить все записи', ['index'], [
+                        'class' => 'btn btn-outline-secondary filter-btn'
+                    ]) ?>
+                </div>
+            </div>
+
+            <?php ActiveForm::end(); ?>
         </div>
-
-        <?php ActiveForm::end(); ?>
     </div>
 
-    <h2>Результаты:</h2>
-    <?= GridView::widget([
-        'dataProvider' => new \yii\data\ArrayDataProvider([
-            'allModels' => $dataProvider,
-            'pagination' => [
-                'pageSize' => 10,
-            ],
-        ]),
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-            'trainer_name',
-            [
-                'attribute' => 'sport_name',
-                'value' => function ($model) {
-                    return $model['sport_name'] ?? 'Не указано';
-                },
-            ],
-        ],
-    ]); ?>
+    <div class="results-container">
+        <div class="results-header">
+            <h2 class="section-title">Результаты</h2>
+            <div class="results-count">
+                Найдено: <?= count($dataProvider) ?> записей
+            </div>
+        </div>
 
-
+        <?= GridView::widget([
+            'dataProvider' => new \yii\data\ArrayDataProvider([
+                'allModels' => $dataProvider,
+                'pagination' => [
+                    'pageSize' => 10,
+                ],
+            ]),
+            'tableOptions' => ['class' => 'data-table'],
+            'headerRowOptions' => ['class' => 'table-header'],
+            'rowOptions' => function ($model) {
+                return [
+                    'class' => 'clickable-row',
+                ];
+            },
+            'columns' => [
+                [
+                    'attribute' => 'trainer_name',
+                    'headerOptions' => ['width' => '60%'],
+                    'contentOptions' => ['class' => ''],
+                    'label' => 'Тренер',
+                ],
+                [
+                    'attribute' => 'sport_name',
+                    'headerOptions' => ['width' => '35%'],
+                    'label' => 'Вид спорта',
+                    'value' => function ($model) {
+                        return $model['sport_name'] ?? 'Не указано';
+                    },
+                    'contentOptions' => ['class' => ''],
+                ],
+            ],
+            'pager' => [
+                'options' => ['class' => 'pagination'],
+                'linkOptions' => ['class' => 'page-link'],
+                'activePageCssClass' => 'active',
+                'disabledPageCssClass' => 'disabled',
+            ],
+        ]); ?>
+    </div>
 </div>
