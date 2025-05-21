@@ -186,5 +186,11 @@ if ($usersDataProvider && count($usersDataProvider->models) > 0) {
     <?php endif; ?>
 
     <?= \app\widgets\UserRegistrationsWidget::widget() ?>
-    
+
+    <?php if (Yii::$app->user->identity->status_id == \app\models\User::ROLE_MANAGER): ?>
+        <div class="alert alert-info" style="margin: 20px 0;">
+            Вы менеджер
+        </div>
+    <?php endif; ?>
+
 </div>
