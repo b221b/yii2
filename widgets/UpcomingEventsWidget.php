@@ -4,12 +4,13 @@ namespace app\widgets;
 
 use yii\base\Widget;
 use app\models\Competitions;
+use app\models\CompetitionRegistration;
 use yii\helpers\Html;
 
 class UpcomingEventsWidget extends Widget
 {
     public $limit = 5;
-    public $showRegisterButton = true; // Новая опция для отображения кнопки записи
+    public $showRegisterButton = true;
 
     public function init()
     {
@@ -28,9 +29,19 @@ class UpcomingEventsWidget extends Widget
             ->limit($this->limit)
             ->all();
 
+        // Получаем ID соревнований, на которые пользователь уже зарегистрирован
+        $userRegisteredCompetitions = [];
+        if (!\Yii::$app->user->isGuest) {
+            $userRegisteredCompetitions = CompetitionRegistration::find()
+                ->select('competition_id')
+                ->where(['user_id' => \Yii::$app->user->id])
+                ->column();
+        }
+
         return $this->render('upcoming-events', [
             'events' => $upcomingEvents,
             'showRegisterButton' => $this->showRegisterButton,
+            'userRegisteredCompetitions' => $userRegisteredCompetitions,
         ]);
     }
 }

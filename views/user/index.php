@@ -65,6 +65,25 @@ if ($usersDataProvider && count($usersDataProvider->models) > 0) {
                         <?php endif; ?>
                     </div>
                     <h1 class="profile-name"><?= Html::encode($userData['username']) ?></h1>
+
+                    <?php if (Yii::$app->user->identity->status_id == \app\models\User::ROLE_MANAGER): ?>
+                        <div class="alert" style="margin: 20px 0;">
+                            Вы менеджер
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if (Yii::$app->user->identity->status_id == \app\models\User::ROLE_USER): ?>
+                        <div class="alert" style="margin: 20px 0;">
+                            Вы пользователь
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if (Yii::$app->user->identity->status_id == \app\models\User::ROLE_ADMIN): ?>
+                        <div class="alert" style="margin: 20px 0;">
+                            Вы администратор
+                        </div>
+                    <?php endif; ?>
+
                     <div class="profile-status <?= $userData['status'] === 1 ? 'status-active' : ($userData['status'] === 2 ? 'status-pending' : 'status-inactive') ?>">
                         <?= Html::encode($userData['status'] === 1 ? 'Активная лицензия' : ($userData['status'] === 2 ? 'Лицензия на рассмотрении' : 'Лицензия неактивна')) ?>
                     </div>
@@ -187,10 +206,8 @@ if ($usersDataProvider && count($usersDataProvider->models) > 0) {
 
     <?= \app\widgets\UserRegistrationsWidget::widget() ?>
 
-    <?php if (Yii::$app->user->identity->status_id == \app\models\User::ROLE_MANAGER): ?>
-        <div class="alert alert-info" style="margin: 20px 0;">
-            Вы менеджер
-        </div>
-    <?php endif; ?>
+
+
+    <?= \app\widgets\EventApplicationsWidget::widget() ?>
 
 </div>

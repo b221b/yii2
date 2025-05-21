@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Май 21 2025 г., 18:53
+-- Время создания: Май 20 2025 г., 16:55
 -- Версия сервера: 8.0.30
 -- Версия PHP: 8.1.9
 
@@ -52,36 +52,6 @@ INSERT INTO `competitions` (`id`, `name`, `id_structure`, `id_kind_of_sport`, `e
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `competition_applications`
---
-
-CREATE TABLE `competition_applications` (
-  `id` int NOT NULL,
-  `user_id` int NOT NULL,
-  `competition_id` int NOT NULL,
-  `status` varchar(255) NOT NULL DEFAULT 'pending',
-  `created_at` datetime NOT NULL,
-  `processed_at` datetime DEFAULT NULL,
-  `processed_by` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Дамп данных таблицы `competition_applications`
---
-
-INSERT INTO `competition_applications` (`id`, `user_id`, `competition_id`, `status`, `created_at`, `processed_at`, `processed_by`) VALUES
-(1, 1, 13, 'approved', '2025-05-21 17:29:51', '2025-05-21 17:45:22', 5),
-(2, 1, 13, 'approved', '2025-05-21 17:45:46', '2025-05-21 17:45:58', 5),
-(3, 5, 13, 'rejected', '2025-05-21 18:01:23', '2025-05-21 18:01:53', 5),
-(4, 1, 13, 'approved', '2025-05-21 18:01:46', '2025-05-21 18:01:57', 5),
-(5, 1, 13, 'rejected', '2025-05-21 18:02:15', '2025-05-21 18:02:29', 5),
-(6, 1, 13, 'approved', '2025-05-21 18:05:05', '2025-05-21 18:05:13', 5),
-(7, 1, 13, 'rejected', '2025-05-21 18:25:33', '2025-05-21 18:29:47', 5),
-(8, 1, 13, 'approved', '2025-05-21 18:38:33', '2025-05-21 18:40:43', 5);
-
--- --------------------------------------------------------
-
---
 -- Структура таблицы `competition_registration`
 --
 
@@ -97,7 +67,7 @@ CREATE TABLE `competition_registration` (
 --
 
 INSERT INTO `competition_registration` (`id`, `competition_id`, `user_id`, `registration_date`) VALUES
-(7, 13, 1, '2025-05-21 18:40:43');
+(4, 13, 1, '2025-05-17 09:55:57');
 
 -- --------------------------------------------------------
 
@@ -145,8 +115,7 @@ INSERT INTO `migration` (`version`, `apply_time`) VALUES
 ('m250325_171600_relations', 1742926004),
 ('m250326_082020_insert_data', 1742978862),
 ('m250402_090138_user_info', 1743585129),
-('m250514_181235_create_competition_registration_table', 1747246394),
-('m250521_142709_create_competition_applications_table', 1747837738);
+('m250514_181235_create_competition_registration_table', 1747246394);
 
 -- --------------------------------------------------------
 
@@ -416,26 +385,6 @@ INSERT INTO `sports_club` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `status`
---
-
-CREATE TABLE `status` (
-  `id` int NOT NULL,
-  `status` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Дамп данных таблицы `status`
---
-
-INSERT INTO `status` (`id`, `status`) VALUES
-(1, 'admin'),
-(2, 'user'),
-(3, 'manager');
-
--- --------------------------------------------------------
-
---
 -- Структура таблицы `structure`
 --
 
@@ -500,20 +449,20 @@ CREATE TABLE `user` (
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `authKey` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '',
-  `status_id` int DEFAULT '2'
+  `isAdmin` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Дамп данных таблицы `user`
 --
 
-INSERT INTO `user` (`id`, `username`, `password`, `authKey`, `status_id`) VALUES
-(1, 'aomine', '$2y$13$QWESqI.Rh8UoBYBaHKH8/eNHZ5GHej50K1gY4O.rblEHDKVkZakMm', 'FXAB-oDLp-REz0jMzxDxlBsovfFtOje9', 1),
-(2, 'test', '$2y$13$gyJiuSiHwRKSCcq9LEf0N.CXarOTrHhqHNW3/awowd0hNHFi4uONe', 'sneze1TFPOf6_yY3KgN6mWI-mDUxVS-9', 3),
-(3, 'script123', '$2y$13$k0Sq1QpspfbU9W9jdEDHfOZOw0WeWCP3EA.K7bpOF22mTwfg62KyG', 'QMhSH50fn_vtC9gMQq1WaAoKBDfnPj50', 2),
-(4, 'admin\' OR \'1\'=\'1', '$2y$13$lXPqoloEvux99hrPQVVLlu4U1AMxVuRf0ilSLlcaH2fizG4X.fne6', 'wN5UkTX8XuXZGgrZop0KGC6PqB2RFl53', 2),
-(5, 'miroslaw', '$2y$13$ok7HJMd88TRI/BWZHZFdI.8Jek18vVQBLJELzEsCiw.BtRMjCF08S', 'vSawHzwCqUxyYuMSWuM5OcjSJmKSDOOa', 3),
-(6, 'vera', '$2y$13$Qq0fR5Gyrur9UK5qjR8You1eJMB7HS/5eBatqD.KwGP.a9c3MEY0K', 'rbI6ZwSFTfNHDf6r3J0DtV02nRzDRkKd', 2);
+INSERT INTO `user` (`id`, `username`, `password`, `authKey`, `isAdmin`) VALUES
+(1, 'aomine', '$2y$13$QWESqI.Rh8UoBYBaHKH8/eNHZ5GHej50K1gY4O.rblEHDKVkZakMm', '0VgqWDe8qejpNEd-ObmkJJ8IAIbbO1KY', 1),
+(2, 'test', '$2y$13$gyJiuSiHwRKSCcq9LEf0N.CXarOTrHhqHNW3/awowd0hNHFi4uONe', 'oYknHdlAp84_GcKxNw_XbyeC3QyKxVuS', 0),
+(3, 'script123', '$2y$13$k0Sq1QpspfbU9W9jdEDHfOZOw0WeWCP3EA.K7bpOF22mTwfg62KyG', 'QMhSH50fn_vtC9gMQq1WaAoKBDfnPj50', 0),
+(4, 'admin\' OR \'1\'=\'1', '$2y$13$lXPqoloEvux99hrPQVVLlu4U1AMxVuRf0ilSLlcaH2fizG4X.fne6', 'wN5UkTX8XuXZGgrZop0KGC6PqB2RFl53', 0),
+(5, 'miroslaw', '$2y$13$ok7HJMd88TRI/BWZHZFdI.8Jek18vVQBLJELzEsCiw.BtRMjCF08S', 'SeW6BdlDn5QB9_8g2UkCgVYefkLhAl_I', 0),
+(6, 'vera', '$2y$13$Qq0fR5Gyrur9UK5qjR8You1eJMB7HS/5eBatqD.KwGP.a9c3MEY0K', 'u5IxAEo0rioNhE5-b1T_QulkyZMRHdrZ', 0);
 
 -- --------------------------------------------------------
 
@@ -556,15 +505,6 @@ ALTER TABLE `competitions`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_competitions_structure` (`id_structure`),
   ADD KEY `fk_competitions_kind_of_sport` (`id_kind_of_sport`);
-
---
--- Индексы таблицы `competition_applications`
---
-ALTER TABLE `competition_applications`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk-competition_applications-user_id` (`user_id`),
-  ADD KEY `fk-competition_applications-competition_id` (`competition_id`),
-  ADD KEY `fk-competition_applications-processed_by` (`processed_by`);
 
 --
 -- Индексы таблицы `competition_registration`
@@ -653,12 +593,6 @@ ALTER TABLE `sports_club`
   ADD PRIMARY KEY (`id`);
 
 --
--- Индексы таблицы `status`
---
-ALTER TABLE `status`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Индексы таблицы `structure`
 --
 ALTER TABLE `structure`
@@ -674,8 +608,7 @@ ALTER TABLE `trainers`
 -- Индексы таблицы `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `ind_status_status_id` (`status_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Индексы таблицы `user_info`
@@ -698,16 +631,10 @@ ALTER TABLE `competitions`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT для таблицы `competition_applications`
---
-ALTER TABLE `competition_applications`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
 -- AUTO_INCREMENT для таблицы `competition_registration`
 --
 ALTER TABLE `competition_registration`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT для таблицы `kind_of_sport`
@@ -719,7 +646,7 @@ ALTER TABLE `kind_of_sport`
 -- AUTO_INCREMENT для таблицы `organisations`
 --
 ALTER TABLE `organisations`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT для таблицы `organisations_competitions`
@@ -770,12 +697,6 @@ ALTER TABLE `sports_club`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT для таблицы `status`
---
-ALTER TABLE `status`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
 -- AUTO_INCREMENT для таблицы `structure`
 --
 ALTER TABLE `structure`
@@ -791,7 +712,7 @@ ALTER TABLE `trainers`
 -- AUTO_INCREMENT для таблицы `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT для таблицы `user_info`
@@ -809,14 +730,6 @@ ALTER TABLE `user_info`
 ALTER TABLE `competitions`
   ADD CONSTRAINT `fk_competitions_kind_of_sport` FOREIGN KEY (`id_kind_of_sport`) REFERENCES `kind_of_sport` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `fk_competitions_structure` FOREIGN KEY (`id_structure`) REFERENCES `structure` (`id`) ON DELETE CASCADE;
-
---
--- Ограничения внешнего ключа таблицы `competition_applications`
---
-ALTER TABLE `competition_applications`
-  ADD CONSTRAINT `fk-competition_applications-competition_id` FOREIGN KEY (`competition_id`) REFERENCES `competitions` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `fk-competition_applications-processed_by` FOREIGN KEY (`processed_by`) REFERENCES `user` (`id`) ON DELETE SET NULL,
-  ADD CONSTRAINT `fk-competition_applications-user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `competition_registration`
@@ -866,12 +779,6 @@ ALTER TABLE `sportsman_prizewinner`
 ALTER TABLE `sportsman_trainers`
   ADD CONSTRAINT `fk_sportsman_trainers_sportsman` FOREIGN KEY (`id_sportsman`) REFERENCES `sportsman` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `fk_sportsmen_trainers_trainers` FOREIGN KEY (`id_trainers`) REFERENCES `trainers` (`id`) ON DELETE CASCADE;
-
---
--- Ограничения внешнего ключа таблицы `user`
---
-ALTER TABLE `user`
-  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`status_id`) REFERENCES `status` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `user_info`

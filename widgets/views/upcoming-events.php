@@ -6,10 +6,10 @@ use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $events app\models\Competitions[] */
+/* @var $userRegisteredCompetitions array */
 ?>
 
 <div class="competitions-widget">
-
     <div class="section-header">
         <h1 class="section-title"><?= Html::encode("Предстоящие соревнования") ?></h1>
         <div class="section-line"></div>
@@ -60,16 +60,24 @@ use yii\helpers\Url;
                 ],
                 [
                     'class' => 'yii\grid\ActionColumn',
-                    'template' => '{register}',
+                    'template' => '{apply}',
                     'buttons' => [
-                        'register' => function ($url, $model) {
+                        'apply' => function ($url, $model) use ($userRegisteredCompetitions) {
+                            // Проверяем, зарегистрирован ли уже пользователь
+                            if (in_array($model->id, $userRegisteredCompetitions)) {
+                                return Html::tag('span', 'Вы уже зарегистрированы', [
+                                    'class' => 'btn-registered',
+                                    'style' => 'color: green;'
+                                ]);
+                            }
+
                             return Html::a(
-                                '<i class="fas fa-user-plus"></i> Записаться',
-                                ['competitions/register', 'id' => $model->id],
+                                '<i class="fas fa-user-plus"></i> Подать заявку',
+                                ['competition-applications/create', 'competition_id' => $model->id],
                                 [
-                                    'class' => 'btn-register',
+                                    'class' => 'btn-apply',
                                     'data' => [
-                                        'confirm' => 'Вы уверены, что хотите записаться на это соревнование?',
+                                        'confirm' => 'Вы уверены, что хотите подать заявку на это соревнование?',
                                         'method' => 'post',
                                     ]
                                 ]
@@ -78,6 +86,7 @@ use yii\helpers\Url;
                     ],
                     'headerOptions' => ['class' => 'table-header'],
                     'contentOptions' => ['class' => 'table-cell action-cell'],
+                    'visible' => $showRegisterButton && !\Yii::$app->user->isGuest,
                 ],
             ],
             'pager' => [
@@ -91,7 +100,3 @@ use yii\helpers\Url;
         ]); ?>
     </div>
 </div>
-
-<style>
-    
-</style>
