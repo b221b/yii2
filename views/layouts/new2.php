@@ -84,7 +84,7 @@ $this->registerJsFile('@web/js/searchTable.js', ['depends' => [\yii\web\JqueryAs
                         <li><a href="<?= Url::to(['site/about']) ?>">About</a></li>
                         <li><a href="<?= Url::to(['site/contact']) ?>">Contact</a></li>
 
-                        <?php if (!Yii::$app->user->isGuest && Yii::$app->user->identity->isAdmin == 1): ?>
+                        <?php if (!Yii::$app->user->isGuest && Yii::$app->user->identity->status_id == \app\models\User::ROLE_ADMIN): ?>
                             <li><a href="<?= Url::to(['/admin']) ?>">Admin</a></li>
                         <?php endif; ?>
 

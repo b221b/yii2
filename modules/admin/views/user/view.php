@@ -30,10 +30,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'username',
             [
-                'attribute' => 'isAdmin',
+                'attribute' => 'status_id',
                 'value' => function ($model) {
-                    return $model->isAdmin ? 'Администратор' : 'Пользователь';
+                    return $model->getStatusLabel();
                 },
+                'filter' => \app\models\User::getStatusOptions(),
             ],
         ],
     ]) ?>

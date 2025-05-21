@@ -26,7 +26,7 @@ class Module extends \yii\base\Module
                         'allow' => true,
                         'roles' => ['@'], // Только авторизованные пользователи
                         'matchCallback' => function ($rule, $action) {
-                            return Yii::$app->user->identity->isAdmin == 1; // Только isadmin = 1
+                            return Yii::$app->user->identity->status_id == \app\models\User::ROLE_ADMIN; // Только isadmin = 1
                         },
                         'denyCallback' => function ($rule, $action) {
                             throw new NotFoundHttpException('Страница не найдена.'); // 404 для isadmin = 0

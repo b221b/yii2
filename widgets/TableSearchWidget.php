@@ -1,4 +1,5 @@
 <?php
+
 namespace app\widgets;
 
 use yii\base\Widget;
@@ -21,8 +22,8 @@ class TableSearchWidget extends Widget
             'trainers' => 'Тренеры',
         ];
 
-        $tables = array_filter($tables, function($table) use ($forbiddenTables) {
-            if (Yii::$app->user->isGuest || !Yii::$app->user->identity->isAdmin) {
+        $tables = array_filter($tables, function ($table) use ($forbiddenTables) {
+            if (Yii::$app->user->isGuest || !Yii::$app->user->identity->status_id == \app\models\User::ROLE_ADMIN) {
                 return !in_array($table, $forbiddenTables);
             }
             return true;

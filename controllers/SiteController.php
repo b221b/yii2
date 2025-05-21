@@ -159,7 +159,7 @@ class SiteController extends Controller
         $forbiddenTables = ['user', 'competitions', 'user_info', 'migration', 'organisations_competitions', 'sportsman_competitions', 'sportsman_kind_of_sport', 'sportsman_prizewinner', 'sportsman_trainers'];
 
         // Проверяем доступ
-        if (Yii::$app->user->isGuest || !Yii::$app->user->identity->isAdmin) {
+        if (Yii::$app->user->isGuest || !Yii::$app->user->identity->status_id == \app\models\User::ROLE_ADMIN) {
             if (in_array($tableName, $forbiddenTables)) {
                 throw new \yii\web\ForbiddenHttpException('Доступ к этой таблице запрещён.');
             }

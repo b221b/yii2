@@ -7,7 +7,9 @@ use yii\db\ActiveRecord;
 
 class User extends ActiveRecord implements \yii\web\IdentityInterface
 {
-    public $password_hash;
+    const ROLE_ADMIN = 1;
+    const ROLE_USER = 2;
+    const ROLE_MANAGER = 3;
 
     public static function tableName()
     {
@@ -17,6 +19,11 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
     public function getUserInfo()
     {
         return $this->hasMany(UserInfo::class, ['id_user' => 'id']);
+    }
+
+    public function getStatus()
+    {
+        return $this->hasOne(Status::class, ['id' => 'status_id']);
     }
 
     public static function findIdentity($id)
@@ -61,27 +68,14 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
         $this->authKey = Yii::$app->security->generateRandomString();
     }
 
-    // public function actionGenerateHash()
-    // {
-    //     $hash = Yii::$app->getSecurity()->generatePasswordHash('12345');
-    //     echo $hash;
-    // }
-
-    public function actionGenerateAuthKey()
-    {
-        // Генерация случайной строки (authKey)
-        $authKey = Yii::$app->security->generateRandomString();
-        echo $authKey;
-    }
-
     public function rules()
     {
         return [
             [['username', 'password'], 'required'],
-            ['isAdmin', 'default', 'value' => 0],
-            [['username'], 'string', 'max' => 255],
-            [['password'], 'string', 'max' => 255],
+            [['username', 'password', 'authKey'], 'string', 'max' => 255],
             [['username'], 'unique'],
+            [['status_id'], 'integer'],
+            [['status_id'], 'default', 'value' => self::ROLE_USER],
         ];
     }
 
@@ -89,7 +83,44 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
     {
         return [
             'username' => 'Имя пользователя',
-            'isAdmin' => 'Статус пользователя',
+            'password' => 'Пароль',
+            'status_id' => 'Статус пользователя',
+            'authKey' => 'Ключ авторизации',
+        ];
+    }
+
+    // Методы для проверки ролей
+    public function isAdmin()
+    {
+        return $this->status_id === self::ROLE_ADMIN;
+    }
+
+    public function isUser()
+    {
+        return $this->status_id === self::ROLE_USER;
+    }
+
+    public function isManager()
+    {
+        return $this->status_id === self::ROLE_MANAGER;
+    }
+
+    public function getStatusLabel()
+    {
+        $statuses = [
+            self::ROLE_ADMIN => 'Администратор',
+            self::ROLE_USER => 'Пользователь',
+            self::ROLE_MANAGER => 'Менеджер'
+        ];
+        return $statuses[$this->status_id] ?? 'Неизвестный статус';
+    }
+
+    public static function getStatusOptions()
+    {
+        return [
+            self::ROLE_ADMIN => 'Администратор',
+            self::ROLE_USER => 'Пользователь',
+            self::ROLE_MANAGER => 'Менеджер'
         ];
     }
 }

@@ -14,11 +14,8 @@ use app\models\User;
 
     <!-- <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?> -->
 
-    <?= $form->field($model, 'isAdmin')->dropDownList(
-        [
-            1 => 'Администратор',
-            0 => 'Пользователь',
-        ],
+    <?= $form->field($model, 'status_id')->dropDownList(
+        \app\models\User::getStatusOptions(),
         ['prompt' => 'Выберите статус']
     )->label('Статус пользователя') ?>
 
