@@ -98,7 +98,7 @@ $this->title = 'Городская спортивная лига';
             </div> -->
 
             <!-- Мероприятия по сооружениям -->
-             <!-- юзлес блок -->
+            <!-- юзлес блок -->
             <!-- <div class="col-md-4 col-sm-6">
                 <a href="<?= Yii::$app->urlManager->createUrl(['/competitions-structure/index']) ?>" class="card-link">
                     <div class="feature-card">
@@ -154,6 +154,7 @@ $this->title = 'Городская спортивная лига';
                 </a>
             </div>
         </div>
+
     </div>
 
     <!-- Map Section -->
@@ -249,11 +250,3 @@ $this->title = 'Городская спортивная лига';
         </div>
     </div>
 </div>
-
-<style>
-
-</style>
-
-<script>
-
-</script>
