@@ -9,7 +9,12 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\PasswordResetRequestForm;
 use app\models\RegistrationForm;
+use app\models\ResetPasswordForm;
+use app\models\TokenVerificationForm;
+use app\models\User;
+use yii\web\BadRequestHttpException;
 use yii\web\NotFoundHttpException;
 
 class SiteController extends Controller
@@ -55,6 +60,73 @@ class SiteController extends Controller
             ],
         ];
     }
+
+    public function actionRequestPasswordReset()
+    {
+        $model = new PasswordResetRequestForm();
+
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->validate()) {
+                if ($model->sendEmail()) {
+                    return $this->redirect(['request-password-reset-success']);
+                } else {
+                    Yii::$app->session->setFlash(
+                        'error',
+                        'Не удалось отправить письмо. Попробуйте позже.'
+                    );
+                }
+            } else {
+                Yii::error('Validation errors: ' . print_r($model->errors, true));
+            }
+        }
+
+        return $this->render('requestPasswordReset', [
+            'model' => $model,
+        ]);
+    }
+
+    public function actionRequestPasswordResetSuccess()
+    {
+        return $this->render('requestPasswordResetToken');
+    }
+
+    public function actionResetPassword($token)
+    {
+        // Проверяем токен
+        if (!User::isPasswordResetTokenValid($token)) {
+            Yii::$app->session->setFlash('error', 'Неверный или устаревший токен.');
+            return $this->redirect(['verify-token']);
+        }
+
+        $model = new ResetPasswordForm();
+        $model->token = $token;
+
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            if ($model->resetPassword()) {
+                Yii::$app->session->setFlash('success', 'Пароль успешно изменён!');
+                return $this->redirect(['login']);
+            }
+        }
+
+        return $this->render('resetPassword', [
+            'model' => $model,
+        ]);
+    }
+
+    public function actionVerifyToken()
+    {
+        $model = new TokenVerificationForm();
+
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            // Если токен верный, перенаправляем на страницу смены пароля
+            return $this->redirect(['reset-password', 'token' => $model->token]);
+        }
+
+        return $this->render('verifyToken', [
+            'model' => $model,
+        ]);
+    }
+
 
     /**
      * Displays homepage.
@@ -144,7 +216,7 @@ class SiteController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->register()) {
             // Регистрация прошла успешно
-            Yii::$app->session->setFlash('success', 'Thank you for registering. You can now log in.');
+            Yii::$app->session->setFlash('success', 'Регистрация прошла успешно. Теперь вы можете войти.');
             return $this->redirect(['site/login']);
         }
 

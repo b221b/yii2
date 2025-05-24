@@ -31,29 +31,24 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
 
+            <?= $form->field($model, 'email')->textInput() ?>
+
             <?= $form->field($model, 'password')->passwordInput() ?>
 
             <div class="form-group">
-
-                <!-- <div>
-                    <?= Html::submitButton('Register', ['class' => 'btn btn-primary', 'name' => 'registration-button']) ?>
-                </div> -->
-
                 <div>
                     <?= Html::button(
                         '<span class="nisoz-btn__shape"></span>
-         <span class="nisoz-btn__shape"></span>
-         <span class="nisoz-btn__shape"></span>
-         <span class="nisoz-btn__shape"></span>
-         <span class="nisoz-btn__text">Зарегистрироваться</span>',
+                        <span class="nisoz-btn__shape"></span>
+                        <span class="nisoz-btn__shape"></span>
+                        <span class="nisoz-btn__shape"></span>
+                        <span class="nisoz-btn__text">Зарегистрироваться</span>',
                         ['type' => 'submit', 'class' => 'nisoz-btn']
                     ) ?>
                 </div>
-
             </div>
 
             <?php ActiveForm::end(); ?>
-
         </div>
     </div>
 </div>

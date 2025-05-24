@@ -35,6 +35,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <?= $form->field($model, 'password')->passwordInput() ?>
 
+            <div class="form-group">
+                <?= Html::a('Забыли пароль?', ['/forgot-password']) ?>
+            </div>
+
             <?= $form->field($model, 'rememberMe')->checkbox([
                 'template' => "<div class=\"custom-control custom-checkbox\">{input} {label}</div>\n<div class=\"col-lg-8\">{error}</div>",
             ]) ?>

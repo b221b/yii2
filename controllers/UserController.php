@@ -107,12 +107,20 @@ class UserController extends Controller
         $model = new UserInfo();
         $model->id_user = $user_id;
 
+        // Получение данных для выпадающих списков
+        $sportsClubs = SportsClub::find()->select(['name', 'id'])->indexBy('id')->column();
+        $trainers = Trainers::find()->select(['name', 'id'])->indexBy('id')->column();
+        $sportsKinds = KindOfSport::find()->select(['name', 'id'])->indexBy('id')->column();
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index']);
         }
 
         return $this->render('create', [
             'model' => $model,
+            'sportsClub' => $sportsClubs,
+            'trainer' => $trainers,
+            'sportsKind' => $sportsKinds,
         ]);
     }
 

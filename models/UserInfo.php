@@ -47,6 +47,7 @@ class UserInfo extends ActiveRecord
             ['status', 'default', 'value' => 0],
 
             [['email'], 'email'],
+            
             [['id_user'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['id_user' => 'id']],
 
             ['phone_number', 'unique', 'message' => 'Этот номер телефона уже используется'],

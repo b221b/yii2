@@ -25,6 +25,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 ],
             ]); ?>
 
+            <?php if ($model->hasErrors()): ?>
+                <div class="alert alert-danger">
+                    <?= Html::errorSummary($model) ?>
+                </div>
+            <?php endif; ?>
+
             <div class="row mb-3">
                 <?= $form->field($model, 'phone_number', [
                     'template' => "<div class='row mb-3'><div class='col-md-3'>{label}</div><div class='col-md-9'><div class='input-group'>{input}</div>{error}</div></div>"

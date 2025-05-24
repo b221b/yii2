@@ -32,29 +32,11 @@ $config = [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-
-        // 'mailer' => [
-        //     'class' => \yii\symfonymailer\Mailer::class,
-        //     'viewPath' => '@app/mail',
-        //     // send all mails to a file by default.
-        //     'useFileTransport' => true,
-        // ],
-
-        // 'mailer' => [
-        //     'class' => \yii\symfonymailer\Mailer::class,
-        //     'viewPath' => '@app/mail',
-        //     'useFileTransport' => false,
-        //     'transport' => [
-        //         'scheme' => 'smtps',  // or 'smtps' for SSL
-        //         'host' => 'smtp.gmail.com',
-        //         'username' => 'titarenkomiroslav5@gmail.com',
-        //         'password' => '123',
-        //         'port' => 465,      // typically 587 for SMTP or 465 for SMTPS
-        //         'dsn' => 'smtps://titarenkomiroslav5@gmail.com:123@smtp.gmail.com:465',
-        //         'encryption' => 'ssl', // or 'tls'
-        //     ],
-        // ],
-
+        'mailer' => [
+            'class' => \yii\symfonymailer\Mailer::class,
+            'useFileTransport' => true,
+            'fileTransportPath' => '@runtime/mail', // Путь для сохранения
+        ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
@@ -75,6 +57,9 @@ $config = [
                 'about' => 'site/about',
                 'newss' => 'newss/index',
                 'newss/<id:\d+>' => 'newss/view',
+                'forgot-password' => 'site/request-password-reset',
+                'reset-password' => 'site/reset-password',
+                'verify-token' => 'site/verify-token',
             ],
         ],
 
