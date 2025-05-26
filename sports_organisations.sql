@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Май 21 2025 г., 18:53
+-- Время создания: Май 26 2025 г., 14:26
 -- Версия сервера: 8.0.30
 -- Версия PHP: 8.1.9
 
@@ -77,7 +77,8 @@ INSERT INTO `competition_applications` (`id`, `user_id`, `competition_id`, `stat
 (5, 1, 13, 'rejected', '2025-05-21 18:02:15', '2025-05-21 18:02:29', 5),
 (6, 1, 13, 'approved', '2025-05-21 18:05:05', '2025-05-21 18:05:13', 5),
 (7, 1, 13, 'rejected', '2025-05-21 18:25:33', '2025-05-21 18:29:47', 5),
-(8, 1, 13, 'approved', '2025-05-21 18:38:33', '2025-05-21 18:40:43', 5);
+(8, 1, 13, 'approved', '2025-05-21 18:38:33', '2025-05-21 18:40:43', 5),
+(9, 6, 13, 'rejected', '2025-05-22 13:07:20', '2025-05-22 13:08:08', 2);
 
 -- --------------------------------------------------------
 
@@ -146,7 +147,8 @@ INSERT INTO `migration` (`version`, `apply_time`) VALUES
 ('m250326_082020_insert_data', 1742978862),
 ('m250402_090138_user_info', 1743585129),
 ('m250514_181235_create_competition_registration_table', 1747246394),
-('m250521_142709_create_competition_applications_table', 1747837738);
+('m250521_142709_create_competition_applications_table', 1747837738),
+('m250522_142859_add_password_reset_to_user', 1747924178);
 
 -- --------------------------------------------------------
 
@@ -500,20 +502,24 @@ CREATE TABLE `user` (
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `authKey` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '',
-  `status_id` int DEFAULT '2'
+  `status_id` int DEFAULT '2',
+  `password_reset_token` varchar(255) DEFAULT NULL,
+  `status` smallint DEFAULT '10'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Дамп данных таблицы `user`
 --
 
-INSERT INTO `user` (`id`, `username`, `password`, `authKey`, `status_id`) VALUES
-(1, 'aomine', '$2y$13$QWESqI.Rh8UoBYBaHKH8/eNHZ5GHej50K1gY4O.rblEHDKVkZakMm', 'FXAB-oDLp-REz0jMzxDxlBsovfFtOje9', 1),
-(2, 'test', '$2y$13$gyJiuSiHwRKSCcq9LEf0N.CXarOTrHhqHNW3/awowd0hNHFi4uONe', 'sneze1TFPOf6_yY3KgN6mWI-mDUxVS-9', 3),
-(3, 'script123', '$2y$13$k0Sq1QpspfbU9W9jdEDHfOZOw0WeWCP3EA.K7bpOF22mTwfg62KyG', 'QMhSH50fn_vtC9gMQq1WaAoKBDfnPj50', 2),
-(4, 'admin\' OR \'1\'=\'1', '$2y$13$lXPqoloEvux99hrPQVVLlu4U1AMxVuRf0ilSLlcaH2fizG4X.fne6', 'wN5UkTX8XuXZGgrZop0KGC6PqB2RFl53', 2),
-(5, 'miroslaw', '$2y$13$ok7HJMd88TRI/BWZHZFdI.8Jek18vVQBLJELzEsCiw.BtRMjCF08S', 'vSawHzwCqUxyYuMSWuM5OcjSJmKSDOOa', 3),
-(6, 'vera', '$2y$13$Qq0fR5Gyrur9UK5qjR8You1eJMB7HS/5eBatqD.KwGP.a9c3MEY0K', 'rbI6ZwSFTfNHDf6r3J0DtV02nRzDRkKd', 2);
+INSERT INTO `user` (`id`, `username`, `password`, `authKey`, `status_id`, `password_reset_token`, `status`) VALUES
+(1, 'aomine', '$2y$13$QWESqI.Rh8UoBYBaHKH8/eNHZ5GHej50K1gY4O.rblEHDKVkZakMm', 'SpS1epNkUe-FQKJMLPT5MoKDAJ99l5ZI', 1, 'hG4FqsLDEuG8regg0i1-K9sC9xTyEw7Y_1747924553', 10),
+(2, 'test', '$2y$13$gyJiuSiHwRKSCcq9LEf0N.CXarOTrHhqHNW3/awowd0hNHFi4uONe', 'DV01x8a-d98fo7sYUktV7iBJy_lYhnrJ', 3, NULL, 10),
+(3, 'script123', '$2y$13$k0Sq1QpspfbU9W9jdEDHfOZOw0WeWCP3EA.K7bpOF22mTwfg62KyG', 'QMhSH50fn_vtC9gMQq1WaAoKBDfnPj50', 2, NULL, 10),
+(4, 'admin\' OR \'1\'=\'1', '$2y$13$lXPqoloEvux99hrPQVVLlu4U1AMxVuRf0ilSLlcaH2fizG4X.fne6', 'wN5UkTX8XuXZGgrZop0KGC6PqB2RFl53', 2, NULL, 10),
+(5, 'miroslaw', '$2y$13$ok7HJMd88TRI/BWZHZFdI.8Jek18vVQBLJELzEsCiw.BtRMjCF08S', 'YKMI_hLsoceYXO_IzbygRk0qk70n1OzB', 3, NULL, 10),
+(6, 'vera', '$2y$13$Qq0fR5Gyrur9UK5qjR8You1eJMB7HS/5eBatqD.KwGP.a9c3MEY0K', 'Pi5BykKsvc7DNdI9LPWMhV9gE1sTS2_L', 2, NULL, 10),
+(8, 'b221b', '$2y$13$y727.JElau0k1LlQzof0P.3fafYD12IphUGZfseEFevhz9A9rpFle', 'HBq4VJixSZt7V9vH0-xTksiiRyc5BU8b', 2, 'N3fOXD8GpqMZLkB_37thuoevQAkPJe2l_1748108440', 10),
+(10, 'test1', '$2y$13$LG.eqcGHGNXDboZ1ywYUAeoM7ay.5vyyX4sKZtgyV5KysOfZ/2em6', 'jaucoKjC0nCNkxHg-cXg3TGX_i02kLxA', 2, NULL, 10);
 
 -- --------------------------------------------------------
 
@@ -543,7 +549,9 @@ INSERT INTO `user_info` (`id`, `phone_number`, `email`, `birthday`, `gender`, `i
 (24, '+7 123 123 12 31', '23123@mail.ru', '2003-04-06', 1, 2, 7, NULL, 1, 0),
 (34, '', '123123@mail.ru', '2003-02-03', 1, 1, 1, 1, 5, 0),
 (38, '', '1231123@mail.ru', NULL, NULL, NULL, NULL, NULL, 6, 0),
-(39, '', '', NULL, NULL, NULL, NULL, NULL, 3, 0);
+(39, '', '', NULL, NULL, NULL, NULL, NULL, 3, 0),
+(40, '+7 961 281 28 50', 'chuplan1337@mail.ru', '2003-06-30', 1, 2, 1, 1, 8, 0),
+(41, NULL, 'test1@gmail.com', NULL, NULL, NULL, NULL, NULL, 10, 0);
 
 --
 -- Индексы сохранённых таблиц
@@ -675,6 +683,7 @@ ALTER TABLE `trainers`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `password_reset_token` (`password_reset_token`),
   ADD KEY `ind_status_status_id` (`status_id`);
 
 --
@@ -701,7 +710,7 @@ ALTER TABLE `competitions`
 -- AUTO_INCREMENT для таблицы `competition_applications`
 --
 ALTER TABLE `competition_applications`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT для таблицы `competition_registration`
@@ -791,13 +800,13 @@ ALTER TABLE `trainers`
 -- AUTO_INCREMENT для таблицы `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT для таблицы `user_info`
 --
 ALTER TABLE `user_info`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц
