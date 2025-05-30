@@ -87,6 +87,20 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= $form->field($model, 'id_trainers')->dropDownList($trainer, ['prompt' => 'Выберите тренера']) ?>
             </div>
 
+            <div class="row mb-3">
+                <?= $form->field($model, 'discharge')->dropDownList(
+                    [
+                        1 => '1 разряд',
+                        2 => '2 разряд',
+                        3 => '3 разряд',
+                    ],
+                    [
+                        'prompt' => 'Выберите разряд',
+                        'class' => 'form-control'
+                    ]
+                ) ?>
+            </div>
+
             <div class="form-group row">
                 <div class="col-md-9 offset-md-3">
                     <?= Html::submitButton('<i class="fas fa-save me-2"></i> Сохранить изменения', ['class' => 'btn btn-primary px-4']) ?>

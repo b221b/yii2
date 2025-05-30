@@ -47,7 +47,7 @@ class UserInfo extends ActiveRecord
             ['status', 'default', 'value' => 0],
 
             [['email'], 'email'],
-            
+
             [['id_user'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['id_user' => 'id']],
 
             ['phone_number', 'unique', 'message' => 'Этот номер телефона уже используется'],
@@ -55,6 +55,7 @@ class UserInfo extends ActiveRecord
 
             [['phone_number'], 'string', 'max' => 20],
             [['email'], 'string', 'max' => 255],
+            [['discharge'], 'safe'],
 
             // Добавленные поля
             [['birthday', 'gender', 'id_sports_club', 'id_trainers', 'id_kind_of_sport'], 'safe'],
@@ -73,6 +74,7 @@ class UserInfo extends ActiveRecord
             'id_sports_club' => 'Спортивный клуб',
             'id_trainers' => 'Тренер',
             'id_kind_of_sport' => 'Вид спорта',
+            'discharge' => 'Разряд',
         ];
     }
 }

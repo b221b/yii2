@@ -25,6 +25,7 @@ if ($usersDataProvider && count($usersDataProvider->models) > 0) {
                 'id_trainers' => $user['id_trainers'] ?? null,
                 'trainer_name' => $user['trainer_name'] ?? null,
                 'id_kind_of_sport' => $user['id_kind_of_sport'] ?? null,
+                'discharge' => $user['discharge'] ?? null,
                 'sport_name' => $user['sport_name'] ?? null,
                 'contacts' => []
             ];
@@ -40,6 +41,7 @@ if ($usersDataProvider && count($usersDataProvider->models) > 0) {
                 'id_trainers' => $user['id_trainers'] ?? null,
                 'trainer_name' => $user['trainer_name'] ?? null,
                 'id_kind_of_sport' => $user['id_kind_of_sport'] ?? null,
+                'discharge' => $user['discharge'] ?? null,
                 'sport_name' => $user['sport_name'] ?? null,
                 'info_id' => $user['info_id'],
                 'status' => $user['status']
@@ -192,6 +194,14 @@ if ($usersDataProvider && count($usersDataProvider->models) > 0) {
                                     <?= !empty($contact['trainer_name']) ? Html::encode($contact['trainer_name']) : '<span class="empty-field">Не указан</span>' ?>
                                 </div>
                             </div>
+
+                            <div class="info-item">
+                                <div class="info-label">Разряд</div>
+                                <div class="info-value">
+                                    <?= !empty($contact['discharge']) ? Html::encode($contact['discharge']) : '<span class="empty-field">Не указан</span>' ?>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>

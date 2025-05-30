@@ -33,6 +33,7 @@ class UserController extends Controller
                     'ui.id_trainers',
                     'ui.id_kind_of_sport',
                     'ui.status',
+                    'ui.discharge',
                     't.name as trainer_name', // имя тренера
                     'sc.name as club_name',   // название клуба
                     'kos.name as sport_name'  // название вида спорта
