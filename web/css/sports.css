@@ -1,0 +1,190 @@
+/* Базовые стили для панелей */
+.sport-widget {
+    background: #fff;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    overflow: hidden;
+    border: 1px solid #e0e0e0;
+}
+
+.sport-widget-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid #f0f0f0;
+    background-color: #fafafa;
+}
+
+.sport-widget-title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    display: flex;
+    align-items: center;
+}
+
+.sport-widget-title i {
+    margin-right: 10px;
+    color: #555;
+}
+
+.sport-widget-body {
+    padding: 20px;
+}
+
+/* Стили для таблицы регистраций */
+.sport-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.sport-table th {
+    text-align: left;
+    padding: 12px 15px;
+    font-weight: 500;
+    color: #666;
+    font-size: 13px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.sport-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #f0f0f0;
+    vertical-align: middle;
+}
+
+.sport-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Стили для карточек соревнований */
+.sport-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 15px;
+}
+
+.sport-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    overflow: hidden;
+    transition: all 0.2s ease;
+}
+
+.sport-card:hover {
+    border-color: #ccc;
+}
+
+.sport-card-content {
+    padding: 16px;
+}
+
+.sport-card-title {
+    margin: 0 0 8px 0;
+    font-size: 15px;
+    font-weight: 500;
+    color: #333;
+}
+
+.sport-card-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    font-size: 13px;
+    color: #666;
+}
+
+.sport-card-description {
+    margin: 12px 0;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    font-size: 13px;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Элементы статусов */
+.sport-badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.badge-upcoming {
+    background-color: #e3f2fd;
+    color: #1976d2;
+}
+
+.badge-completed {
+    background-color: #ffebee;
+    /* Светло-красный фон */
+    color: #d32f2f;
+    /* Темно-красный текст */
+    border: 1px solid #ef9a9a;
+    /* Граница красного оттенка */
+}
+
+/* Для таблицы в userRegistrations */
+.sport-table .badge-completed {
+    background-color: #ffebee;
+    color: #d32f2f;
+}
+
+/* Для карточек в AthleteCompetitionsWidget */
+.sport-card .badge-completed {
+    background-color: #ffebee;
+    color: #d32f2f;
+}
+
+.sport-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 13px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.sport-btn i {
+    margin-right: 5px;
+    font-size: 12px;
+}
+
+.btn-view {
+    background-color: #f5f5f5;
+    color: #333;
+    border: 1px solid #e0e0e0;
+}
+
+.btn-view:hover {
+    background-color: #eee;
+}
+
+.btn-cancel {
+    background-color: #ffebee;
+    color: #d32f2f;
+    border: 1px solid #ffcdd2;
+}
+
+.btn-cancel:hover {
+    background-color: #ffcdd2;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .sport-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .sport-table {
+        display: block;
+        overflow-x: auto;
+    }
+
+    .sport-widget-body {
+        padding: 15px;
+    }
+}

@@ -1,24 +1,24 @@
-<div class="user-registrations-panel panel panel-default">
-    <div class="panel-heading">
-        <h3 class="panel-title">
-            <i class="fas fa-calendar-check"></i> Мои записи на соревнования
+<div class="sport-widget">
+    <div class="sport-widget-header">
+        <h3 class="sport-widget-title">
+            <i class="fas fa-calendar-check"></i>Текущие записи
         </h3>
     </div>
-    <div class="panel-body">
+    <div class="sport-widget-body">
         <?php
 
         use yii\helpers\Html;
 
         if (empty($registrations)): ?>
-            <div class="alert alert-info">
-                Вы пока не записаны ни на одно соревнование
+            <div class="text-muted text-center">
+                Нет активных записей на соревнования
             </div>
         <?php else: ?>
             <div class="table-responsive">
-                <table class="table table-hover">
+                <table class="sport-table">
                     <thead>
                         <tr>
-                            <th>Название</th>
+                            <th>Соревнование</th>
                             <th>Вид спорта</th>
                             <th>Дата</th>
                             <th>Статус</th>
@@ -33,29 +33,34 @@
                                 <td><?= Yii::$app->formatter->asDate($registration->competition->event_date) ?></td>
                                 <td>
                                     <?php if (strtotime($registration->competition->event_date) > time()): ?>
-                                        <span class="label label-success">Предстоящее</span>
+                                        <span class="sport-badge badge-upcoming">Предстоящее</span>
                                     <?php else: ?>
-                                        <span class="label label-default">Завершено</span>
+                                        <span class="sport-badge badge-completed" style="background-color: #ffebee; color: #d32f2f;">Завершено</span>
                                     <?php endif; ?>
                                 </td>
                                 <td>
-                                    <?= Html::a(
-                                        '<i class="fas fa-eye"></i>',
-                                        ['competitions/view', 'id' => $registration->competition_id],
-                                        ['class' => 'btn btn-xs btn-default']
-                                    ) ?>
+                                    <div style="display: flex; gap: 5px;">
+                                        <?= Html::a(
+                                            '<i class="fas fa-eye"></i>',
+                                            ['competitions/view', 'id' => $registration->competition_id],
+                                            ['class' => 'sport-btn btn-view', 'title' => 'Просмотр']
+                                        ) ?>
 
-                                    <?= Html::a(
-                                        '<i class="fas fa-times"></i>',
-                                        ['competitions/unregister', 'id' => $registration->competition_id],
-                                        [
-                                            'class' => 'btn btn-xs btn-danger',
-                                            'data' => [
-                                                'confirm' => 'Вы действительно хотите отменить запись на это соревнование?',
-                                                'method' => 'post',
-                                            ]
-                                        ]
-                                    ) ?>
+                                        <?php if (strtotime($registration->competition->event_date) > time()): ?>
+                                            <?= Html::a(
+                                                '<i class="fas fa-times"></i>',
+                                                ['competitions/unregister', 'id' => $registration->competition_id],
+                                                [
+                                                    'class' => 'sport-btn btn-cancel',
+                                                    'title' => 'Отменить запись',
+                                                    'data' => [
+                                                        'confirm' => 'Вы действительно хотите отменить запись на это соревнование?',
+                                                        'method' => 'post',
+                                                    ]
+                                                ]
+                                            ) ?>
+                                        <?php endif; ?>
+                                    </div>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

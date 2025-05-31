@@ -216,7 +216,9 @@ if ($usersDataProvider && count($usersDataProvider->models) > 0) {
 
     <?= \app\widgets\UserRegistrationsWidget::widget() ?>
 
-
+    <?= \app\widgets\AthleteCompetitionsWidget::widget([
+        'userId' => Yii::$app->user->id,
+    ]) ?>
 
     <?= \app\widgets\EventApplicationsWidget::widget() ?>
 
