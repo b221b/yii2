@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Май 26 2025 г., 14:26
+-- Время создания: Июн 02 2025 г., 09:28
 -- Версия сервера: 8.0.30
 -- Версия PHP: 8.1.9
 
@@ -47,7 +47,9 @@ INSERT INTO `competitions` (`id`, `name`, `id_structure`, `id_kind_of_sport`, `e
 (4, 'Баскетбольный турнир 1', 9, 1, '2020-03-01', 'Атмосфера напряженности и ожидания витает в воздухе, создавая уникальное ощущение единства и соперничества среди спортсменов и зрителей.'),
 (5, 'Футбольный чемпионат 1', 2, 2, '2020-07-01', 'Участники будут бороться не только за награды, но и за возможность продемонстрировать свои достижения и преодолеть собственные границы. Каждый момент будет полон эмоций, а зрители смогут насладиться зрелищными выступлениями и захватывающими моментами.'),
 (6, 'Волейбольный кубок 1', 4, 3, '2020-08-15', 'На этом соревновании спортсмены столкнутся с непростыми испытаниями, которые потребуют от них не только физической силы, но и стратегического мышления.'),
-(13, 'Декабрьское соревнование N1', 9, 1, '2025-12-15', 'Каждый участник стремится показать свои лучшие результаты, преодолевая трудности и соперников на пути к успеху. Погружаясь в атмосферу соперничества, зрители смогут стать свидетелями настоящих спортивных драм и триумфов.');
+(13, 'Декабрьское соревнование N1', 9, 1, '2025-12-15', 'Каждый участник стремится показать свои лучшие результаты, преодолевая трудности и соперников на пути к успеху. Погружаясь в атмосферу соперничества, зрители смогут стать свидетелями настоящих спортивных драм и триумфов.'),
+(18, 'Лето 2025', 2, 2, '2025-05-01', '123qwe'),
+(19, '123', 3, 3, '2003-11-11', '');
 
 -- --------------------------------------------------------
 
@@ -78,7 +80,8 @@ INSERT INTO `competition_applications` (`id`, `user_id`, `competition_id`, `stat
 (6, 1, 13, 'approved', '2025-05-21 18:05:05', '2025-05-21 18:05:13', 5),
 (7, 1, 13, 'rejected', '2025-05-21 18:25:33', '2025-05-21 18:29:47', 5),
 (8, 1, 13, 'approved', '2025-05-21 18:38:33', '2025-05-21 18:40:43', 5),
-(9, 6, 13, 'rejected', '2025-05-22 13:07:20', '2025-05-22 13:08:08', 2);
+(9, 6, 13, 'rejected', '2025-05-22 13:07:20', '2025-05-22 13:08:08', 2),
+(10, 1, 18, 'approved', '2025-05-31 13:07:03', '2025-05-31 13:07:08', 2);
 
 -- --------------------------------------------------------
 
@@ -98,7 +101,8 @@ CREATE TABLE `competition_registration` (
 --
 
 INSERT INTO `competition_registration` (`id`, `competition_id`, `user_id`, `registration_date`) VALUES
-(7, 13, 1, '2025-05-21 18:40:43');
+(7, 13, 1, '2025-05-21 18:40:43'),
+(8, 18, 1, '2025-05-31 13:07:08');
 
 -- --------------------------------------------------------
 
@@ -355,7 +359,10 @@ INSERT INTO `sportsman_prizewinner` (`id`, `id_competitions`, `id_sportsman`, `i
 (73, 6, 3, 3),
 (74, 2, 12, 1),
 (75, 2, 5, 2),
-(76, 2, 13, 3);
+(76, 2, 13, 3),
+(83, 18, 1, 1),
+(84, 18, 3, 2),
+(85, 18, 2, 3);
 
 -- --------------------------------------------------------
 
@@ -512,8 +519,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `authKey`, `status_id`, `password_reset_token`, `status`) VALUES
-(1, 'aomine', '$2y$13$QWESqI.Rh8UoBYBaHKH8/eNHZ5GHej50K1gY4O.rblEHDKVkZakMm', 'SpS1epNkUe-FQKJMLPT5MoKDAJ99l5ZI', 1, 'hG4FqsLDEuG8regg0i1-K9sC9xTyEw7Y_1747924553', 10),
-(2, 'test', '$2y$13$gyJiuSiHwRKSCcq9LEf0N.CXarOTrHhqHNW3/awowd0hNHFi4uONe', 'DV01x8a-d98fo7sYUktV7iBJy_lYhnrJ', 3, NULL, 10),
+(1, 'aomine', '$2y$13$QWESqI.Rh8UoBYBaHKH8/eNHZ5GHej50K1gY4O.rblEHDKVkZakMm', 'jw6ApsKEwpH9-NNQI9LiCJ0YDn3yEQ_x', 1, 'hG4FqsLDEuG8regg0i1-K9sC9xTyEw7Y_1747924553', 10),
+(2, 'test', '$2y$13$gyJiuSiHwRKSCcq9LEf0N.CXarOTrHhqHNW3/awowd0hNHFi4uONe', 'bE9HnQnw2JoEcqjDe429Qc47Akq4RSLb', 3, NULL, 10),
 (3, 'script123', '$2y$13$k0Sq1QpspfbU9W9jdEDHfOZOw0WeWCP3EA.K7bpOF22mTwfg62KyG', 'QMhSH50fn_vtC9gMQq1WaAoKBDfnPj50', 2, NULL, 10),
 (4, 'admin\' OR \'1\'=\'1', '$2y$13$lXPqoloEvux99hrPQVVLlu4U1AMxVuRf0ilSLlcaH2fizG4X.fne6', 'wN5UkTX8XuXZGgrZop0KGC6PqB2RFl53', 2, NULL, 10),
 (5, 'miroslaw', '$2y$13$ok7HJMd88TRI/BWZHZFdI.8Jek18vVQBLJELzEsCiw.BtRMjCF08S', 'YKMI_hLsoceYXO_IzbygRk0qk70n1OzB', 3, NULL, 10),
@@ -536,6 +543,7 @@ CREATE TABLE `user_info` (
   `id_sports_club` int DEFAULT NULL,
   `id_trainers` int DEFAULT NULL,
   `id_kind_of_sport` int DEFAULT NULL,
+  `discharge` varchar(255) DEFAULT NULL,
   `id_user` int NOT NULL,
   `status` int NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -544,14 +552,14 @@ CREATE TABLE `user_info` (
 -- Дамп данных таблицы `user_info`
 --
 
-INSERT INTO `user_info` (`id`, `phone_number`, `email`, `birthday`, `gender`, `id_sports_club`, `id_trainers`, `id_kind_of_sport`, `id_user`, `status`) VALUES
-(10, '', 'titarenkomiroslav@gmail.com', NULL, NULL, NULL, NULL, NULL, 2, 0),
-(24, '+7 123 123 12 31', '23123@mail.ru', '2003-04-06', 1, 2, 7, NULL, 1, 0),
-(34, '', '123123@mail.ru', '2003-02-03', 1, 1, 1, 1, 5, 0),
-(38, '', '1231123@mail.ru', NULL, NULL, NULL, NULL, NULL, 6, 0),
-(39, '', '', NULL, NULL, NULL, NULL, NULL, 3, 0),
-(40, '+7 961 281 28 50', 'chuplan1337@mail.ru', '2003-06-30', 1, 2, 1, 1, 8, 0),
-(41, NULL, 'test1@gmail.com', NULL, NULL, NULL, NULL, NULL, 10, 0);
+INSERT INTO `user_info` (`id`, `phone_number`, `email`, `birthday`, `gender`, `id_sports_club`, `id_trainers`, `id_kind_of_sport`, `discharge`, `id_user`, `status`) VALUES
+(10, '', 'titarenkomiroslav@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, 2, 0),
+(24, '+7 123 123 12 31', '23123@mail.ru', '2003-04-06', 1, 2, 7, NULL, '', 1, 0),
+(34, '', '123123@mail.ru', '2003-02-03', 1, 1, 1, 1, NULL, 5, 0),
+(38, '', '1231123@mail.ru', NULL, NULL, NULL, NULL, NULL, NULL, 6, 0),
+(39, '', '', NULL, NULL, NULL, NULL, NULL, NULL, 3, 0),
+(40, '+7 961 281 28 50', 'chuplan1337@mail.ru', '2003-06-30', 1, 2, 1, 1, NULL, 8, 0),
+(41, NULL, 'test1@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, 10, 0);
 
 --
 -- Индексы сохранённых таблиц
@@ -704,19 +712,19 @@ ALTER TABLE `user_info`
 -- AUTO_INCREMENT для таблицы `competitions`
 --
 ALTER TABLE `competitions`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT для таблицы `competition_applications`
 --
 ALTER TABLE `competition_applications`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT для таблицы `competition_registration`
 --
 ALTER TABLE `competition_registration`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT для таблицы `kind_of_sport`
@@ -764,7 +772,7 @@ ALTER TABLE `sportsman_kind_of_sport`
 -- AUTO_INCREMENT для таблицы `sportsman_prizewinner`
 --
 ALTER TABLE `sportsman_prizewinner`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
 
 --
 -- AUTO_INCREMENT для таблицы `sportsman_trainers`
