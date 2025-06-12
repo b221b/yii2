@@ -167,6 +167,73 @@ $this->title = 'Городская спортивная лига';
         </div>
     </div>
 
+    <!-- New Map Section с несколькими точками -->
+    <div>
+        <div class="map-section mt-5">
+            <div class="container">
+                <h2 class="section-title text-center mb-4">Спортивные объекты</h2>
+                <div id="osm-map" style="height: 450px; width: 100%;"></div>
+            </div>
+        </div>
+
+        <!-- Подключаем Leaflet.js (бесплатная библиотека карт) -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+        <script>
+            // Координаты точек
+            const point1 = [47.229169, 39.626012];
+            const point2 = [47.238826, 39.710951];
+            const point3 = [47.232094, 39.730898];
+            const point4 = [47.235923, 39.705384];
+            const point5 = [47.280987, 39.717436];
+            const point6 = [47.209443, 39.737807];
+            const point7 = [47.288208, 39.700317];
+            const point8 = [47.243037, 39.760967];
+            const point9 = [47.271562, 39.727777];
+
+            // Центр карты (можно вычислить для всех трех точек)
+            const centerLat = (point1[0] + point2[0] + point3[0]) / 3;
+            const centerLng = (point1[1] + point2[1] + point3[1]) / 3;
+
+            // Создаем карту
+            const map = L.map('osm-map').setView([centerLat, centerLng], 12);
+
+            // Добавляем слой OpenStreetMap
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            }).addTo(map);
+
+            // Добавляем маркеры
+            L.marker(point1).addTo(map)
+                .bindPopup("<b>WGYM");
+
+            L.marker(point2).addTo(map) // ← Вот этот маркер был пропущен
+                .bindPopup("<b>Бассейн ДГТУ");
+
+            L.marker(point3).addTo(map) // ← Вот этот маркер был пропущен
+                .bindPopup("<b>World Class</b>");
+
+            L.marker(point4).addTo(map) // ← Вот этот маркер был пропущен
+                .bindPopup("<b>FITRON");
+
+            L.marker(point5).addTo(map) // ← Вот этот маркер был пропущен
+                .bindPopup("<b>WGYM");
+
+            L.marker(point6).addTo(map) // ← Вот этот маркер был пропущен
+                .bindPopup("<b>Ростов Арена");
+
+            L.marker(point7).addTo(map) // ← Вот этот маркер был пропущен
+                .bindPopup("<b>Теннисный центр");
+
+            L.marker(point8).addTo(map) // ← Вот этот маркер был пропущен
+                .bindPopup("<b>Олимп-2");
+
+            L.marker(point9).addTo(map) // ← Вот этот маркер был пропущен
+                .bindPopup("<b>Стадион СКА");
+        </script>
+    </div>
+
     <!-- Stats Section -->
     <div class="stats-section py-5 bg-light">
         <div class="container">
